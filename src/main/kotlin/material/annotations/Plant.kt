@@ -1,7 +1,7 @@
 package material.annotations
 
-import kotlin.reflect.full.declaredMemberFunctions
-import kotlin.reflect.full.findAnnotation
+//import kotlin.reflect.full.declaredMemberFunctions
+//import kotlin.reflect.full.findAnnotation
 
 @ImAPlant class Plant {
     fun trim() {}
@@ -31,9 +31,9 @@ fun reflections() {
     val classObj = Plant::class
 
     // Printing all the methods of the class
-    for (method in classObj.declaredMemberFunctions) {
-        println(method.name) // trim fertilize
-    }
+//    for (method in classObj.declaredMemberFunctions) {
+//        println(method.name) // trim fertilize
+//    }
 
     // print all annotations
     for (annotation in classObj.annotations) {
@@ -41,10 +41,10 @@ fun reflections() {
     }
 
     // find one annotation, or null
-    val annotated = classObj.findAnnotation<ImAPlant>()
-    annotated?.apply {
-        println("Found a plant annotation!")  // Found a plant annotation
-    }
+//    val annotated = classObj.findAnnotation<ImAPlant>()
+//    annotated?.apply {
+//        println("Found a plant annotation!")  // Found a plant annotation
+//    }
 
 }
 

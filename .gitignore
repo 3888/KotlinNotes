@@ -50,3 +50,4 @@ trash/**
 /lib/kotlin-stdlib-sources.jar
 /lib/kotlin-test.jar
 /lib/kotlin-test-sources.jar
+/gradlew.bat
