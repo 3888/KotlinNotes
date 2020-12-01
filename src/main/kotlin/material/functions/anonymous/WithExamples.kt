@@ -1,4 +1,4 @@
-package material.lambdas
+package material.functions.anonymous
 
 import kotlin_bootcamp.aquarium.Fish
 
