@@ -1,21 +1,25 @@
-package material.functions.anonymous
+package material.functions.standard
 
 import kotlin_bootcamp.aquarium.Fish
 
 fun main() {
-//    Run returns the result of executing the lambda
+/*
+  Run returns the result of executing the lambda
+ */
 
     runWithObjectExample()
-    runWithoutObjectExample(100)
+//    runWithoutObjectExample(100)
 //    runAndLinksToFunction()
 
-    weNeedRunToSimplifyCode()
+//    weNeedRunToSimplifyCode()
 }
 
 private fun runWithObjectExample() {
     val fish = Fish("Big Shark")
+    println(fish.hashCode())
     val value = fish.run {
         name.contains("Shark")
+        println(hashCode())
     }
     println(value)
 }

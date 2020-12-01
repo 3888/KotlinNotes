@@ -1,4 +1,4 @@
-package material.functions.anonymous
+package material.functions.standard
 
 import kotlin_bootcamp.aquarium.Fish
 
@@ -9,8 +9,10 @@ fun main() {
 
 private fun fishExamplesWith() {
     val fish = Fish("splashy")
+    println(fish.hashCode())
     with(fish.name) {
         println(capitalize())
+        println(hashCode())
     }
 }
 
@@ -26,7 +28,7 @@ private fun fishExamplesMyWithLonghand() {
     val fish = Fish("splashy")
     myWithExample(fish.name, object : Function1<String, Unit> {
         override fun invoke(name: String) {
-           name.capitalize()
+            name.capitalize()
         }
     })
 }

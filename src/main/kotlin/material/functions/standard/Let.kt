@@ -1,12 +1,14 @@
-package material.functions.anonymous
+package material.functions.standard
 
 import kotlin_bootcamp.aquarium.Fish
 
 fun main() {
-//   Let returns a copy of the changed object
+/*
+  Let returns a copy of the changed object
+  */
 
     letExample()
-    firstItemSquared()
+//    firstItemSquared()
 
 }
 
@@ -14,12 +16,16 @@ fun main() {
 
 private fun letExample() {
     val fish = Fish("splashy")
+    println(fish.hashCode())
 
     val newFish = fish
-        .let { it.name.capitalize() }
+        .let {
+            println(it.hashCode())
+            it.name.capitalize() }
         .let { it + "fish" }
         .let { it.length }
         .let { it + 10 }
+
 
     println(newFish)
 }

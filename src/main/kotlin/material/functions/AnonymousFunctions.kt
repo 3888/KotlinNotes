@@ -1,4 +1,4 @@
-package material.functions.anonymous
+package material.functions
 
 
 fun main() {
