@@ -28,7 +28,7 @@ Elvis operator "?:" it's like Java ternary operator
 */
 //    elvisOperator()
 //    elvisReturn()
-    elvisLet()
+//    elvisLet()
 
 }
 
@@ -210,3 +210,4 @@ private fun elvisLet() {
         beverage = it.capitalize()
     } ?: println("I can't do that without crashing - beverage was null!")
 }
+

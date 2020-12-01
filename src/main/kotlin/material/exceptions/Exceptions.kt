@@ -11,7 +11,14 @@ fun main() {
 
 //    tryCatchAsValue()
 
-    throwExceptionViaCheckInFunction()
+//    throwExceptionViaCheckInFunction()
+
+//    preconditionCheckNotNull(null)
+//    preconditionRequire(null)
+//    preconditionRequireNotNull(null)
+//    preconditionError()
+    preconditionAssert(null)
+
 
 }
 
@@ -46,13 +53,19 @@ private fun tryCatchAsValue() {
     print(textToPrint)
 }
 
-private fun throwExceptionViaCheckInFunction(){
+private fun throwExceptionViaCheckInFunction() {
     var swordsJuggling: Int? = null
-    val isJugglingProficient = (1..3).shuffled().last() == 3
+
+    val ability = (1..3).shuffled().last()
+    println("Ability is $ability")
+    val isJugglingProficient = ability == 3
+
     if (isJugglingProficient) {
         swordsJuggling = 2
     }
 
+    println("isJugglingProficient $isJugglingProficient")
+    println("swordsJuggling = $swordsJuggling")
     proficiencyCheck(swordsJuggling)
 
     swordsJuggling = swordsJuggling!!.plus(1)
@@ -61,4 +74,30 @@ private fun throwExceptionViaCheckInFunction(){
 
 private fun proficiencyCheck(swordsJuggling: Int?) {
     swordsJuggling ?: throw IllegalStateException("Player cannot juggle swords")
+}
+
+private fun preconditionCheckNotNull(value: Int?) {
+    checkNotNull(value, { "Error message or Any" })
+}
+
+private fun preconditionRequire(value: Int?) {
+    require(value != null) {
+        "Error message or Any"
+    }
+}
+
+private fun preconditionRequireNotNull(value: Int?) {
+    requireNotNull(value) {
+        "Error message or Any"
+    }
+}
+
+private fun preconditionError() {
+    error("Error message")
+}
+
+private fun preconditionAssert(value: Int?) {
+    assert(value != null) {
+        "Error message or Any"
+    }
 }

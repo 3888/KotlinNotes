@@ -16,13 +16,12 @@ fun main() {
 //    takeAndAppend()
 //    joinToString()
 //    nullToString()
-//    trimNull()
 
 //    nullOrEmptyVSNullOrBlank()
 
-    multiString()
+//    multiString()
 
-
+    stringToNumber()
 }
 
 fun nullOrEmptyVSNullOrBlank() {
@@ -216,15 +215,30 @@ private fun nullToString() {
 //    println(test is String) // false
 }
 
-private fun trimNull() {
-    val test: String? = null
-    print(test?.trim() == null)
-}
-
-private fun multiString(){
+private fun multiString() {
     val name = "Aramis"
-    print("""
+    print(
+        """
         $name you name
         contains ${name.length} letters
-    """.trimIndent())
+    """.trimIndent()
+    )
+}
+
+private fun stringToNumber() {
+    val number = "123"
+    val decimal = "1.2"
+
+    println(number.toInt())
+    println(decimal.toDouble())
+
+    println(number.toFloat())
+    try {
+        println(decimal.toInt())
+
+    } catch (e: Exception) {
+        println(e)
+    }
+
+    println(decimal.toIntOrNull()?: "Oo-ops!")
 }

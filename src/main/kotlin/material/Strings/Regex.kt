@@ -38,7 +38,9 @@ fun main() {
 //    wordCharacter()
 //    nonWordCharacter()
 
-    firstLetterIsCapital()
+//    firstLetterIsCapital()
+
+   println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
 
 
 }
@@ -171,4 +173,16 @@ private fun firstLetterIsCapital(){
     kotlinRegex("test","[A-Z][A-Za-z'-]+")
     kotlinRegex("Test","[A-Z][A-Za-z'-]+")
 }
+
+private fun replaceAndRegextoDragonSpeak(phrase: String) =
+    phrase.replace(Regex("[aeiou]")) {
+        when (it.value) {
+            "a" -> "4"
+            "e" -> "3"
+            "i" -> "1"
+            "o" -> "0"
+            "u" -> "|_|"
+            else -> it.value
+        }
+    }
 
