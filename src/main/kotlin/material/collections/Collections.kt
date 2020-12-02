@@ -1,9 +1,21 @@
 package material.collections
 
-import java.lang.Exception
 
 fun main() {
-//    mutableList()
+
+//    mutableListAdd()
+    mutableListAdd2()
+//    mutableListAddByIndex()
+    mutableListAddAll()
+//    mutableListRemove()
+    mutableListRemove2()
+//    mutableListSublist()
+    mutableListRemoveIf()
+
+
+//    listContains()
+//    listContainsAll()
+
 //    listOf()
 //    map()
 //    set()
@@ -14,24 +26,85 @@ fun main() {
 //    reduce()
 //    groupBy()
 
-    nullableCollections()
+//    nullableCollectionsGetOrElse()
+//    nullableCollectionsGetOrNull()
 }
 
-private fun mutableList() {
+private fun mutableListAdd() {
     val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+    println("mutableListOfValues add dolphin ")
+    mutableListOfValues.add("dolphin")
     println("mutableListOfValues = $mutableListOfValues")
+}
 
-    println("mutableListOfValues contains salmon = ${mutableListOfValues.contains("salmon")}")
+private fun mutableListAdd2() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+    println("mutableListOfValues += dolphin ")
+    mutableListOfValues += ("dolphin")
+    println("mutableListOfValues = $mutableListOfValues")
+}
+
+private fun mutableListAddByIndex() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+    println("mutableListOfValues add dolphin ")
+    mutableListOfValues.add(0, "dolphin")
+    println("mutableListOfValues = $mutableListOfValues")
+}
+
+private fun mutableListAddAll() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+    val testValue = listOf("Fish", "Big fish")
+    println("mutableListOfValues addAll $testValue")
+    mutableListOfValues.addAll(testValue)
+    println("mutableListOfValues = $mutableListOfValues")
+}
+
+private fun mutableListRemove() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
 
     println("mutableListOfValues remove shark")
     mutableListOfValues.remove("shark")
     println("mutableListOfValues = $mutableListOfValues")
+}
 
-    println("mutableListOfValues add dolphin = ${mutableListOfValues.add("dolphin")}")
+
+private fun mutableListRemove2() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+
+    println("mutableListOfValues -= shark")
+    mutableListOfValues -= ("shark")
     println("mutableListOfValues = $mutableListOfValues")
+}
 
+
+private fun mutableListSublist() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
     println("mutableListOfValues subList")
     println("mutableListOfValues = ${mutableListOfValues.subList(2, mutableListOfValues.size)}")
+}
+
+private fun mutableListRemoveIf() {
+    val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
+    val testValue = "tuna"
+    println("list removeIf ")
+    mutableListOfValues.removeIf {
+        it == testValue
+    }
+
+    println("mutableListOfValues = $mutableListOfValues")
+}
+
+private fun listContains() {
+    val list = listOf("tuna", "salmon", "shark")
+    val testValue = "tuna"
+    println("list contains $testValue = ${list.contains(testValue)}")
+}
+
+private fun listContainsAll() {
+    val list = listOf("tuna", "salmon", "shark")
+    val testValue = listOf("tuna", "salmon")
+
+    println("list contains $testValue = ${list.containsAll(testValue)}")
 }
 
 private fun listOf() {
@@ -95,8 +168,8 @@ private fun reduce() {
 
     println(list)
     val flattenList = list
-            .flatten()
-            .reduce { acc, s -> "$acc & $s" }
+        .flatten()
+        .reduce { acc, s -> "$acc & $s" }
 
     println(flattenList)
 }
@@ -111,7 +184,7 @@ private fun groupBy() {
     println(byLogic)
 }
 
-private fun nullableCollections() {
+private fun nullableCollectionsGetOrElse() {
 //    val nullableList: List<String>? = listOf("A", "B", "C")
     val nullableList: List<String>? = null
 
@@ -125,4 +198,10 @@ private fun nullableCollections() {
 
 
     println(nullableList?.getOrElse(4) { "Else" })
+}
+
+private fun nullableCollectionsGetOrNull() {
+    val nullableList: List<String>? = null
+
+    println(nullableList?.getOrNull(1) ?: "List is null")
 }
