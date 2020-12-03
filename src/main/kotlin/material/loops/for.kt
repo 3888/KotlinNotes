@@ -2,7 +2,7 @@ package material.loops
 
 fun main() {
     forInRange(1..5)
-    forInRangeUntil(1,5)
+    forInRangeUntil(1, 5)
     //    forInRangeUntil(1..5)
 //    forInRangeStep(1..6, 2)
 //    forValueDownTo(10, 5)

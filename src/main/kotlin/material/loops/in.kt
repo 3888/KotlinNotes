@@ -50,7 +50,7 @@ private fun printCharRangeAndRange() {
 }
 
 
-private fun booleanLoginInRange(){
+private fun booleanLoginInRange() {
     println("${1 in 1..3}")
     println("${1 in 3 downTo 1}")
     println("${1 in 1 until 3}")
