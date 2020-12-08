@@ -26,7 +26,7 @@ fun main() {
 //    reduce()
 //    groupBy()
 
-//    nullableCollectionsGetOrElse()
+    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 }
 
@@ -81,6 +81,7 @@ private fun mutableListSublist() {
     val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
     println("mutableListOfValues subList")
     println("mutableListOfValues = ${mutableListOfValues.subList(2, mutableListOfValues.size)}")
+
 }
 
 private fun mutableListRemoveIf() {
@@ -112,24 +113,7 @@ private fun listOf() {
     println(listOf("a", "b", "cd").sumBy { it.length })//chars length of "a b cd" = 4
 }
 
-private fun map() {
-    val cures = mapOf("white spots" to "Ich", "red sores" to "hole disease")
-    println(cures.get("white spots"))
-    println(cures["white spots"])
-    println(cures.getOrDefault("Bla-bla", "sorry I don't know it"))
 
-    cures.getOrElse("Bla-bla") { println("There is no spoon ${3 + 4}") }
-
-    val inventory = mutableMapOf("fish net" to 1)
-    inventory.put("tank scrubber", 3)
-    inventory["tank scrubber"] = 3
-    inventory.remove("fish net")
-
-    val moreBooks = mutableMapOf("Wilhelm Tell" to "Schiller")
-    moreBooks.getOrPut("Jungle book") { "Kipling" }
-    moreBooks.getOrPut("Hamlet") { "Shakespeare" }
-    println(moreBooks)
-}
 
 private fun set() {
     val allBooks = setOf("Macbeth", "Romeo and Juliet", "Hamlet", "Hamlet", "A Midsummer Night's Dream")
@@ -138,7 +122,6 @@ private fun set() {
     val library = mapOf("William Shakespeare " to allBooks)
     println(library.any { it.value.contains("Hamlet") })
 }
-
 
 private fun sort() {
     val mutableList = mutableListOf("C", "D", "W", "A", "S", "Y")

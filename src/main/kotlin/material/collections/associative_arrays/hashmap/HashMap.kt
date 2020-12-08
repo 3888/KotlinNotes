@@ -1,4 +1,4 @@
-package material.hashmap
+package material.collections.associative_arrays.hashmap
 
 fun main() {
 
