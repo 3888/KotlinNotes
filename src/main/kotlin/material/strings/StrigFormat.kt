@@ -1,4 +1,4 @@
-package material.Strings
+package material.strings
 
 fun main() {
     numbersAfterZero("3f", 1.23523F)

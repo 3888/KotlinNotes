@@ -1,4 +1,4 @@
-package material.Strings
+package material.strings
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern

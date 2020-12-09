@@ -1,4 +1,4 @@
-package material.Strings
+package material.strings
 
 import kotlin_bootcamp.aquarium.Fish
 import java.util.*
@@ -16,13 +16,42 @@ fun main() {
 //    takeAndAppend()
 //    joinToString()
 //    nullToString()
-
 //    nullOrEmptyVSNullOrBlank()
-
 //    multiString()
+//    stringToNumber()
 
-    stringToNumber()
+    splitDelimiters()
+//    splitRegex()
+
+    // TODO    https://bezkoder.com/kotlin-split-string-example/
+
 }
+
+private fun splitDelimiters() {
+    val webAddress = "http://someadderess.com"
+
+    println(webAddress.split("//")[0])
+    println(webAddress.split("//")[1])
+
+    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
+
+    val separate2 = str.split("=", "-").map { it.trim() }
+    println(str)
+    println(separate2)
+}
+
+private fun splitRegex() {
+//    TODO  https://stackoverflow.com/questions/51460166/split-text-using-regex-java-kotlin-with-multiple-delimiter
+
+
+    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
+
+    val separate1 = str.split("=|-".toRegex()).map { it.trim() }
+    println(str)
+    println(separate1)
+
+}
+
 
 fun nullOrEmptyVSNullOrBlank() {
     val thisIsBlank = "   "
@@ -240,5 +269,5 @@ private fun stringToNumber() {
         println(e)
     }
 
-    println(decimal.toIntOrNull()?: "Oo-ops!")
+    println(decimal.toIntOrNull() ?: "Oo-ops!")
 }

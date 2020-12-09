@@ -1,4 +1,4 @@
-package material.Strings
+package material.strings
 
 
 /*

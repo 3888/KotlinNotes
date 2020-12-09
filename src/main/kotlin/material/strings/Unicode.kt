@@ -1,4 +1,4 @@
-package material.Strings
+package material.strings
 
 fun main() {
     val symbol = '\u3466'

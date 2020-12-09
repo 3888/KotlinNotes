@@ -1,4 +1,4 @@
-package material.arrays
+package material.collections.arrays
 
 import java.util.*
 import kotlin.math.pow
