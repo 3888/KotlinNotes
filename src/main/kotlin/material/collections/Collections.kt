@@ -4,17 +4,17 @@ package material.collections
 fun main() {
 
 //    mutableListAdd()
-    mutableListAdd2()
+//    mutableListAdd2()
 //    mutableListAddByIndex()
-    mutableListAddAll()
+//    mutableListAddAll()
 //    mutableListRemove()
-    mutableListRemove2()
+//    mutableListRemove2()
 //    mutableListSublist()
-    mutableListRemoveIf()
+//    mutableListRemoveIf()
 
 
 //    listContains()
-//    listContainsAll()
+    listContainsAll()
 
 //    listOf()
 //    map()
@@ -26,7 +26,7 @@ fun main() {
 //    reduce()
 //    groupBy()
 
-    nullableCollectionsGetOrElse()
+//    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 }
 
@@ -106,13 +106,13 @@ private fun listContainsAll() {
     val testValue = listOf("tuna", "salmon")
 
     println("list contains $testValue = ${list.containsAll(testValue)}")
+    println("testValue contains $list = ${testValue.containsAll(list)}")
 }
 
 private fun listOf() {
     println(listOf(1, 5, 3).sum()) //  1 + 5 +3 = 9
     println(listOf("a", "b", "cd").sumBy { it.length })//chars length of "a b cd" = 4
 }
-
 
 
 private fun set() {
