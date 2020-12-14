@@ -1,6 +1,6 @@
 package kotlin_bootcamp.book
 
-import material.constants.Constants
+import material.constants.CompileTimeConst
 
 const val MAX_NUMBER_BOOKS = 20
 
@@ -40,9 +40,6 @@ fun canBorrow(hasBooks: Int): Boolean {
     return (hasBooks < MAX_NUMBER_BOOKS)
 }
 
-fun printUrl(title: String) {
-    println(Constants.BASE_URL + title + ".html")
-}
 
 fun Book.weight(): Double {
     return (pages * 1.5)

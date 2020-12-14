@@ -1,4 +1,4 @@
-package material.opens
+package material.inheritance
 
 fun main(args: Array<String>) {
 

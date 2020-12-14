@@ -1,8 +1,6 @@
 package material.loops
 
 import material.constants.enum.EnumColors
-import material.constants.num
-import material.constants.number
 import java.util.*
 import kotlin.random.Random
 

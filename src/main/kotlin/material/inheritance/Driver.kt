@@ -1,4 +1,4 @@
-package material.opens
+package material.inheritance
 
 class Driver(var lastName: String) : Person("Bob") {
     override fun getPhoneOpen() {
@@ -11,4 +11,8 @@ class Driver(var lastName: String) : Person("Bob") {
     override fun toString(): String {
         return "Driver name is ${name + " " + lastName} and age is $age "
     }
+
+    override val nickName: String = "C3PO"
+
+
 }

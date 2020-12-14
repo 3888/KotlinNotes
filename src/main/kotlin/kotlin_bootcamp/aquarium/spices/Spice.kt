@@ -1,6 +1,7 @@
 package kotlin_bootcamp.aquarium.spices
 
-import kotlin_bootcamp.Color
+import material.constants.enum.EnumColors
+
 
 abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {
     abstract fun prepareSpice()
@@ -37,13 +38,13 @@ interface Grinder {
 
 interface SpiceColor {
     val colorString: String
-    val colorEnum: Color
+    val colorEnum: EnumColors
 
 }
 
 object YellowSpiceColor : SpiceColor {
     override val colorString = "Yellow"
-    override val colorEnum = Color.YELLOW
+    override val colorEnum = EnumColors.ORANGE
 
 }
 
