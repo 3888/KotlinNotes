@@ -28,7 +28,7 @@ Elvis operator "?:" it's like Java ternary operator
 */
 //    elvisOperator()
 //    elvisReturn()
-//    elvisLet()
+    letElvis()
 
 }
 
@@ -204,7 +204,7 @@ private fun elvisReturn() {
     println("Result is OK")
 }
 
-private fun elvisLet() {
+private fun letElvis() {
     var beverage: String? = null
     beverage?.let {
         beverage = it.capitalize()
