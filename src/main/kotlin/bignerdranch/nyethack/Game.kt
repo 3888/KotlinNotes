@@ -1,7 +1,6 @@
 package bignerdranch.nyethack
 
-import java.lang.Exception
-import java.lang.IllegalStateException
+import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     Game.play()
@@ -13,12 +12,12 @@ object Game {
 
     private var worldMap = listOf(
         listOf(currentRoom, Room("Tavern"), Room("Back Room")),
-        listOf(Room("Long Corridor"), Room("Generic Room")))
+        listOf(Room("Long Corridor"), Room("Generic Room"))
+    )
 
     init {
         println("Welcome, adventurer!")
         player.castFireball(5)
-
     }
 
     fun play() {
@@ -51,6 +50,7 @@ object Game {
             "move" -> move(argument)
             else -> commandNotFound()
         }
+
         private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
     }
 
@@ -70,11 +70,33 @@ object Game {
             "Invalid direction: $directionInput"
         }
     }
+
+    private fun fight() = currentRoom.monster?.let {
+        while (player.healthPoints > 0 && it.healthPoints > 0) {
+            slay(it)
+            Thread.sleep(1000)
+        }
+        "Combat complete."
+    } ?: "There's nothing here to fight."
+
+    private fun slay(monster: Monster) {
+        println("${monster.name} did ${monster.attack(player)} damage!")
+        println("${player.name} did ${player.attack(monster)} damage!")
+        if (player.healthPoints <= 0) {
+            println(">>>> You have been defeated! Thanks for playing. <<<<")
+            exitProcess(0)
+        }
+        if (monster.healthPoints <= 0) {
+            println(">>>> ${monster.name} has been defeated! <<<<")
+            currentRoom.monster = null
+        }
+    }
 }
 
-private fun checkClassName(){
+
+private fun checkClassName() {
     var townSquare = TownSquare()
-    var className = when(townSquare) {
+    var className = when (townSquare) {
         is TownSquare -> "TownSquare is TownSquare"
         is Room -> "TownSquare is Room"
         else -> throw IllegalArgumentException()
@@ -83,7 +105,7 @@ private fun checkClassName(){
 
 
     var townSquare2 = TownSquare()
-    var className2 = when(townSquare) {
+    var className2 = when (townSquare) {
         is Room -> "TownSquare is Room"
         is TownSquare -> "TownSquare is TownSquare"
         else -> throw IllegalArgumentException()

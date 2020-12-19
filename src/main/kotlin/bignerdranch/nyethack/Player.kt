@@ -2,10 +2,12 @@ package bignerdranch.nyethack
 
 import java.io.File
 
-class Player(_name: String,
-             var hp: Int = 100,
-             var isBlessed: Boolean,
-             private val isImmortal: Boolean) {
+class Player(
+    _name: String,
+    var hp: Int = 100,
+    var isBlessed: Boolean,
+    private val isImmortal: Boolean
+) : Fightable {
     var name = _name
     get() = "${field.capitalize()} of $hometown"
     private set(value) {
@@ -20,16 +22,18 @@ class Player(_name: String,
         require(name.isNotBlank(), { "Our hero must have a name assigned!" })
     }
 
-    constructor(name: String) : this(name,
+    constructor(name: String) : this(
+        name,
         hp = 100,
         isBlessed = true,
-        isImmortal = false) {
+        isImmortal = false
+    ) {
         if (name.toLowerCase() == "kar") hp = 40
     }
 
 
     fun castFireball(numFireballs: Int = 2) {
-        println("A glass of Fireball springs into existence. (x$numFireballs)")
+        println("Casting fireball spell. You have $numFireballs shots")
     }
 
     fun auraColor(): String {
@@ -56,4 +60,20 @@ class Player(_name: String,
         .split("\n")
         .shuffled()
         .first()
+
+    override var healthPoints: Int = 3
+
+    override val diceCount: Int = 6
+
+    override val diceSides: Int = 2
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed) {
+            damageRoll * 2
+        } else {
+            damageRoll
+        }
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
 }
