@@ -1,6 +1,6 @@
 package bignerdranch.nyethack
 
-import java.io.File
+import kotlin.random.Random
 
 class Player(
     _name: String,
@@ -42,30 +42,30 @@ class Player(
         return auraColor
     }
 
-    fun formatHealthStatus(name: String): String {
-        print(name)
-        return if (name.isNotEmpty()) {
-            when (this.healthPoints) {
-                100 -> "is in excellent condition!"
-                in 75..99 -> "has a few minor cuts and bruises here and there."
-                in 50..74 -> if (isBlessed) {
-                    "has some lacerations, but is rapidly recovering"
-                } else {
-                    "has some lacerations and potentially internal bleeding."
-                }
-                in 25..49 -> "is hemorrhaging blood and has multiple fractures. Seek medical attention immediately!"
-                else -> "has ruptured organs and is bordering on shock. I hope you wrote your will..."
-            }
+    fun formatHealthStatus() = when (this.healthPoints) {
+        100 -> "is in excellent condition!"
+        in 75..99 -> "has a few minor cuts and bruises here and there."
+        in 50..74 -> if (isBlessed) {
+            "has some lacerations, but is rapidly recovering"
         } else {
-            "Error"
+            "has some lacerations and potentially internal bleeding."
         }
+        in 25..49 -> "is hemorrhaging blood and has multiple fractures. Seek medical attention immediately!"
+        else -> "has ruptured organs and is bordering on shock. I hope you wrote your will..."
     }
 
-    private fun selectHometown() = File("data/towns.txt")
-        .readText()
-        .split("\n")
-        .shuffled()
-        .first()
+    private fun selectHometown() = when (Random.nextInt(0, 8)) {
+        0 -> "Neversummer"
+        1 -> "Abelhaven"
+        2 -> "Phandoril"
+        3 -> "Tampa"
+        4 -> "Sanorith"
+        5 -> "Trell"
+        6 -> "Zan'tro"
+        7 -> "Hermi"
+        8 -> "Curlthistle Forest"
+        else -> "Baby steps"
+    }
 
 
     override val diceCount: Int = 6

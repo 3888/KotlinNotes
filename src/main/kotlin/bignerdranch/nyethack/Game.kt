@@ -38,8 +38,7 @@ object Game {
             "(Aura: ${player.auraColor()}) " +
                     "(Blessed: ${if (player.isBlessed) "YES" else "NO"})"
         )
-
-        println(player.formatHealthStatus(player.name))
+        println("Your HP is ${player.healthPoints} " +  player.name + player.formatHealthStatus())
     }
 
     private class GameInput(arg: String?) {
