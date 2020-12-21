@@ -6,9 +6,9 @@ abstract class Monster(
     override var healthPoints: Int
 ) : Fightable {
 
-//    override fun attack(opponent: Fightable): Int {
-//        val damageDealt = damageRoll
-//        opponent.healthPoints -= damageDealt
-//        return damageDealt
-//    }
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = damageRoll
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
 }

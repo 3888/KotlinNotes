@@ -2,12 +2,12 @@ package bignerdranch.nyethack
 
 import kotlin.system.exitProcess
 
-fun main(args: Array<String>) {
+fun main() {
     Game.play()
 }
 
 object Game {
-    private val player = Player("Hiss")
+    private val player = Player("whiss")
     private var currentRoom: Room = TownSquare()
 
     private var worldMap = listOf(
@@ -38,7 +38,8 @@ object Game {
             "(Aura: ${player.auraColor()}) " +
                     "(Blessed: ${if (player.isBlessed) "YES" else "NO"})"
         )
-        println("${player.name} ${player.formatHealthStatus()}")
+
+        println(player.formatHealthStatus(player.name))
     }
 
     private class GameInput(arg: String?) {
@@ -47,7 +48,16 @@ object Game {
         val argument = input.split(" ").getOrElse(1) { "" }
 
         fun processCommand() = when (command.toLowerCase()) {
-            "move" -> move(argument)
+            "1" -> {
+                println("Moving!")
+                move(argument)
+
+            }
+            "2" -> {
+                println("Fighting!")
+                fight()
+
+            }
             else -> commandNotFound()
         }
 
@@ -73,6 +83,8 @@ object Game {
 
     private fun fight() = currentRoom.monster?.let {
         while (player.healthPoints > 0 && it.healthPoints > 0) {
+            println("Your HP " + player.healthPoints)
+            println("Monster HP " + player.healthPoints)
             slay(it)
             Thread.sleep(1000)
         }

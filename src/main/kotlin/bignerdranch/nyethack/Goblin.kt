@@ -8,8 +8,4 @@ class Goblin(
     override val diceCount = 2
     override val diceSides = 8
 
-    override fun attack(opponent: Fightable): Int {
-        TODO("Not yet implemented")
-    }
-
 }
