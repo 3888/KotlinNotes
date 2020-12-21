@@ -14,11 +14,12 @@ fun main() {
 
 
 //    listContains()
-    listContainsAll()
+//    listContainsAll()
 
 //    listOf()
 //    map()
 //    set()
+//    setMutable()
 
 //    sort()
 
@@ -28,6 +29,8 @@ fun main() {
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
+
+
 }
 
 private fun mutableListAdd() {
@@ -67,7 +70,6 @@ private fun mutableListRemove() {
     println("mutableListOfValues = $mutableListOfValues")
 }
 
-
 private fun mutableListRemove2() {
     val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
 
@@ -75,7 +77,6 @@ private fun mutableListRemove2() {
     mutableListOfValues -= ("shark")
     println("mutableListOfValues = $mutableListOfValues")
 }
-
 
 private fun mutableListSublist() {
     val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
@@ -114,13 +115,19 @@ private fun listOf() {
     println(listOf("a", "b", "cd").sumBy { it.length })//chars length of "a b cd" = 4
 }
 
-
 private fun set() {
     val allBooks = setOf("Macbeth", "Romeo and Juliet", "Hamlet", "Hamlet", "A Midsummer Night's Dream")
     println("allBooks = $allBooks")
 
     val library = mapOf("William Shakespeare " to allBooks)
     println(library.any { it.value.contains("Hamlet") })
+}
+
+private fun setMutable() {
+    val allBooks = mutableSetOf("Macbeth", "Romeo and Juliet", "Hamlet")
+
+    allBooks.add("Hamlet")
+    println("allBooks = $allBooks")
 }
 
 private fun sort() {
@@ -135,7 +142,6 @@ private fun sort() {
 
     println(mutableList)
 }
-
 
 private fun flatten() {
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
@@ -187,4 +193,12 @@ private fun nullableCollectionsGetOrNull() {
     val nullableList: List<String>? = null
 
     println(nullableList?.getOrNull(1) ?: "List is null")
+}
+
+private fun mutableListVsArrayList() {
+//TODO
+    /*
+    https://proandroiddev.com/the-mystery-of-mutable-kotlin-collections-e82cbf5d781
+    https://stackoverflow.com/questions/43114367/difference-between-arrayliststring-and-mutablelistofstring-in-kotlin
+    * */
 }

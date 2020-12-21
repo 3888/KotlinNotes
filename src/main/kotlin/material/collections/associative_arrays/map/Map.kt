@@ -8,7 +8,6 @@ fun main() {
     initMutableMapOfPutAll()
 }
 
-
 private fun map() {
     val cures = mapOf("white spots" to "Ich", "red sores" to "hole disease")
     println(cures.get("white spots"))
@@ -16,7 +15,6 @@ private fun map() {
     println(cures.getOrDefault("Bla-bla", "sorry I don't know it"))
     cures.getOrElse("Bla-bla") { println("There is no spoon ${3 + 4}") }
 }
-
 
 private fun mutableMapOf() {
     val inventory = mutableMapOf("fish net" to 1)
