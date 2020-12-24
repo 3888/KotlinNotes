@@ -1,4 +1,4 @@
-package material.extensions
+package kotlin_bootcamp.aquarium
 
 fun main() {
     extensionsExample()
@@ -7,14 +7,14 @@ fun main() {
     nullableExample()
 }
 
-fun String.hasSpacesBoilerplate(): Boolean {
+private fun String.hasSpacesBoilerplate(): Boolean {
     val found: Char? = this.find { it == ' ' }
     return found != null
 }
 
-fun String.hasSpacesRefactored() = find { it == ' ' } != null
+private fun String.hasSpacesRefactored() = find { it == ' ' } != null
 
-fun extensionsExample() {
+private fun extensionsExample() {
     println("Does it have spaces?".hasSpacesBoilerplate())
     println("Does it have spaces?".hasSpacesRefactored())
 }
@@ -25,32 +25,32 @@ class GreenLeafyPlant(size: Int) : AquariumPlant("Green", size)
 val AquariumPlant.isGreen: Boolean
     get() = color == "Green"
 
-fun propertyExample() {
+private fun propertyExample() {
     val plant = AquariumPlant("Green", 50)
     println(plant.isGreen) // true
 }
 
-fun AquariumPlant.isRed() = color == "Red"
+private fun AquariumPlant.isRed() = color == "Red"
 
 //fun AquariumPlant. isBig() = size > 50 // Error "Cannot access 'size': it is private in 'AquariumPlant'
 
-fun AquariumPlant.print() = println("AquariumPlant")
-fun GreenLeafyPlant.print() = println("GreenLeafyPlant")
+private fun AquariumPlant.print() = println("AquariumPlant")
+private fun GreenLeafyPlant.print() = println("GreenLeafyPlant")
 
-fun staticExample() {
+private fun staticExample() {
     val plant = GreenLeafyPlant(size = 50)
     plant.print()  // GreenLeafyPlant
     val aquariumPlant: AquariumPlant = plant
     aquariumPlant.print()  // AquariumPlant
 }
 
-fun AquariumPlant?.pull() {
+private fun AquariumPlant?.pull() {
     this?.apply {
         ("removing $this")
     }
 }
 
-fun nullableExample() {
+private fun nullableExample() {
     val plant: AquariumPlant? = null
     plant.pull() // ok
 }

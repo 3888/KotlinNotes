@@ -21,6 +21,10 @@ object Game {
     }
 
     fun play() {
+        currentRoom.configurePitGoblin { goblin ->
+            goblin.healthPoints = player.healthPoints
+            goblin
+        }
         while (true) {
             println(currentRoom.description())
             println(currentRoom.load())

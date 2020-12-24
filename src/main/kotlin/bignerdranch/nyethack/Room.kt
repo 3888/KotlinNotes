@@ -20,3 +20,9 @@ class TownSquare : Room("Town Square") {
 
     private fun ringBell() = "The bell tower announces your arrival. $bellSound"
 }
+
+fun Room.configurePitGoblin(block: Room.(Goblin) -> Goblin): Room {
+    val goblin = block(Goblin("Pit Goblin", description = "An Evil Pit Goblin"))
+    monster = goblin
+    return this
+}

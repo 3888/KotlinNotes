@@ -11,7 +11,8 @@ val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
 
-// Could also be written as val com.bignerdranch.nyethack.getPatronGold = mapOf(Pair("Eli", 10.75), Pair("Mordoc", 8.00), Pair("Sophie", 5.50))
+// Could also be written as val com.bignerdranch.nyethack.getPatronGold = mapOf(Pair("Eli", 10.75),
+// Pair("Mordoc", 8.00), Pair("Sophie", 5.50))
 val patronGold = mutableMapOf<String, Double>()
 
 
@@ -29,8 +30,8 @@ fun main(args: Array<String>) {
     }
 
     (0..9).forEach() {
-        val first = patronList.shuffled().first()
-        val last = patronList.shuffled().first()
+        val first = patronList.random()
+        val last = patronList.random()
         val name = "$first $last"
         uniquePatrons += name
     }
@@ -89,3 +90,5 @@ private fun placeOrder(patronName: String, menuData: String) {
     }
     println(phrase)
 }
+
+private fun <T> Iterable<T>.random(): T = this.shuffled().first()
