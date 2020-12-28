@@ -1,5 +1,10 @@
 package material.functions
 
+import java.util.*
+import kotlin.system.measureNanoTime
+import kotlin.system.measureTimeMillis
+
+
 fun main() {
 //    transformationMap()
 //    transformationFlatMap()
@@ -7,7 +12,10 @@ fun main() {
 //    combiningZip()
 //    combiningFold()
 
-    generateSequence()
+//    generateSequencePrimes(10)
+
+//    nano()
+    milli(1000000)
 }
 
 private fun transformationMap() {
@@ -25,7 +33,6 @@ private fun transformationFlatMap() {
     println(value)
 
 }
-
 
 private fun filter() {
     val numbers = listOf(7, 4, 8, 4, 3, 22, 18, 11)
@@ -63,26 +70,25 @@ private fun combiningFold() {
 }
 
 
-private fun generateSequence() {
+private fun generateSequence(count: Int) {
+    var value = count
 
-    val tenPrimes: Sequence<Int> = generateSequence(3) { value ->
+    val sequence = generateSequence {
+        (value--).takeIf { it > 0 }
+    }
+
+    println(sequence.toList())
+}
+
+private fun generateSequencePrimes(count: Int) {
+    val primes: Sequence<Int> = generateSequence(3) { value ->
         value + 1
     }
         .filter {
             it.isPrime()
-        }.take(10)
+        }.take(count)
 
-
-    println(tenPrimes.toList())
-
-    var count = 3
-
-    val sequence = generateSequence {
-        (count--).takeIf { it > 0 }
-    }
-
-    println(sequence.toList())
-
+    println(primes.toList())
 }
 
 private fun Int.isPrime(): Boolean {
@@ -92,4 +98,47 @@ private fun Int.isPrime(): Boolean {
         }
     }
     return true
+}
+
+private fun nano() {
+    val listInNanos = measureNanoTime {
+// Цепочка функций для обработки списка
+        val employees = listOf("Denny", "Claudette", "Peter")
+        val shirtSizes = listOf("large", "x-large", "medium")
+        val employeeShirtSizes: MutableMap<String, String> = HashMap()
+        for (i in employees.indices) {
+            employeeShirtSizes[employees[i]] = shirtSizes[i]
+        }
+        println(employeeShirtSizes["Denny"])
+    }
+
+    println("список обработан за $listInNanos наносекунд ")
+
+    val sequenceInNanos = measureNanoTime {
+// Цепочка функций для обработки последовательности
+        val employees = listOf("Denny", "Claudette", "Peter")
+        val shirtSize = listOf("large", "x-large", "medium")
+        val employeeShirtSizes = employees.zip(shirtSize).toMap()
+        println(employeeShirtSizes["Denny"])
+    }
+    println("последовательность обработана за $sequenceInNanos наносекунд")//
+}
+
+private fun milli(count: Long) {
+    val listInNanos = measureTimeMillis {
+// Цепочка функций для обработки списка
+        (0 until count).toList()
+    }
+
+    println("список обработан за $listInNanos милисекунд ")
+
+    val sequenceInNanos = measureTimeMillis {
+// Цепочка функций для обработки последовательности
+        var value = count
+
+        val sequence = generateSequence {
+            (value++).takeIf { it <= value }
+        }
+    }
+    println("последовательность обработана за $sequenceInNanos милисекунд")//
 }
