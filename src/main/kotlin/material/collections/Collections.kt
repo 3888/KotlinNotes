@@ -23,6 +23,7 @@ fun main() {
 
 //    sort()
 
+    chunked()
 //    flatten()
 //    reduce()
 //    groupBy()
@@ -143,6 +144,15 @@ private fun sort() {
     println(mutableList)
 }
 
+private fun chunked() {
+    val list = listOf("A", "B", "C", "D", "E", "F")
+    println(list.chunked(1))
+    println(list.chunked(2))
+    println(list.chunked(3))
+    println(list.chunked(10))
+//    println(list.chunked(0)) // size 0 must be greater than zero
+}
+
 private fun flatten() {
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
 
@@ -156,18 +166,18 @@ private fun reduce() {
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
 
     println(list)
-    val flattenList = list
+    val flattenListReduce = list
         .flatten()
         .reduce { acc, s -> "$acc & $s" }
 
-    println(flattenList)
+    println(flattenListReduce)
 }
 
 private fun groupBy() {
-    val words = listOf(listOf("A", "B", "C"), listOf("E1", "F"))
+    val words = listOf(listOf("Apple", "Boy", "Cartoon"), listOf("Elephant", "Frog"))
     val bySize = words.groupBy { it.size }
 
-    val byLogic = words.groupBy { it.first().length > 1 }
+    val byLogic = words.groupBy { it.first().length > 7 }
 
     println(bySize)
     println(byLogic)

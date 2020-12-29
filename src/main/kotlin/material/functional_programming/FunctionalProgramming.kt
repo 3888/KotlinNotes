@@ -8,14 +8,16 @@ import kotlin.system.measureTimeMillis
 fun main() {
 //    transformationMap()
 //    transformationFlatMap()
+
 //    filter()
+
 //    combiningZip()
-//    combiningFold()
+    combiningFold(0)
 
 //    generateSequencePrimes(10)
 
 //    nano()
-    milli(1000000)
+//    milli(1000000)
 }
 
 private fun transformationMap() {
@@ -59,8 +61,9 @@ private fun combiningZip() {
 
 }
 
-private fun combiningFold() {
-    val foldedValue = listOf(1, 2, 3, 4).fold(0) { accumulator, number ->
+private fun combiningFold(initialValue: Int) {
+    println("initialValue value: $initialValue")
+    val foldedValue = listOf(1, 2, 3, 4).fold(initialValue) { accumulator, number ->
         println("Accumulated value: $accumulator")
 
         println("accumulator $accumulator + (number $number * 3) ${accumulator + (number * 3)}")
