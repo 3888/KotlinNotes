@@ -1,13 +1,22 @@
-package material.exceptions
+package material.exceptions.arrow
 
 import arrow.core.Either
+import arrow.core.Failure
+import arrow.core.Success
+import arrow.core.Try
 import kotlin.system.measureNanoTime
+
+
+/*
+https://habr.com/ru/post/435254/
+https://habr.com/ru/company/maxilect/blog/447380/
+* */
 
 fun main() {
 //    either()
     eitherVsTryCatch()
 
-
+    tryExample()
 }
 
 private fun either() {
@@ -64,4 +73,14 @@ private fun eitherVsTryCatch() {
         }
     }
     println("sequenceInNanosTryCatch обработана за $sequenceInNanosTryCatch наносекунд")
+}
+
+private fun tryExample() {
+    val result =
+        Try { Integer.parseInt("Bang!") }
+
+    when (result) {
+        is Success -> println(result)
+        is Failure -> println(result)
+    }
 }
