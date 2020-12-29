@@ -1,22 +1,23 @@
 package bignerdranch.simvillage
 
 import java.io.File
+import kotlin.random.Random
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
-val patronList = mutableListOf("Eli", "Mordoc", "Sophie") //Use just listOf(...) for read-only lists
+val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot", "Fernsworth", "Baggins")
-val uniquePatrons = mutableSetOf<String>()
+val uniquePatronsMutableSet = mutableSetOf<String>()
+val uniquePatronsSet = getPatronListAsSequence()
 val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
 
-// Could also be written as val com.bignerdranch.nyethack.getPatronGold = mapOf(Pair("Eli", 10.75),
-// Pair("Mordoc", 8.00), Pair("Sophie", 5.50))
+
+val getPatronGold = mapOf(Pair("Eli", 10.75), Pair("Mordoc", 8.00), Pair("Sophie", 5.50))
 val patronGold = mutableMapOf<String, Double>()
 
-
-fun main(args: Array<String>) {
+fun main() {
     if (patronList.contains("Eli")) {
         println("The tavern master says: Eli's in the back playing cards. ")
     } else {
@@ -29,20 +30,16 @@ fun main(args: Array<String>) {
         println("The tavern master says: Nay, they departed hours ago.")
     }
 
-    (0..9).forEach() {
-        val first = patronList.random()
-        val last = patronList.random()
-        val name = "$first $last"
-        uniquePatrons += name
-    }
-    uniquePatrons.forEach {
+    fillPatronList()
+
+    uniquePatronsMutableSet.forEach {
         patronGold[it] = 6.0
     }
 
     var orderCount = 0
     while (orderCount <= 9) {
         placeOrder(
-            uniquePatrons.shuffled().first(),
+            uniquePatronsMutableSet.shuffled().first(),
             menuList.shuffled().first()
         )
         orderCount++
@@ -51,11 +48,27 @@ fun main(args: Array<String>) {
     displayPatronBalances()
 }
 
+private fun fillPatronList() {
+    (0..9).forEach {
+        val first = patronList.random()
+        val last = Character.toChars(Random.nextInt(1, 10))
+        val name = "$first $last"
+        uniquePatronsMutableSet += name
+    }
+}
+
+private fun getPatronListAsSequence() = generateSequence {
+    val first = patronList.random()
+    val last = lastName.random()
+    "$first $last"
+}.take(10).toSet()
+
 private fun displayPatronBalances() {
     patronGold.forEach { (patron, balance) ->
         println("$patron, balance: ${"%.2f".format(balance)}")
     }
 }
+
 fun performPurchase(price: Double, patronName: String) {
     val totalPurse = patronGold.getValue(patronName)
     patronGold[patronName] = totalPurse - price

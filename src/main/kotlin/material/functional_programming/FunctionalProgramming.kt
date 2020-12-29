@@ -1,4 +1,4 @@
-package material.functions
+package material.functional_programming
 
 import java.util.*
 import kotlin.system.measureNanoTime
