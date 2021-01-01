@@ -1,5 +1,3 @@
-package material.comparingJavaAndKotlin;
-
 public class UserJava {
     private final String email;
 
