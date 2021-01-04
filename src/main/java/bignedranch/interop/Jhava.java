@@ -78,8 +78,6 @@ public class Jhava {
         Spellbook.getSpellbookGreeting();
 
         Function1<String, Unit> translator = Hero.getTranslator();
-
-        System.out.println("translator to lowercase " + translator.invoke("TRUCE"));
-
+        translator.invoke("TRUCE");
     }
 }
