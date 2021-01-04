@@ -2,6 +2,7 @@
 package bignerdranch.interop
 
 import bignedranch.interop.Jhava
+import java.io.IOException
 
 fun main(args: Array<String>) {
     val adversary = Jhava()
@@ -9,6 +10,14 @@ fun main(args: Array<String>) {
 
     val friendshipLevel = adversary.determineFriendshipLevel()
     println(friendshipLevel?.toLowerCase() ?: "It's complicated.")
+
+    adversary.offerFood()
+
+    try {
+        adversary.extendHandInFriendship()
+    } catch (e: Exception) {
+        println("Begone, foul beast!")
+    }
 
     val adversaryHitPoints: Int = adversary.hitPoints
     println(adversaryHitPoints.dec())
@@ -27,6 +36,11 @@ fun makeProclamation() = "Greetings, beast!"
 @JvmOverloads
 fun handOverFood(leftHand: String = "berries", rightHand: String = "beef") {
     println("Mmmm... you hand over some delicious $leftHand and $rightHand.")
+}
+
+@Throws(IOException::class)
+fun acceptApology() {
+    throw IOException()
 }
 
 class Spellbook {

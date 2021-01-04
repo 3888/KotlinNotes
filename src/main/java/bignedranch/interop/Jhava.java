@@ -5,6 +5,7 @@ import bignerdranch.interop.Spellbook;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Jhava {
@@ -41,6 +42,21 @@ public class Jhava {
 
     public void offerFood() {
         Hero.handOverFood("pizza");
+    }
+
+    public void extendHandInFriendship() throws Exception {
+        throw new Exception();
+    }
+
+    public void apologize() {
+        try {
+            Hero.acceptApology();
+            // is OK in case @Throws(IOException::class) in Hero.kt
+            // is NOT ok without @Throws(IOException::class) in Hero.kt
+            // Exception 'java.io.IOException' is never thrown in the corresponding try block
+        } catch (IOException e) {
+            System.out.println("Caught!");
+        }
     }
 
     public static void main(String[] args) {
