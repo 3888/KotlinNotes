@@ -1,8 +1,11 @@
 package bignedranch.interop;
 
 import bignerdranch.interop.Hero;
+import bignerdranch.interop.Spellbook;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class Jhava {
 
@@ -44,5 +47,16 @@ public class Jhava {
         System.out.println(Hero.makeProclamation()); // is OK in case @file:JvmName("Hero") before package
 //        System.out.println(HeroKt.makeProclamation()); //is OK in case no @file:JvmName("Hero") before package
 
+        Spellbook spellbook = new Spellbook();
+//        List<String> spells = spellbook.getSpells(); // is OK without @JvmField
+        List<String> spells = spellbook.spells; // is OK with @JvmField
+
+        System.out.println("Spells:");
+        for (String spell : spellbook.spells) {
+            System.out.println(spell);
+        }
+
+        System.out.println("Max spell count: " + Spellbook.MAX_SPELL_COUNT);
+        Spellbook.getSpellbookGreeting();
     }
 }
