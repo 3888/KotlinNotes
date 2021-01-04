@@ -2,6 +2,8 @@ package bignedranch.interop;
 
 import bignerdranch.interop.Hero;
 import bignerdranch.interop.Spellbook;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -74,5 +76,10 @@ public class Jhava {
 
         System.out.println("Max spell count: " + Spellbook.MAX_SPELL_COUNT);
         Spellbook.getSpellbookGreeting();
+
+        Function1<String, Unit> translator = Hero.getTranslator();
+
+        System.out.println("translator to lowercase " + translator.invoke("TRUCE"));
+
     }
 }

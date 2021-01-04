@@ -31,6 +31,10 @@ fun main(args: Array<String>) {
     val spells = spellbook.spells
 }
 
+val translator = { utterance: String ->
+    println(utterance.toLowerCase().capitalize())
+}
+
 fun makeProclamation() = "Greetings, beast!"
 
 @JvmOverloads
