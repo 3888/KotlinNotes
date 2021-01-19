@@ -13,7 +13,8 @@ fun main() {
 //        println(millisToMinAndSeconds(Random.nextLong(59000, 120000)))
 //    }
 
-    daysLeft()
+    //    daysLeft()
+    firstDayOfCurrentMonth()
 }
 
 private fun millisToMinAndSeconds(millis: Long): String {
@@ -49,4 +50,11 @@ private fun daysLeft() {
     println(endDateFormatted)
     println(days)
 
+}
+
+
+private fun firstDayOfCurrentMonth() {
+    val cal = Calendar.getInstance()
+    val firstDay = cal.set(Calendar.DAY_OF_MONTH, 1)
+    println(firstDay)
 }
