@@ -7,11 +7,13 @@ fun main() {
   Let returns a copy of the changed object
   */
 
-    letExample()
+//    letExample()
 //    firstItemSquared()
 
-}
+    println(letAndElvisFormatGreeting(null))
+    println(letAndElvisFormatGreeting("Bob"))
 
+}
 
 
 private fun letExample() {
@@ -21,7 +23,8 @@ private fun letExample() {
     val newFish = fish
         .let {
             println(it.hashCode())
-            it.name.capitalize() }
+            it.name.capitalize()
+        }
         .let { it + "fish" }
         .let { it.length }
         .let { it + 10 }
@@ -38,4 +41,10 @@ private fun firstItemSquared() {
         }
 
     println(firstItemSquared)
+}
+
+private fun letAndElvisFormatGreeting(vipGuest: String?): String {
+    return vipGuest?.let {
+        "Welcome, $it. Please, go straight back - your table is ready."
+    } ?: "Welcome to the tavern. You'll be seated soon."
 }

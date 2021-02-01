@@ -1,19 +1,21 @@
 package material.collections.associative_arrays.map
 
 fun main() {
-//    map()
+    map()
 //    mutableMapOf()
 
 //    initMutableMapOfForEach()
-    initMutableMapOfPutAll()
+//    initMutableMapOfPutAll()
 }
 
 private fun map() {
-    val cures = mapOf("white spots" to "Ich", "red sores" to "hole disease")
-    println(cures.get("white spots"))
-    println(cures["white spots"])
-    println(cures.getOrDefault("Bla-bla", "sorry I don't know it"))
-    cures.getOrElse("Bla-bla") { println("There is no spoon ${3 + 4}") }
+    val mapExample = mapOf("white spots" to "Ich", "red sores" to "hole disease")
+    println(mapExample.get("white spots"))
+    println(mapExample["white spots"])
+    println(mapExample.getOrDefault("Bla-bla", "sorry I don't know it"))
+    mapExample.getOrElse("Bla-bla") { println("There is no spoon ${3 + 4}") }
+    println(mapExample.keys)
+    println(mapExample.values)
 }
 
 private fun mutableMapOf() {

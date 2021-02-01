@@ -8,7 +8,8 @@ import material.loops.Customer
 fun main() {
 
 //    example()
-    listExample()
+//    listExample()
+    pairExample()
 
 }
 
@@ -42,5 +43,18 @@ private fun listExample() {
     println("$menu1 $menu2")
 }
 
+private fun pairExample() {
+    val apiParam = ApiParams.PARAM.queryParam
+    val (key, value) = apiParam
+
+    println(key)
+    println(value)
+}
+
 
 private data class Menu(val type: String, val name: String)
+
+
+private enum class ApiParams(val queryParam: Pair<String, String>) {
+    PARAM("Key123" to "Value456")
+}
