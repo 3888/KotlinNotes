@@ -7,6 +7,13 @@ fun main() {
     fishExamplesMyWith()
 }
 
+private fun weNeedObjectReceiverAsAFirstArg() {
+    val nameTooLong = with("Polarcubis, Supreme Master of NyetHack") {
+        length >= 20
+    }
+    println(nameTooLong)
+}
+
 private fun fishExamplesWith() {
     val fish = Fish("splashy")
     println(fish.hashCode())
@@ -23,7 +30,6 @@ private fun fishExamplesMyWith() {
     }
 }
 
-
 private fun fishExamplesMyWithLonghand() {
     val fish = Fish("splashy")
     myWithExample(fish.name, object : Function1<String, Unit> {
@@ -39,3 +45,4 @@ private fun myWithExample(
 ) {
     name.block()
 }
+

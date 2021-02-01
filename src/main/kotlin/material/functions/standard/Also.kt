@@ -8,13 +8,15 @@ fun main() {
 
 private fun alsoExample() {
     val fish = Fish("Flumber")
-        .also {
+    println(fish.hashCode())
+
+        fish.also {
             it.name = "new"
-            println(it.hashCode())
+            println("${it.name} ${it.hashCode()}")
         }
         .also {
             it.name = "new2"
-            println(it.hashCode())
+            println("${it.name} ${it.hashCode()}")
         }
 
     println(fish.hashCode())

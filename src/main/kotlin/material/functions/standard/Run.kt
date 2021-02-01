@@ -7,39 +7,42 @@ fun main() {
   Run returns the result of executing the lambda
  */
 
-    runWithObjectExample()
+//    runWithObjectExample()
 //    runWithoutObjectExample(100)
 //    runAndLinksToFunction()
 
-//    weNeedRunToSimplifyCode()
+    weNeedRunToSimplifyCode()
 }
 
 private fun runWithObjectExample() {
     val fish = Fish("Big Shark")
-    println(fish.hashCode())
+    println("Fish hashCode ${fish.hashCode()}")
     val value = fish.run {
+        println("Fish hashCode ${fish.hashCode()}")
         name.contains("Shark")
-        println(hashCode())
     }
     println(value)
 }
 
 private fun runWithoutObjectExample(healthPoints: Int) {
-   println(if (healthPoints == 100) "perfect health" else "has injuries"
-   )
+    val status = run {
+        if (healthPoints == 100) "perfect health" else "has injuries"
+    }
+    println(status)
 }
 
 private fun runAndLinksToFunction() {
-    val result = "Madrigal".run(::nameIsShort)
-    println(result)
+    println("Madrigal".run(::nameIsShort)) // true
+    println("Polarcubis, Supreme Master of NyetHack".run(::nameIsLong)) // false
 }
 
+private fun nameIsLong(name: String) = name.length >= 20
 private fun nameIsShort(name: String) = name.length <= 5
 
 private fun weNeedRunToSimplifyCode() {
     println(
         playerCreateMessage(
-            "Pol".run(::nameIsShort)
+            nameIsShort("Pol")
         )
     )
 
