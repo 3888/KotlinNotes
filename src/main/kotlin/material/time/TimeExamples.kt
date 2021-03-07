@@ -23,9 +23,9 @@ fun main() {
 //    firstDayOfCurrentMonth()
 //    dayOfMonthFromTimeMillis()
 
-    getDayOfMonth(System.currentTimeMillis())
+//    getDayOfMonth(System.currentTimeMillis())
 //    getDayOfMonthSuffix()
-
+    getDateWithOrdinalSuffix()
 
 }
 
@@ -112,6 +112,36 @@ private fun getDayOfMonthSuffix() {
 
         println("dayOfMonth $dayOfMonth ordinal $ordinal")
     }
+}
+
+private fun getDayOfMonthSuffix(dayOfMonth: Int): String =
+    when {
+        dayOfMonth in 11..13 -> "th"
+        dayOfMonth % 10 == 1 -> "st"
+        dayOfMonth % 10 == 2 -> "nd"
+        dayOfMonth % 10 == 3 -> "rd"
+        else -> "th"
+    }
+
+private fun getDateWithOrdinalSuffix() {
+    val formatter: DateFormat = SimpleDateFormat("dd MMMM yyyy")
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = System.currentTimeMillis()
+    val timeMillisFormatted = formatter.format(calendar.time)
+
+    val dayOfMonthSuffix = getDayOfMonthSuffix(calendar[Calendar.DAY_OF_MONTH])
+
+    println(timeMillisFormatted)
+    println(dayOfMonthSuffix)
+
+    println(
+        "${timeMillisFormatted.substring(0, 2)}$dayOfMonthSuffix ${
+            timeMillisFormatted.substring(
+                3,
+                timeMillisFormatted.length
+            )
+        }"
+    )
 }
 
 

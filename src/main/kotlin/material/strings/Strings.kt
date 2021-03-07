@@ -8,7 +8,7 @@ import java.util.Locale
 
 fun main() {
 
-//    concatenate()
+    concatenate()
 //    isNullOrEmptyNameVisible()
 //    take()
 //    replace()
@@ -17,7 +17,7 @@ fun main() {
 //    maxOf(20, 30)
 //    takeAfter()
 //    takeAndAppend()
-//    joinToString()
+    joinToString()
 //    nullToString()
 //    nullOrEmptyVSNullOrBlank()
 //    multiString()
