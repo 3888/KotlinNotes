@@ -5,17 +5,25 @@ import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 
+/*
+https://www.journaldev.com/17899/java-simpledateformat-java-date-format
+*/
 fun main() {
 
 //    daysLeft()
-//    firstDayOfCurrentMonth()
 //    millisToMinAndSeconds()
-    millisToDate()
+//    millisToDate()
+
+//    firstDayOfCurrentMonth()
+//    dayOfMonthFromTimeMillis()
+    getDayOfMonthSuffix()
+
 
 }
 
@@ -68,10 +76,33 @@ private fun daysLeft() {
 }
 
 private fun firstDayOfCurrentMonth() {
-    val c = Calendar.getInstance() // this takes current date
-    c[Calendar.DAY_OF_MONTH] = 1
-    println(c.time) // this returns java.util.Date
+    val calendar = Calendar.getInstance() // this takes current date
+    calendar[Calendar.DAY_OF_MONTH] = 1
+    println(calendar.time) // this returns java.util.Date
 
     val todaydate = LocalDate.now()
     println("Months first date in yyyy-mm-dd: " + todaydate.withDayOfMonth(1))
 }
+
+private fun dayOfMonthFromTimeMillis() {
+    val date = Instant.ofEpochMilli(System.currentTimeMillis()).atZone(ZoneId.systemDefault()).toLocalDate()
+    println("Day of month " + date.withDayOfMonth(1))
+}
+
+fun getDayOfMonthSuffix() {
+    val intRange = 1..31
+    intRange.forEach { dayOfMonth ->
+        val ordinal = when {
+            dayOfMonth in 11..13 -> "th"
+            dayOfMonth % 10 == 1 -> "st"
+            dayOfMonth % 10 == 2 -> "nd"
+            dayOfMonth % 10 == 3 -> "rd"
+            else -> "th"
+        }
+
+        println("dayOfMonth $dayOfMonth ordinal $ordinal")
+    }
+}
+
+
+

@@ -16,5 +16,4 @@ private fun bigDecimalCutPlus(){
     println("-$number")
     println("${decimalFormat.format(BigDecimal("+$number"))}")
     println("${decimalFormat.format(BigDecimal("-$number"))}")
-
 }
