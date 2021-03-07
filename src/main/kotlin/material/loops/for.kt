@@ -6,7 +6,6 @@ fun main() {
     //    forInRangeUntil(1..5)
 //    forInRangeStep(1..6, 2)
 //    forValueDownTo(10, 5)
-
 }
 
 private fun forInRange(range: IntRange) {
@@ -32,8 +31,3 @@ private fun forValueDownTo(value: Int, downToValue: Int) {
         println("The value $value downTo $downToValue now value is = $i ")
     }
 }
-
-
-
-
-

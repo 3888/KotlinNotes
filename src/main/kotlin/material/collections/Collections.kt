@@ -9,7 +9,7 @@ fun main() {
 //    mutableListAddAll()
 //    mutableListRemove()
 //    mutableListRemove2()
-//    mutableListSublist()
+    mutableListSublist()
 //    mutableListRemoveIf()
 
 
@@ -22,8 +22,9 @@ fun main() {
 //    setMutable()
 
 //    sort()
+//    sortList()
 
-    chunked()
+//    chunked()
 //    flatten()
 //    reduce()
 //    groupBy()
@@ -81,7 +82,7 @@ private fun mutableListRemove2() {
 
 private fun mutableListSublist() {
     val mutableListOfValues = mutableListOf("tuna", "salmon", "shark")
-    println("mutableListOfValues subList")
+    println("mutableListOfValues subList $mutableListOfValues")
     println("mutableListOfValues = ${mutableListOfValues.subList(2, mutableListOfValues.size)}")
 
 }
@@ -153,6 +154,24 @@ private fun chunked() {
 //    println(list.chunked(0)) // size 0 must be greater than zero
 }
 
+private fun sortList() {
+    val list: List<IdList> = kotlin.collections.listOf(
+        IdList(id = 4),
+        IdList(id = 1),
+        IdList(id = 3),
+        IdList(id = 2),
+        IdList(id = 0)
+    )
+
+    println(list.filter {
+        it.id != 0
+    }
+        .sortedBy {
+            it.id
+        })
+
+}
+
 private fun flatten() {
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
 
@@ -212,3 +231,7 @@ private fun mutableListVsArrayList() {
     https://stackoverflow.com/questions/43114367/difference-between-arrayliststring-and-mutablelistofstring-in-kotlin
     * */
 }
+
+data class IdList(
+    val id: Int? = null,
+)

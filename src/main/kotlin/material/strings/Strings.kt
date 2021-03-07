@@ -1,7 +1,10 @@
 package material.strings
 
 import kotlin_bootcamp.aquarium.Fish
+import java.text.NumberFormat
 import java.util.*
+import java.util.Locale
+
 
 fun main() {
 
@@ -20,9 +23,8 @@ fun main() {
 //    multiString()
 //    stringToNumber()
 
-    splitDelimiters()
+//    splitDelimiters()
 //    splitRegex()
-
     // TODO    https://bezkoder.com/kotlin-split-string-example/
 
 }

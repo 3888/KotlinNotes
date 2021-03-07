@@ -3,22 +3,37 @@ package material.time
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 
 fun main() {
 
-//    for (i in 1..3) {
-//        println(millisToMinAndSeconds(Random.nextLong(59000, 120000)))
-//    }
+//    daysLeft()
+//    firstDayOfCurrentMonth()
+//    millisToMinAndSeconds()
+    millisToDate()
 
-    //    daysLeft()
-    firstDayOfCurrentMonth()
+}
+
+private fun millisToDate() {
+    val simpleDateFormat = SimpleDateFormat("dd/mm/yyyy hh:mm")
+    val dateString = simpleDateFormat.format(System.currentTimeMillis())
+
+
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
+    val localDateTime = LocalDateTime.now()
+    val formatted = localDateTime.format(formatter)
+
+    println("simpleDateFormat : $dateString")
+    println("LocalDateTime : $formatted")
+
 }
 
 private fun millisToMinAndSeconds(millis: Long): String {
-//    val format = "%d min, %d sec"
     val format = "%d min, %02d sec"
 
     return String.format(
@@ -52,9 +67,11 @@ private fun daysLeft() {
 
 }
 
-
 private fun firstDayOfCurrentMonth() {
-    val cal = Calendar.getInstance()
-    val firstDay = cal.set(Calendar.DAY_OF_MONTH, 1)
-    println(firstDay)
+    val c = Calendar.getInstance() // this takes current date
+    c[Calendar.DAY_OF_MONTH] = 1
+    println(c.time) // this returns java.util.Date
+
+    val todaydate = LocalDate.now()
+    println("Months first date in yyyy-mm-dd: " + todaydate.withDayOfMonth(1))
 }
