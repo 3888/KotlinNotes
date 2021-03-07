@@ -22,7 +22,9 @@ fun main() {
 
 //    firstDayOfCurrentMonth()
 //    dayOfMonthFromTimeMillis()
-    getDayOfMonthSuffix()
+
+    getDayOfMonth(System.currentTimeMillis())
+//    getDayOfMonthSuffix()
 
 
 }
@@ -89,7 +91,15 @@ private fun dayOfMonthFromTimeMillis() {
     println("Day of month " + date.withDayOfMonth(1))
 }
 
-fun getDayOfMonthSuffix() {
+private fun getDayOfMonth(timeInMillis: Long) {
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = timeInMillis
+    val dayOfMonth = calendar[Calendar.DAY_OF_MONTH]
+    val dayOfMonthStr = dayOfMonth.toString()
+    println(dayOfMonthStr)
+}
+
+private fun getDayOfMonthSuffix() {
     val intRange = 1..31
     intRange.forEach { dayOfMonth ->
         val ordinal = when {
