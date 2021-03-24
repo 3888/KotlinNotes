@@ -2,10 +2,7 @@ package material.time
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneId
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -25,8 +22,9 @@ fun main() {
 
 //    getDayOfMonth(System.currentTimeMillis())
 //    getDayOfMonthSuffix()
-    getDateWithOrdinalSuffix()
+//    getDateWithOrdinalSuffix()
 
+    is18YearsOld()
 }
 
 private fun millisToDate() {
@@ -144,5 +142,21 @@ private fun getDateWithOrdinalSuffix() {
     )
 }
 
+private fun is18YearsOld() {
+    /*
+    https://www.baeldung.com/kotlin/dates
+     */
+    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val date = LocalDate.parse("31-12-2018", formatter)
+    val currentYear = Year.now().value
+
+    val age = 35
+//    println(date.year)
+    val yearOfBirth = currentYear - age
+    println("age $age")
+    println("yearOfBirth $yearOfBirth")
+    println("currentYear $currentYear")
+    println("is18YearsOld ${currentYear - yearOfBirth >= 18}")
+}
 
 
