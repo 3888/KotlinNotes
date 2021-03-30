@@ -1,6 +1,6 @@
 package kotlin_bootcamp.aquarium.spices
 
-import material.constants.enum.EnumColors
+import material.constants.adt.enum.EnumColors
 
 
 abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {

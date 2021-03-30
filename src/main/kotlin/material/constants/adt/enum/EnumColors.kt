@@ -1,4 +1,4 @@
-package material.constants.enum
+package material.constants.adt.enum
 
 enum class EnumColors(val colorHex: String, val opacity: Double? = 1.0) {
 

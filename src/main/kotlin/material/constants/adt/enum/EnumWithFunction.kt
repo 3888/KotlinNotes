@@ -1,4 +1,4 @@
-package material.constants.enum
+package material.constants.adt.enum
 
 enum class EnumWithFunction(private val coordinate: Coordinate) {
     NORTH(Coordinate(0, -1)),

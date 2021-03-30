@@ -1,7 +1,5 @@
 package material.classExamples
 
-import material.constants.enum.EnumColors
-
 
 fun main(args: Array<String>) {
 
