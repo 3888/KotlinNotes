@@ -9,15 +9,45 @@ fun main() {
 //    transformationMap()
 //    transformationFlatMap()
 
+    transformationSumOf()
+
 //    filter()
 
 //    combiningZip()
-    combiningFold(0)
+//    combiningFold(0)
 
 //    generateSequencePrimes(10)
 
 //    nano()
 //    milli(1000000)
+}
+
+fun transformationSumOf() {
+    val data = listOf(
+        TransactionsItem(
+            "1",
+            1000.44,
+            2000.04
+        ),
+        TransactionsItem(
+            "2",
+            0020.24,
+            7000.04
+        ),
+        TransactionsItem(
+            "3",
+            10770.45,
+            2540.34
+        )
+    )
+
+    print(
+        "${
+            data.sumOf {
+                it.depositDollar
+            }
+        }"
+    )
 }
 
 private fun transformationMap() {
@@ -145,3 +175,9 @@ private fun milli(count: Long) {
     }
     println("последовательность обработана за $sequenceInNanos милисекунд")//
 }
+
+private data class TransactionsItem(
+    val date: String,
+    val depositEuro: Double,
+    val depositDollar: Double
+)
