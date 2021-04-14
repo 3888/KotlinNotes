@@ -6,7 +6,8 @@ import kotlin.system.measureTimeMillis
 
 
 fun main() {
-//    transformationMap()
+    transformationMap()
+    transformationMapIndexed()
 //    transformationFlatMap()
 
     transformationSumOf()
@@ -55,6 +56,14 @@ private fun transformationMap() {
     val babies = animals
         .map { animal -> "A baby $animal" }
         .map { baby -> "$baby, with the cutest little tail ever!" }
+    println(babies)
+}
+
+fun transformationMapIndexed() {
+    val animals = listOf("zebra", "giraffe", "elephant", "rat")
+    val babies = animals
+        .map { animal -> "A baby $animal" }
+        .mapIndexed { index, baby -> "index $index $baby, with the cutest little tail ever!" }
     println(babies)
 }
 
