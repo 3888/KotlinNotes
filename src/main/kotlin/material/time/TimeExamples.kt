@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 
 /*
 https://www.journaldev.com/17899/java-simpledateformat-java-date-format
+https://www.baeldung.com/kotlin/dates
 */
 fun main() {
 
@@ -24,7 +25,9 @@ fun main() {
 //    getDayOfMonthSuffix()
 //    getDateWithOrdinalSuffix()
 
-    is18YearsOld()
+//    is18YearsOld()
+
+    dateToString()
 }
 
 private fun millisToDate() {
@@ -157,6 +160,12 @@ private fun is18YearsOld() {
     println("yearOfBirth $yearOfBirth")
     println("currentYear $currentYear")
     println("is18YearsOld ${currentYear - yearOfBirth >= 18}")
+}
+
+private fun dateToString() {
+    val date = Date()
+    val formatter: DateFormat = SimpleDateFormat("dd.MM.yyyy")
+    println(formatter.format(date))
 }
 
 
