@@ -64,7 +64,6 @@ private fun daysLeft() {
 //        now.minus(endDate) // -8
     )
 
-
     val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS")
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = now
@@ -166,6 +165,11 @@ private fun dateToString() {
     val date = Date()
     val formatter: DateFormat = SimpleDateFormat("dd.MM.yyyy")
     println(formatter.format(date))
+
+    val offsetDateTime = OffsetDateTime.parse("2010-01-01T12:00:00+01:00")
+    val instant = offsetDateTime.toInstant() // Instant is always in UTC.
+    val date2 = Date.from(instant)
+    println(formatter.format(date2))
 }
 
 
