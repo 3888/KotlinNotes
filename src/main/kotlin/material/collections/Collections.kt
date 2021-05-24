@@ -9,9 +9,8 @@ fun main() {
 //    mutableListAddAll()
 //    mutableListRemove()
 //    mutableListRemove2()
-    mutableListSublist()
+//    mutableListSublist()
 //    mutableListRemoveIf()
-
 
 //    listContains()
 //    listContainsAll()
@@ -32,7 +31,25 @@ fun main() {
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 
+    asReversed()
+}
 
+
+private fun asReversed() {
+    val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3)
+    val list: List<Int> = listOf(1, 2, 3)
+    arrayList.reverse()
+    list.reversed()
+
+    println(arrayList)
+    println(list)
+
+    val original = mutableListOf('a', 'b', 'c', 'd', 'e')
+    val originalReadOnly = original as List<Char>
+    val reversed = originalReadOnly.asReversed()
+
+    println(originalReadOnly)
+    println(reversed)
 }
 
 private fun mutableListAdd() {
