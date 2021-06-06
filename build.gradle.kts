@@ -13,12 +13,12 @@ repositories {
     maven("https://dl.bintray.com/arrow-kt/arrow-kt/")
 }
 
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+dependencies {
+    implementation("io.arrow-kt:arrow-core-data:0.9.0")
+    testImplementation(kotlin("test-junit"))
+
 }
 
-
-dependencies {
-implementation("io.arrow-kt:arrow-core-data:0.9.0")
-
+tasks.withType<KotlinCompile>() {
+    kotlinOptions.jvmTarget = "1.8"
 }
