@@ -26,7 +26,6 @@ fun main() {
 //    chunked()
 //    flatten()
 //    reduce()
-//    groupBy()
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
@@ -209,15 +208,7 @@ private fun reduce() {
     println(flattenListReduce)
 }
 
-private fun groupBy() {
-    val words = listOf(listOf("Apple", "Boy", "Cartoon"), listOf("Elephant", "Frog"))
-    val bySize = words.groupBy { it.size }
 
-    val byLogic = words.groupBy { it.first().length > 7 }
-
-    println(bySize)
-    println(byLogic)
-}
 
 private fun nullableCollectionsGetOrElse() {
 //    val nullableList: List<String>? = listOf("A", "B", "C")
