@@ -1,6 +1,5 @@
 package material.nullability
 
-import material.printString
 import kotlin.random.Random
 
 
@@ -181,16 +180,16 @@ private fun elvisOperator() {
 //    val testValue = ""
     val testValue = null
     val name = testValue ?: "new name"
-    printString("testValue = $testValue")
-    printString(name)
+    println("testValue = $testValue")
+    println(name)
 
     val b: String? = null
 
     val lJavaWay: Int = if (b != null) b.length else -1
     val lWithElvis = b?.length ?: -1
 
-    printString("lJavaWay $lJavaWay")
-    printString("lJavaWay $lWithElvis")
+    println("lJavaWay $lJavaWay")
+    println("lJavaWay $lWithElvis")
 }
 
 private fun elvisReturn() {

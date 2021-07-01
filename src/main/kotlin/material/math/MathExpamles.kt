@@ -6,6 +6,19 @@ import kotlin.math.sqrt
 fun main() {
 //    pow()
 
+    var fish = 2;
+
+    println("times ${fish.times(6)}")
+    println(fish.div(2))
+    println(fish.plus(3))
+    println(fish.minus(1))
+    fish = 25
+    println("dec ${fish.dec()}")
+    println("inc ${fish.inc()}")
+
+    println("% vs .rem ${1234 % 10}")
+    println("% vs .rem ${1234.rem(10)}")
+
 }
 
 private fun maxOf(a: Int, b: Int) {

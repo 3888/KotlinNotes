@@ -1,32 +1,9 @@
-package material.primitives
+package material.basic
 
-import material.printInt
 
 //https://www.callicoder.com/kotlin-operators/
 
 fun main(args: Array<String>) {
-    var fish = 2;
-
-    println("times ${fish.times(6)}")
-    printInt(fish.div(2))
-    printInt(fish.plus(3))
-    printInt(fish.minus(1))
-    fish = 25
-    println("dec ${fish.dec()}")
-    println("inc ${fish.inc()}")
-
-    println("% vs .rem ${1234 % 10}")
-    println("% vs .rem ${1234.rem(10)}")
-
-
-    var name: String = "3888"
-    var first = 1
-    var second = 2
-
-    println("Hello " + name)
-    println("Hello $name")
-    println("Value = ${first + second}")
-
     var string: String = "String"
     var byte: Byte = 1
     var short: Short = 1
@@ -59,4 +36,10 @@ fun main(args: Array<String>) {
     val hexBytes = 0xFF_EC_DE_5E
     val bytes = 0b11010010_01101001_10010100_10010010
 
+}
+
+private fun allInKotlinHaveAValue(){
+    val temperature = 60
+    val isHot = if (temperature > 50) true else false
+    println("temperature = $temperature  isHot $isHot")
 }

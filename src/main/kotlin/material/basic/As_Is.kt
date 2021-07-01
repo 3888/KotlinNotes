@@ -1,4 +1,4 @@
-package material.primitives
+package material.basic
 
 import kotlin.random.Random
 
@@ -23,7 +23,6 @@ private fun isExample() {
         is Long -> print(value::class.simpleName)
     }
 }
-
 
 private fun asNullableExample() {
     val name: Any = 5

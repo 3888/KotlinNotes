@@ -1,4 +1,4 @@
-package material.primitives
+package material.basic
 
 //https://medium.com/mobile-app-development-publication/kotlin-isnotempty-is-not-isnullorempty-3760db54939a
 fun main() {

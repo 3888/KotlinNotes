@@ -11,7 +11,6 @@ private fun evaporator(content: Double, evapPerDay: Double, threshold: Double): 
     val limit = content /100 * threshold
     var days = 0
 
-
     while (gas > limit) {
         gas -= loose
         loose = gas / 100 * evapPerDay
