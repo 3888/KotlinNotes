@@ -37,11 +37,12 @@ private fun count() = println("Mississippi".count())
 private fun countLambda() = println("Mississippi".count { letter ->
     letter == 's'
 })
+
+
 private fun whatIsTheDifferenceBetween() {
     println("random ${Math.random()}")
     println("random ${{ Math.random() }}")
 }
-
 
 
 private val valNoArgs: () -> String = {
@@ -126,16 +127,16 @@ private fun printConstructionCost(numBuildings: Int) {
 }
 
 private inline fun linkToFunctionAsArg(
-        playerName: String,
-        costPrinter: (Int) -> Unit,
-        greetingFunction: (String, Int) -> String
+    playerName: String,
+    costPrinter: (Int) -> Unit,
+    greetingFunction: (String, Int) -> String
 ) {
     val number = (1..5).shuffled().last() // Случайно выберет 1, 2 или 5
     costPrinter(number)
     println(greetingFunction(playerName, number))
 }
 
-private fun functionAsReturnType(){
+private fun functionAsReturnType() {
     val greetingFunction = configureGreetingFunction()
     println(greetingFunction("Luke"))
     println(greetingFunction("Obi-Wan"))
