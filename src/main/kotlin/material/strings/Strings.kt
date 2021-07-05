@@ -1,13 +1,14 @@
 package material.strings
 
 import kotlin_bootcamp.aquarium.Fish
-import java.text.NumberFormat
 import java.util.*
-import java.util.Locale
 
 
 fun main() {
 
+
+
+//    interpolation()
 //    concatenate()
 //    isNullOrEmptyNameVisible()
 //    take()
@@ -28,6 +29,16 @@ fun main() {
 //    splitRegex()
     // TODO    https://bezkoder.com/kotlin-split-string-example/
 
+}
+
+fun interpolation() {
+    val name: String = "3888"
+    val first = 1
+    val second = 2
+
+    println("Hello " + name)
+    println("Hello $name")
+    println("Value = ${first + second}")
 }
 
 private fun splitDelimiters() {

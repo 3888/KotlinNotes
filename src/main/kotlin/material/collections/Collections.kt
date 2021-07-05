@@ -9,9 +9,8 @@ fun main() {
 //    mutableListAddAll()
 //    mutableListRemove()
 //    mutableListRemove2()
-    mutableListSublist()
+//    mutableListSublist()
 //    mutableListRemoveIf()
-
 
 //    listContains()
 //    listContainsAll()
@@ -27,12 +26,29 @@ fun main() {
 //    chunked()
 //    flatten()
 //    reduce()
-//    groupBy()
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 
+    asReversed()
+}
 
+
+private fun asReversed() {
+    val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3)
+    val list: List<Int> = listOf(1, 2, 3)
+    arrayList.reverse()
+    list.reversed()
+
+    println(arrayList)
+    println(list)
+
+    val original = mutableListOf('a', 'b', 'c', 'd', 'e')
+    val originalReadOnly = original as List<Char>
+    val reversed = originalReadOnly.asReversed()
+
+    println(originalReadOnly)
+    println(reversed)
 }
 
 private fun mutableListAdd() {
@@ -192,15 +208,7 @@ private fun reduce() {
     println(flattenListReduce)
 }
 
-private fun groupBy() {
-    val words = listOf(listOf("Apple", "Boy", "Cartoon"), listOf("Elephant", "Frog"))
-    val bySize = words.groupBy { it.size }
 
-    val byLogic = words.groupBy { it.first().length > 7 }
-
-    println(bySize)
-    println(byLogic)
-}
 
 private fun nullableCollectionsGetOrElse() {
 //    val nullableList: List<String>? = listOf("A", "B", "C")
