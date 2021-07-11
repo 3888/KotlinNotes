@@ -1,7 +1,5 @@
 package kotlin_bootcamp.book
 
-import material.constants.CompileTimeConst
-
 const val MAX_NUMBER_BOOKS = 20
 
 class Book(val title: String, val author: String, val year: Int, var pages: Int) {
