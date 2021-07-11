@@ -8,8 +8,8 @@ fun main() {
 
 
 
-    interpolation()
-    concatenate()
+//    interpolation()
+//    concatenate()
 //    isNullOrEmptyNameVisible()
 //    take()
 //    replace()
@@ -18,8 +18,9 @@ fun main() {
 //    maxOf(20, 30)
 //    takeAfter()
 //    takeAndAppend()
-    joinToString()
+//    joinToString()
 //    nullToString()
+    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 //    multiString()
 //    stringToNumber()
@@ -65,6 +66,19 @@ private fun splitRegex() {
 
 }
 
+fun isEmptyVsIsBlank() {
+    val string = "ABC"
+    val emptyString = ""
+    val spaceString = "   "
+
+    println("string isBlank ${string.isBlank()}")
+    println("string isEmpty ${string.isEmpty()}")
+    println("emptyString isBlank ${emptyString.isBlank()}")
+    println("emptyString isEmpty ${emptyString.isEmpty()}")
+    println("spaceString isBlank ${spaceString.isBlank()}")
+    println("spaceString  isEmpty ${spaceString.isEmpty()}")
+
+}
 
 fun nullOrEmptyVSNullOrBlank() {
     val thisIsBlank = "   "
