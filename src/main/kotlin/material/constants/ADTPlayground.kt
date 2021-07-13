@@ -8,7 +8,7 @@ import material.constants.adt.sealed.StudentStatusSealed
 
 fun main() {
 
-enum()
+//enum()
 
 //    println(studentMessageEnum(StudentStatus.ACTIVE))
 //    println(studentMessageSealedClass(StudentStatusSealed.Active("History")))
@@ -26,7 +26,6 @@ private fun enum() {
     println(EnumColors.RED.opacity)
 }
 
-
 private fun enumWithFunction() {
     println(EnumColors.BLACK.colorHex)
     println(EnumColors.BLACK.ordinal)
@@ -35,7 +34,6 @@ private fun enumWithFunction() {
     println(EnumColors.BLACK.colorHex)
     println(EnumColors.BLACK.opacity)
 }
-
 
 private fun studentMessageEnum(status: StudentStatus): String {
     return when (status) {
