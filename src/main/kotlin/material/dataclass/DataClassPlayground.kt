@@ -4,25 +4,31 @@ fun main() {
 
 //    toString()
 //    equals()
+
 //    hashCode()
-    copy()
+//    hashCodeStandardClass()
+//    hashCodeOverridedClass()
+    hashCodeDataClass()
+
+//    copy()
 }
+
 /*
 http://developer.alexanderklimov.ru/android/kotlin/data.php
 */
 
-private fun toString(){
+private fun toString() {
     val cat = WhiteCat("Murzik", 7)
     println(cat) // Cat(name=Murzik, age=7)
 }
 
-private fun equals(){
+private fun equals() {
     val whiteCat = WhiteCat("Murzik", 7)
     val whiteCatClone = WhiteCat("Murzik", 7)
     val whiteCat2 = WhiteCat("Boris", 1)
     val blackCat = BlackCat("Shadow", 5)
-    val cat1 = Cat("Cat",1)
-    val cat2 = Cat("Cat",1)
+    val cat1 = Cat("Cat", 1)
+    val cat2 = Cat("Cat", 1)
 
     println("whiteCat $whiteCat")
     println("whiteCatClone $whiteCatClone")
@@ -46,12 +52,12 @@ private fun equals(){
 //    println("binary operator == ${whiteCat == blackCat}") // Operator '==' cannot be applied to
 }
 
-private fun hashCode(){
+private fun hashCode() {
     val whiteCat = WhiteCat("Murzik", 7)
     val whiteCatClone = WhiteCat("Murzik", 7)
     val whiteCat2 = WhiteCat("Boris", 1)
-    val cat1 = Cat("Cat",1)
-    val cat2 = Cat("Cat",1)
+    val cat1 = Cat("Cat", 1)
+    val cat2 = Cat("Cat", 1)
 
     println("whiteCat ${whiteCat.hashCode()}")
     println("whiteCatClone ${whiteCatClone.hashCode()}")
@@ -60,7 +66,54 @@ private fun hashCode(){
     println("cat2 ${cat2.hashCode()}")
 }
 
-private fun copy(){
+fun hashCodeStandardClass() {
+    val person = Person("Adam", 25)
+    println("person ${person.hashCode()}")
+    val hashSet = hashSetOf(person.also { println("hashSet person ${it.hashCode()}") })
+    println(hashSet.contains(person.also { println("hashSet contains person ${it.hashCode()}") })) // true
+
+    val hashSet1 = hashSetOf(Person("Adam", 25).also {
+        println("hashSet1 anonymous person ${it.hashCode()}")
+    })
+    println(hashSet1.contains(Person("Adam", 25).also {
+        println("hashSet1 contains anonymous person ${it.hashCode()}")
+    })) // false bcs it's anonymous
+}
+
+fun hashCodeOverridedClass() {
+      val personOverrided = PersonOverrided("Adam", 25)
+    println("personOverrided ${personOverrided.hashCode()}")
+
+    val hashSet2 = hashSetOf(personOverrided
+        .also { println("hashSet2 personOverrided ${it.hashCode()}") })
+
+    println(hashSet2.contains(personOverrided)
+        .also { println("hashSet2 contains personOverrided ${it.hashCode()}") }) // true
+
+    val hashSet3 = hashSetOf(PersonOverrided("Adam", 25)
+        .also { println("hashSet3 anonymous personOverrided ${it.hashCode()}") })
+
+    println(
+        hashSet3.contains(PersonOverrided("Adam", 25)
+            .also { println("hashSet3 contains anonymous personOverrided ${it.hashCode()}") })
+    ) // true
+}
+
+fun hashCodeDataClass() {
+    val personDataClass = PersonDataClass("Adam", 27)
+    println("personDataClass ${personDataClass.hashCode()}")
+    val hashSet4 = hashSetOf(personDataClass
+        .also {  println("hashSet4 personDataClass ${it.hashCode()}") })
+    println(hashSet4.contains(personDataClass)) // true
+    val hashSet5 = hashSetOf(PersonDataClass("Adam", 27).also {
+        println("hashSet4 personDataClass ${it.hashCode()}")
+    })
+    println(hashSet5.contains(PersonDataClass("Adam", 27).also {
+        println("hashSet4 contains personDataClass ${it.hashCode()}")
+    })) // true
+}
+
+private fun copy() {
     val whiteCat = WhiteCat("Murzik", 7)
 //    val whiteCatClone = whiteCat.copy("Clone")
 //    or
@@ -69,5 +122,25 @@ private fun copy(){
     println(whiteCat)
     println(whiteCatClone)
 }
+
+private data class PersonDataClass(val name: String, val age: Int)
+
+class Person(val name: String, val age: Int)
+
+private class PersonOverrided(val name: String, val age: Int) {
+    override fun toString() = "Person(name = $name , age = $age )"
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is PersonOverrided)
+            return false
+        return name == other.name && age == other.age
+    }
+
+    override fun hashCode(): Int = name.hashCode() * 31 + age
+}
+
+
+
+
 
 
