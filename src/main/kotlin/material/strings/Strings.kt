@@ -17,7 +17,7 @@ fun main() {
 //    println("\nYour fortune is: ${getFortune()}")
 //    maxOf(20, 30)
 //    takeAfter()
-//    takeAndAppend()
+    takeAndAppend()
 //    joinToString()
 //    nullToString()
     isEmptyVsIsBlank()

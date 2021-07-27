@@ -1,10 +1,14 @@
 package material.collections
 
-import codewars.duplicateCount
+import codewars.duplicateCountSolutionsExample
+import codewars.duplicateEachCount
 
 fun main() {
-    groupBy()
-    groupByDuplicateCount()
+//    groupBy()
+//    groupByDuplicateCount()
+//    groupByDuplicateEachCount()
+
+
 }
 
 private fun groupBy() {
@@ -17,6 +21,10 @@ private fun groupBy() {
 }
 
 private fun groupByDuplicateCount() {
-    println("Count of duplicated chars = ${duplicateCount("ZZZZabcdefghijklmnopqrstuvwxyzaaAb")}")
+    println("Count of duplicated chars = ${duplicateCountSolutionsExample("ZZZZabcdefghijklmnopqrstuvwxyzaaAb")}")
+}
+
+private fun groupByDuplicateEachCount() {
+    println("Count of duplicated chars = ${duplicateEachCount("ZZZZabcdefghijklmnopqrstuvwxyzaaAb")}")
 }
 
