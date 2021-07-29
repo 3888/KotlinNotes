@@ -1,9 +1,7 @@
 package algorytms
 
 fun main() {
-
     fibonacciFor(10)
-
 }
 
 /*

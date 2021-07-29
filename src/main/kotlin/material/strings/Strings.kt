@@ -6,21 +6,20 @@ import java.util.*
 
 fun main() {
 
-
-
 //    interpolation()
 //    concatenate()
 //    isNullOrEmptyNameVisible()
-//    take()
+    take()
+    takeLast()
 //    replace()
 //    feedTheFish()
 //    println("\nYour fortune is: ${getFortune()}")
 //    maxOf(20, 30)
 //    takeAfter()
-    takeAndAppend()
+//    takeAndAppend()
 //    joinToString()
 //    nullToString()
-    isEmptyVsIsBlank()
+//    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 //    multiString()
 //    stringToNumber()
@@ -56,14 +55,11 @@ private fun splitDelimiters() {
 
 private fun splitRegex() {
 //    TODO  https://stackoverflow.com/questions/51460166/split-text-using-regex-java-kotlin-with-multiple-delimiter
-
-
     val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
 
     val separate1 = str.split("=|-".toRegex()).map { it.trim() }
     println(str)
     println(separate1)
-
 }
 
 fun isEmptyVsIsBlank() {
@@ -77,7 +73,6 @@ fun isEmptyVsIsBlank() {
     println("emptyString isEmpty ${emptyString.isEmpty()}")
     println("spaceString isBlank ${spaceString.isBlank()}")
     println("spaceString  isEmpty ${spaceString.isEmpty()}")
-
 }
 
 fun nullOrEmptyVSNullOrBlank() {
@@ -132,6 +127,11 @@ private fun isNullOrEmptyNameVisible() {
 private fun take() {
     val address = "A very long street name somewhere in the Earth"
     println(address.take(24).plus("..."))
+}
+
+fun takeLast() {
+    val address = "A very long street name somewhere in the Earth"
+    println(address.takeLast(1))
 }
 
 private fun takeAndAppend() {
