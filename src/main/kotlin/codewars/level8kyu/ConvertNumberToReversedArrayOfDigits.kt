@@ -9,7 +9,7 @@ fun main() {
    }
 }
 
-private fun digitize(n: Long): IntArray = n.toString().map(Character::getNumericValue).toIntArray().reversedArray()
+fun digitize(n: Long): IntArray = n.toString().map(Character::getNumericValue).toIntArray().reversedArray()
 
 private fun reversedLongToArrayMy(n: Long) : IntArray  {
     /*

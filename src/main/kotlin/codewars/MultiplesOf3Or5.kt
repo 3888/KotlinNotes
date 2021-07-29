@@ -37,4 +37,4 @@ private fun multiplesOf3Or5My(number: Int) {
     println(values.sum())
 }
 
-private fun multiplesOf3Or5(number: Int) = (1 until number).filter { it % 3 == 0 || it % 5 == 0 }.sum()
+fun multiplesOf3Or5(number: Int) = (1 until number).filter { it % 3 == 0 || it % 5 == 0 }.sum()

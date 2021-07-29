@@ -1,11 +1,12 @@
 import codewars.duplicateCountSolutionsExample
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.test.assertEquals
 
 class CountingDuplicatesTest {
 
     @Test
     fun `abcde returns zero`() {
+        assertEquals(0, duplicateCountSolutionsExample("abcde"))
         assertEquals(0, duplicateCountSolutionsExample("abcde"))
     }
 
