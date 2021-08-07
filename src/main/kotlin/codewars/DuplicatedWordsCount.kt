@@ -6,7 +6,9 @@ object DuplicatedWordsCount {
     @JvmStatic
     fun main(args: Array<String>) {
         // Given String containing duplicate words
-        var input = "Java is a programming language. Python is also a programming language."
+        var input =
+//            "Java is a programming language. Python is also a programming language."
+            "[Condition(type=DOLS, test test)]"
         // Converting given String to lowerCase
         input = input.toLowerCase()
         /* Split the Input String into words using

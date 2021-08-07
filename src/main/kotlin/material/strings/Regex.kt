@@ -17,7 +17,7 @@ fun main() {
 
 //    singleSymbol()
 //    zeroAndMoreSymbol()
-//    oneAndMoreSymbol()
+    oneAndMoreSymbol()
 //    zeroOrOneSymbol()
 
 //    quantificationNTimes()
@@ -40,7 +40,8 @@ fun main() {
 
 //    firstLetterIsCapital()
 
-   println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
+//    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
+    replaceAllBrackets()
 
 
 }
@@ -84,7 +85,7 @@ private fun oneAndMoreSymbol() {
     kotlinRegex("A1asfafg", "A+") // no (((
 }
 
-private fun  quantificationNTimes() {
+private fun quantificationNTimes() {
 //    {n} - n раз
     kotlinRegex("aa", "a{2}")
     kotlinRegex("aaaa", "a{2}+") // no (((
@@ -169,9 +170,9 @@ private fun nonWordCharacter() {
     kotlinRegex("@#%@# ", "\\W+")
 }
 
-private fun firstLetterIsCapital(){
-    kotlinRegex("test","[A-Z][A-Za-z'-]+")
-    kotlinRegex("Test","[A-Z][A-Za-z'-]+")
+private fun firstLetterIsCapital() {
+    kotlinRegex("test", "[A-Z][A-Za-z'-]+")
+    kotlinRegex("Test", "[A-Z][A-Za-z'-]+")
 }
 
 private fun replaceAndRegextoDragonSpeak(phrase: String) =
@@ -185,4 +186,16 @@ private fun replaceAndRegextoDragonSpeak(phrase: String) =
             else -> it.value
         }
     }
+
+private fun replaceAllBrackets() {
+    /*
+    https://stackoverflow.com/questions/15585569/simple-regex-replace-brackets
+    * */
+    val string = "{[Condition(type=DOLS, value=test test)]}"
+        .replace("value=", "")
+        .replace(Regex("[\\(\\)\\]\\[\\{\\}]"),"")
+
+    println(string)
+
+}
 
