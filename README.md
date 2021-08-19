@@ -1,3 +1,3 @@
 # KotlinNotes
 
-This projec is my workbook for Kotln
+This project is my workbook for Kotln.
