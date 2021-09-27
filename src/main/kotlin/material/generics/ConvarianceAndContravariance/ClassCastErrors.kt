@@ -12,7 +12,7 @@ private fun covariantArrayProblem() {
 }
 
 //20:00 https://www.youtube.com/watch?v=HLkjmO4_WeM
-private fun smartCastError(){
+private fun smartCastError() {
     val list = mutableListOf<String>("String")
     val ints = list as MutableList<Int>
     ints.add(1)
