@@ -22,9 +22,9 @@ fun main() {
 
     println("[key] " + bzkMap["bezkoder"])
 
-    println( bzkMap.getOrElse("zkoder") { 123 })
+    println(bzkMap.getOrElse("zkoder") { 123 })
 
-    println( bzkMap.getOrPut("zkoder") { 123 })
+    println(bzkMap.getOrPut("zkoder") { 123 })
 
     println(bzkMap.keys)
     println(bzkMap.values)

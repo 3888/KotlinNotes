@@ -38,18 +38,21 @@ private fun voidExample() {
 private fun voidExampleWithLogic(name: String, lastName: String, age: Int) = name.plus(lastName).plus(age)
 
 private fun namedArgumentsAllowsAnyArgumentOrder(
-        number: Int,
-        name: String) {
+    number: Int,
+    name: String
+) {
 }
 
 private fun defaultArguments(
-        number: Int = 3,
-        name: String = "No name") {
+    number: Int = 3,
+    name: String = "No name"
+) {
 }
 
 private fun defaultArgumentsAllowsAnyArgumentOrder(
-        number: Int = 3,
-        name: String = "No name") {
+    number: Int = 3,
+    name: String = "No name"
+) {
 }
 
 

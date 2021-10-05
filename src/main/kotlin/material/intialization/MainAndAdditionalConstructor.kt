@@ -25,10 +25,12 @@ private class Player(
 //        isImmortal = false
 //    )
 
-    constructor(name: String) : this(name,
+    constructor(name: String) : this(
+        name,
         healthPoints = 100,
         isBlessed = true,
-        isImmortal = false) {
+        isImmortal = false
+    ) {
         if (name.toLowerCase() == "kar") healthPoints = 40 // some logic here
     }
 

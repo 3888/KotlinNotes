@@ -1,6 +1,6 @@
-package codewars
+package contest.codewars
 
-import codewars.level8kyu.digitize
+import contest.codewars.level8kyu.digitize
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test

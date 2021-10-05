@@ -1,16 +1,16 @@
 package material.inheritance
 
-open class Person(var name: String){
+open class Person(var name: String) {
 
-    open val age : Int = 31
+    open val age: Int = 31
 
-    protected open val nickName : String = "R2D2"
+    protected open val nickName: String = "R2D2"
 
-    fun getPhoneNotOpen(){
+    fun getPhoneNotOpen() {
         println("+38068 not open")
     }
 
-    open fun getPhoneOpen(){
+    open fun getPhoneOpen() {
         println("+38068 open")
     }
 

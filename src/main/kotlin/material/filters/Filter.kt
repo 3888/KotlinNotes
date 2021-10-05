@@ -53,9 +53,9 @@ private fun filterData() {
         Data("third ", true)
     )
 
-val result = list.filter { it.isActive }
+    val result = list.filter { it.isActive }
 
-    print(result.first().data )
+    print(result.first().data)
 }
 
 private data class Data(val data: String, val isActive: Boolean)

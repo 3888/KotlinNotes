@@ -193,7 +193,7 @@ private fun replaceAllBrackets() {
     * */
     val string = "{[Condition(type=DOLS, value=test test)]}"
         .replace("value=", "")
-        .replace(Regex("[\\(\\)\\]\\[\\{\\}]"),"")
+        .replace(Regex("[\\(\\)\\]\\[\\{\\}]"), "")
 
     println(string)
 

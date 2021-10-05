@@ -9,13 +9,13 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    isNullOrEmptyNameVisible()
-    take()
-    takeLast()
+//    take()
+//    takeLast()
 //    replace()
 //    feedTheFish()
 //    println("\nYour fortune is: ${getFortune()}")
 //    maxOf(20, 30)
-//    takeAfter()
+    takeAfter()
 //    takeAndAppend()
 //    joinToString()
 //    nullToString()
@@ -23,7 +23,7 @@ fun main() {
 //    nullOrEmptyVSNullOrBlank()
 
 //    multiString_trimIndent()
-    multiString_trimMargin()
+//    multiString_trimMargin()
 
 //    stringToNumber()
 

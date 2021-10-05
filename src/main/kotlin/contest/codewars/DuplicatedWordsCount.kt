@@ -1,4 +1,4 @@
-package codewars
+package contest.codewars
 
 import java.util.*
 

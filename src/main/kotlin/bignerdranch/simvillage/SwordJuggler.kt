@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
 }
 
 fun proficiencyCheck(swordsJuggling: Int?) {
-    checkNotNull(swordsJuggling, {"com.bignerdranch.nyethack.Player cannot juggle swords"})
+    checkNotNull(swordsJuggling, { "com.bignerdranch.nyethack.Player cannot juggle swords" })
 }
 
 fun juggleSwords(swordsJuggling: Int) {

@@ -11,7 +11,7 @@ fun main() {
     println(listAny.customLambdaFilterGeneric { it != null })
 
     val listString = listOf("Hi", "Hello", "Hola")
-    println(listString.customLambdaFilterGenericRestricted { it.isNotEmpty()})
+    println(listString.customLambdaFilterGenericRestricted { it.isNotEmpty() })
 }
 
 private fun List<Int>.customLambdaFilter(filterFunction: (Int) -> (Boolean)): List<Int> {

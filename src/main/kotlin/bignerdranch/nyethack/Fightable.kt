@@ -11,5 +11,6 @@ interface Fightable {
         get() = (0 until diceCount).map {
             Random().nextInt(diceSides + 1)
         }.sum()
+
     fun attack(opponent: Fightable): Int
 }

@@ -1,4 +1,4 @@
-package codewars
+package contest.codewars
 
 fun main() {
     evaporator(10.0, 10.0, 5.0)
@@ -8,7 +8,7 @@ fun main() {
 private fun evaporator(content: Double, evapPerDay: Double, threshold: Double): Int {
     var gas = content
     var loose = content / 100 * evapPerDay
-    val limit = content /100 * threshold
+    val limit = content / 100 * threshold
     var days = 0
 
     while (gas > limit) {

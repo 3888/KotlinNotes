@@ -3,7 +3,6 @@ package material.basic
 fun main() {
 
 
-
 }
 
 private fun varargParams() {
@@ -45,8 +44,8 @@ Since the second parameter is of the same type as the varargs, the function can�
 When we want to call the function and don’t use named parameters, it doesn’t know when the vararg parameters end.
 */
 fun varargErrorFunction(vararg numbers: Int, numberToFind: Int): Boolean {
-    for(number in numbers) {
-        if(number == numberToFind) {
+    for (number in numbers) {
+        if (number == numberToFind) {
             return true
         }
     }

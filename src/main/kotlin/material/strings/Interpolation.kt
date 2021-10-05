@@ -8,7 +8,7 @@ fun main() {
     bigDecimalCutPlus()
 }
 
-private fun bigDecimalCutPlus(){
+private fun bigDecimalCutPlus() {
     val number = 123.235235
     val decimalFormat =
         DecimalFormat("#.#").apply { roundingMode = RoundingMode.HALF_UP }

@@ -1,4 +1,4 @@
-import codewars.duplicateCountSolutionsExample
+import contest.codewars.duplicateCountSolutionsExample
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

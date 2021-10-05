@@ -3,7 +3,8 @@ package material.annotations
 //import kotlin.reflect.full.declaredMemberFunctions
 //import kotlin.reflect.full.findAnnotation
 
-@ImAPlant class Plant {
+@ImAPlant
+class Plant {
     fun trim() {}
     fun fertilize() {}
 
