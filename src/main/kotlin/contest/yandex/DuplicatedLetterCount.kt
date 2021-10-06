@@ -1,8 +1,10 @@
 package contest.yandex
 
 fun main(args: Array<String>) {
-    val j = readLine()!!
-    val s = readLine()!!
+    val j = "abc"
+//        readLine()!!
+    val s = "aaabbbcccddd"
+//        readLine()!!
 
     var result = 0
     for (c in s) {
