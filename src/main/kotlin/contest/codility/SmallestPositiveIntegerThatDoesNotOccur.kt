@@ -32,7 +32,7 @@ fun solution(arr: IntArray): Int {
     for (i in 0 until newArray.size) {
         val current = newArray[i]
         val previous = if (i - 1 > 0) newArray[i - 1] else null
-//        println("${curren     t} and ${previous}")
+//        println("${current} and ${previous}")
 
         if (previous != null && current - previous > 1) {
 //            println("Heelloo ${previous + 1}")
