@@ -1,15 +1,49 @@
 package contest.codility
 
+import java.lang.reflect.Array
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 fun main() {
-    println(solutionArrays(intArrayOf(-1, 3, 6)))
-    println(solutionCollections(intArrayOf(1, 3, 6, 4, 1, 2, 8)))
+//    println(
+//        solutionArrays(
+////        intArrayOf(1, 2, 3)
+//            intArrayOf(1, 3, 6, 4, 1, 2)
+//        )
+//    )
+
+    println(
+        solutionCollections(
+            intArrayOf(1, 2, 3)
+//            intArrayOf(1, 3, 6, 4, 1, 2)
+            //            intArrayOf(-1, -3)
+        )
+    )
+
+//    println(solution(intArrayOf(-1, 3, 6)))
 }
 
-private fun solutionArrays(array: IntArray): Int {
+fun solution(arr: IntArray): Int {
+    val newArray = arr.sortedArray().filterNot { it < 1 }
+
+    if (newArray.size == 0) return 1
+
+    for (i in 0 until newArray.size) {
+        val current = newArray[i]
+        val previous = if (i - 1 > 0) newArray[i - 1] else null
+//        println("${curren     t} and ${previous}")
+
+        if (previous != null && current - previous > 1) {
+//            println("Heelloo ${previous + 1}")
+            return@solution (previous + 1)
+        }
+
+    }
+    return newArray[newArray.size - 1] + 1
+}
+
+private fun solutionArrays(array: IntArray): Int { // TODO wrong
     Arrays.sort(array)
 
     val minArrayValue = array[0]
@@ -37,13 +71,9 @@ private fun solutionArrays(array: IntArray): Int {
 }
 
 private fun solutionCollections(array: IntArray): Int {
-    var maxArrayValue = 0
-    var minArrayValue = 0
-    for (i in array) {
-        if (i > maxArrayValue) maxArrayValue = i
-        if (minArrayValue == 0) minArrayValue = i
-        if (i < minArrayValue) minArrayValue = i
-    }
+    Arrays.sort(array)
+    val minArrayValue = array[0]
+    val maxArrayValue = array[array.size - 1]
 
     val positiveValues = mutableListOf<Int>()
 
@@ -54,6 +84,10 @@ private fun solutionCollections(array: IntArray): Int {
     val test: ArrayList<Int> = array.toCollection(ArrayList())
 
     positiveValues.removeAll(test)
+
+    if (positiveValues.size == 0) return array[array.size - 1] + 1
+
+    if (Collections.min(positiveValues) < 0) return 1
 
     return Collections.min(positiveValues)
 }
