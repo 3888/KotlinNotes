@@ -17,10 +17,10 @@ fun main() {
 
 //    singleSymbol()
 //    zeroAndMoreSymbol()
-    oneAndMoreSymbol()
+//    oneAndMoreSymbol()
 //    zeroOrOneSymbol()
 
-//    quantificationNTimes()
+    quantificationNTimes()
 
 //    symbolFromRange()
 //    symbolNotFromRange()
@@ -41,7 +41,7 @@ fun main() {
 //    firstLetterIsCapital()
 
 //    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
-    replaceAllBrackets()
+//    replaceAllBrackets()
 
 
 }
@@ -88,7 +88,7 @@ private fun oneAndMoreSymbol() {
 private fun quantificationNTimes() {
 //    {n} - n раз
     kotlinRegex("aa", "a{2}")
-    kotlinRegex("aaaa", "a{2}+") // no (((
+    kotlinRegex("aaaa", "a+{2}")
 }
 
 private fun symbolFromRange() {
