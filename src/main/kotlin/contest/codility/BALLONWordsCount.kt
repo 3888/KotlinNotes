@@ -4,7 +4,7 @@ fun main() {
     println(solution(""))
 }
 
-fun solution(string: String): Int {
+private fun solution(string: String): Int {
     val charList: MutableList<Char> =
         "BALLOON1BALLOONN2BALLOON3"
 //        "BAONXXOLL"
