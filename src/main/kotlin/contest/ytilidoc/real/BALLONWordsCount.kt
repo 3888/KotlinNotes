@@ -1,4 +1,4 @@
-package contest.codility
+package contest.ytilidoc.real
 
 fun main() {
     println(solution(""))

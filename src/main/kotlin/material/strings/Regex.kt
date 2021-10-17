@@ -22,7 +22,7 @@ fun main() {
 
 //    quantificationNTimes()
 
-    symbolFromRange()
+//    symbolFromRange()
 //    symbolNotFromRange()
 
 //    startOfTheLine()
@@ -33,7 +33,7 @@ fun main() {
 //    wordBoundary()
 //    NoWordBoundary()
 
-//    anyFigure()
+    anyFigure()
 //    anyNonFigure()
 //    wordCharacter()
 //    nonWordCharacter()
@@ -97,12 +97,13 @@ private fun quantificationNTimes() {
 
 private fun symbolFromRange() {
 //    [] - любой из указанных содержится
-    kotlinRegex("EYZX", "[a-z]+")
-    kotlinRegex("gweEYZX", "[A-Z]+")
-    kotlinRegex("gweEYZX", "[a-zA-Z]+")
-    kotlinRegex("gweEYZX123", "[a-zA-Z0-9]+")
-    kotlinRegex("22354", "[1234567890]+")
-    kotlinRegex("22354", "[0-9]+")
+//    kotlinRegex("EYZX", "[a-z]+")
+//    kotlinRegex("gweEYZX", "[A-Z]+")
+//    kotlinRegex("gweEYZX", "[a-zA-Z]+")
+//    kotlinRegex("gweEYZX123", "[a-zA-Z0-9]+")
+//    kotlinRegex("22354", "[1234567890]+")
+//    kotlinRegex("22354", "[0-9]+")
+    kotlinRegex("-2345345", "-[0-9]+") // All negative and positive
 //    kotlinRegex("22354", "[1-0]+") // Error PatternSyntaxException
 }
 
@@ -149,9 +150,11 @@ private fun NoWordBoundary() {
 
 private fun anyFigure() {
 //    \d - любая цифра equal to [0-9]
-    kotlinRegex("1", "\\d")
-    kotlinRegex("Y", "\\d")
-    kotlinRegex("123", "\\d\\d\\d")
+//    kotlinRegex("1", "\\d")
+//    kotlinRegex("Y", "\\d")
+//    \d - указанное колличесво цифр equal to [0-9]
+//    kotlinRegex("123", "\\d\\d\\d")
+//    kotlinRegex("123", "\\d\\d")
 
 }
 

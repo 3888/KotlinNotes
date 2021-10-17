@@ -21,8 +21,7 @@ fun main() {
 //        array
 //    }
 //
-    val area = maxArea()
-    println(area);
+    println(maxArea())
 }
 
 private fun maxArea(

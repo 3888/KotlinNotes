@@ -1,6 +1,4 @@
-package contest.codility
-
-import kotlin.math.max
+package contest.ytilidoc
 
 fun main() {
     println(solution(1123212))

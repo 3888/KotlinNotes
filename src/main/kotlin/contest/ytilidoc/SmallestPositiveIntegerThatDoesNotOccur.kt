@@ -1,6 +1,5 @@
-package contest.codility
+package contest.ytilidoc
 
-import java.lang.reflect.Array
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -14,29 +13,34 @@ fun main() {
 //    )
 
     println(
-        solutionCollections(
-            intArrayOf(1, 2, 3)
+//        solution(
+            solutionCollections(
+//            intArrayOf(1, 2, 3)
 //            intArrayOf(1, 3, 6, 4, 1, 2)
-            //            intArrayOf(-1, -3)
+            intArrayOf(1, 3, 6, 4, 1, 5, 2, 7, 9, 11, 8)
+//            intArrayOf(-1, -3)
         )
     )
 
 //    println(solution(intArrayOf(-1, 3, 6)))
 }
 
-fun solution(arr: IntArray): Int {
+private fun solution(arr: IntArray): Int {
     val newArray = arr.sortedArray().filterNot { it < 1 }
+//    println(newArray)
+    if (newArray.isEmpty()) return 1
 
-    if (newArray.size == 0) return 1
-
-    for (i in 0 until newArray.size) {
+//    println(newArray.indices)
+    for (i in newArray.indices) {
+//        println(i)
         val current = newArray[i]
+//        println("current $current")
         val previous = if (i - 1 > 0) newArray[i - 1] else null
-//        println("${current} and ${previous}")
+//        println("previous $previous")
 
         if (previous != null && current - previous > 1) {
-//            println("Heelloo ${previous + 1}")
-            return@solution (previous + 1)
+            println("current - previous = ${current - previous}")
+            return (previous + 1)
         }
 
     }
