@@ -1,4 +1,5 @@
 @file:JvmName("Hero")
+
 package bignerdranch.interop
 
 import bignedranch.interop.Jhava

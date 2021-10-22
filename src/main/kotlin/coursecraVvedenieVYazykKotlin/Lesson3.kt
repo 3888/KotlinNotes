@@ -1,7 +1,7 @@
 package coursecraVvedenieVYazykKotlin
 
 fun main() {
-    println(isCoPrime(50,10))
+    println(isCoPrime(50, 10))
 }
 
 fun isCoPrime(m: Int, n: Int): Int {

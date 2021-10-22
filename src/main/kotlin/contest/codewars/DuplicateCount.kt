@@ -1,4 +1,4 @@
-package codewars
+package contest.codewars
 
 /*
 https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1/train/kotlin
@@ -55,14 +55,14 @@ private fun duplicateCountMy(text: String): Int {
     return occursDuplicateCountList.size
 }
 
- fun duplicateCountSolutionsExample(text: String) = text
+fun duplicateCountSolutionsExample(text: String) = text
 //    .groupBy { it.toLowerCase() }
     .groupBy(Char::toLowerCase)
     .count { it.value.count() > 1 }
 
- fun duplicateEachCount(text: String): Int {
+fun duplicateEachCount(text: String): Int {
     println(text)
-    var char1  = ""
+    var char1 = ""
     val test = text
         .map { char ->
             char1 = char.toString()

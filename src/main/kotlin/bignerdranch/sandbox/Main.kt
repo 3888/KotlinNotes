@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
         Fedora(
             "a generic-looking fedora",
             15
-        ),  Fedora(
+        ), Fedora(
             "a dazzling magenta fedora",
             25
         )

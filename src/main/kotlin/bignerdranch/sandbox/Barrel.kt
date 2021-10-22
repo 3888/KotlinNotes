@@ -11,9 +11,9 @@ fun main() {
     var lootBarrel: Barrel<Loot> = Barrel(Coin(15))
 
 //    lootBarrel = fedoraBarrel // ERROR Type mismatch.
-   /*
-   при этом Loot вполне можно присвоить экземпляр Fedora
-    */
+    /*
+    при этом Loot вполне можно присвоить экземпляр Fedora
+     */
     var loot: Loot = Fedora("a generic-looking fedora", 15) // Нет ошибки
 
 //    fedoraBarrel = lootBarrel // ERROR Type mismatch.

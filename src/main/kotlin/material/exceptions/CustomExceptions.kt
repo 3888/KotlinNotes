@@ -1,7 +1,7 @@
 package material.exceptions
 
 fun main() {
-    
+
     throwCustomException()
 
 }
@@ -13,4 +13,4 @@ private fun throwCustomException() {
 }
 
 class UnskilledSwordJugglerException() :
-        IllegalStateException("Player cannot juggle swords")
+    IllegalStateException("Player cannot juggle swords")

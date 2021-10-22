@@ -10,14 +10,14 @@ https://regex101.com/
 class Regex
 
 fun main() {
-//    val input = "Tonny'Stark"
-//    val regex = "[A-Za-z'-]+"
+    val input = "Tonny'Stark"
+    val regex = "[A-Za-z'-]+"
 //    kotlinRegex(input, regex)
 //    matcher(input, regex)
 
 //    singleSymbol()
 //    zeroAndMoreSymbol()
-    oneAndMoreSymbol()
+//    oneAndMoreSymbol()
 //    zeroOrOneSymbol()
 
 //    quantificationNTimes()
@@ -33,7 +33,7 @@ fun main() {
 //    wordBoundary()
 //    NoWordBoundary()
 
-//    anyFigure()
+    anyFigure()
 //    anyNonFigure()
 //    wordCharacter()
 //    nonWordCharacter()
@@ -41,7 +41,7 @@ fun main() {
 //    firstLetterIsCapital()
 
 //    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
-    replaceAllBrackets()
+//    replaceAllBrackets()
 
 
 }
@@ -56,10 +56,14 @@ private fun matcher(input: String, regex: String) {
     )
 }
 
-private fun kotlinRegex(input: String, regex: String) {
+fun kotlinRegex(input: String, regex: String) {
     println(
-        "kotlinRegex input $input regex $regex ${Regex(regex).matches(input)}"
+        "kotlinRegex input *$input* regex is *$regex* result = ${Regex(regex).matches(input)}"
     )
+}
+
+fun checkByRegex(input: String, regex: String): Boolean {
+    return Regex(regex).matches(input)
 }
 
 private fun singleSymbol() {
@@ -88,16 +92,18 @@ private fun oneAndMoreSymbol() {
 private fun quantificationNTimes() {
 //    {n} - n раз
     kotlinRegex("aa", "a{2}")
-    kotlinRegex("aaaa", "a{2}+") // no (((
+    kotlinRegex("aaaa", "a+{2}")
 }
 
 private fun symbolFromRange() {
 //    [] - любой из указанных содержится
-    kotlinRegex("EYZX", "[a-z]+")
-    kotlinRegex("gweEYZX", "[A-Z]+")
-    kotlinRegex("gweEYZX", "[a-zA-Z]+")
-    kotlinRegex("22354", "[1234567890]+")
-    kotlinRegex("22354", "[0-9]+")
+//    kotlinRegex("EYZX", "[a-z]+")
+//    kotlinRegex("gweEYZX", "[A-Z]+")
+//    kotlinRegex("gweEYZX", "[a-zA-Z]+")
+//    kotlinRegex("gweEYZX123", "[a-zA-Z0-9]+")
+//    kotlinRegex("22354", "[1234567890]+")
+//    kotlinRegex("22354", "[0-9]+")
+    kotlinRegex("-2345345", "-[0-9]+") // All negative and positive
 //    kotlinRegex("22354", "[1-0]+") // Error PatternSyntaxException
 }
 
@@ -144,9 +150,11 @@ private fun NoWordBoundary() {
 
 private fun anyFigure() {
 //    \d - любая цифра equal to [0-9]
-    kotlinRegex("1", "\\d")
-    kotlinRegex("Y", "\\d")
-    kotlinRegex("123", "\\d\\d\\d")
+//    kotlinRegex("1", "\\d")
+//    kotlinRegex("Y", "\\d")
+//    \d - указанное колличесво цифр equal to [0-9]
+//    kotlinRegex("123", "\\d\\d\\d")
+//    kotlinRegex("123", "\\d\\d")
 
 }
 
@@ -193,7 +201,7 @@ private fun replaceAllBrackets() {
     * */
     val string = "{[Condition(type=DOLS, value=test test)]}"
         .replace("value=", "")
-        .replace(Regex("[\\(\\)\\]\\[\\{\\}]"),"")
+        .replace(Regex("[\\(\\)\\]\\[\\{\\}]"), "")
 
     println(string)
 

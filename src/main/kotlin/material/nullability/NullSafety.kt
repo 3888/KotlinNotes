@@ -27,7 +27,9 @@ Elvis operator "?:" it's like Java ternary operator
 */
 //    elvisOperator()
 //    elvisReturn()
-    letElvis()
+//    letElvis()
+
+    collectionsOfNullableType()
 
 }
 
@@ -165,6 +167,15 @@ private fun safeCast() {
 private fun collectionsOfNullableType() {
     val nullableList: List<Int?> = listOf(1, 2, null, 4)
     val intList: List<Int> = nullableList.filterNotNull()
+    val nullableListWithNullable: List<Int?>? = null
+    val nullableListWithNullable2: List<Int?>? = listOf(null, null)
+
+    println(nullableList)
+    println(intList)
+    println(nullableListWithNullable)
+    println(nullableListWithNullable?.filterNotNull())
+
+    nullableListWithNullable2?.toMutableList()
 
 }
 

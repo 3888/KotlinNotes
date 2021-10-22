@@ -209,7 +209,6 @@ private fun reduce() {
 }
 
 
-
 private fun nullableCollectionsGetOrElse() {
 //    val nullableList: List<String>? = listOf("A", "B", "C")
     val nullableList: List<String>? = null

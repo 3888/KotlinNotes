@@ -81,7 +81,7 @@ fun hashCodeStandardClass() {
 }
 
 fun hashCodeOverridedClass() {
-      val personOverrided = PersonOverrided("Adam", 25)
+    val personOverrided = PersonOverrided("Adam", 25)
     println("personOverrided ${personOverrided.hashCode()}")
 
     val hashSet2 = hashSetOf(personOverrided
@@ -103,7 +103,7 @@ fun hashCodeDataClass() {
     val personDataClass = PersonDataClass("Adam", 27)
     println("personDataClass ${personDataClass.hashCode()}")
     val hashSet4 = hashSetOf(personDataClass
-        .also {  println("hashSet4 personDataClass ${it.hashCode()}") })
+        .also { println("hashSet4 personDataClass ${it.hashCode()}") })
     println(hashSet4.contains(personDataClass)) // true
     val hashSet5 = hashSetOf(PersonDataClass("Adam", 27).also {
         println("hashSet4 personDataClass ${it.hashCode()}")

@@ -9,19 +9,22 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    isNullOrEmptyNameVisible()
-    take()
-    takeLast()
+//    take()
+//    takeLast()
 //    replace()
 //    feedTheFish()
 //    println("\nYour fortune is: ${getFortune()}")
 //    maxOf(20, 30)
-//    takeAfter()
+    takeAfter()
 //    takeAndAppend()
 //    joinToString()
 //    nullToString()
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
-//    multiString()
+
+//    multiString_trimIndent()
+//    multiString_trimMargin()
+
 //    stringToNumber()
 
 //    splitDelimiters()
@@ -271,15 +274,25 @@ private fun nullToString() {
 //    println(test is String) // false
 }
 
-private fun multiString() {
+private fun multiString_trimIndent() {
     val name = "Aramis"
     print(
         """
-        $name you name
+        The $name name
         contains ${name.length} letters
     """.trimIndent()
     )
 }
+
+private fun multiString_trimMargin() {
+    println(
+        """This is the first line
+|and this is the second one
+|and this is the third one
+|...""".trimMargin()
+    )
+}
+
 
 private fun stringToNumber() {
     val number = "123"

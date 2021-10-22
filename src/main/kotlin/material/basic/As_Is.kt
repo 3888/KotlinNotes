@@ -10,12 +10,12 @@ fun main() {
 
 private fun isExample() {
     val value =
-            when (Random.nextInt(0, 3)) {
-                0 -> ""
-                1 -> 0
-                2 -> 0L
-                else -> 0.0
-            }
+        when (Random.nextInt(0, 3)) {
+            0 -> ""
+            1 -> 0
+            2 -> 0L
+            else -> 0.0
+        }
 
     when (value) {
         is String -> print(value::class.simpleName)
