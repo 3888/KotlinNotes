@@ -1,4 +1,4 @@
-package kotlin_bootcamp.aquarium.buildings
+package bootcamp.aquarium.buildings
 
 
 sealed class BaseBuildingMaterial(open val numberNeed: Int = 1)

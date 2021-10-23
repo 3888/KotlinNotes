@@ -1,4 +1,4 @@
-package kotlin_bootcamp.aquarium
+package bootcamp.aquarium
 
 class FishConstructor(val friendly: Boolean = true, volumeNeeded: Int) {
     val size: Int

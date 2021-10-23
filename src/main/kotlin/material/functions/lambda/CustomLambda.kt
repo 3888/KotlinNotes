@@ -1,4 +1,4 @@
-package material.functions.custom.lambda
+package material.functions.lambda
 
 fun main() {
 

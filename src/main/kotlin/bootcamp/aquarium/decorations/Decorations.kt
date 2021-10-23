@@ -1,4 +1,4 @@
-package kotlin_bootcamp.aquarium.decorations
+package bootcamp.aquarium.decorations
 
 fun main(args: Array<String>) {
     makeDecorations()

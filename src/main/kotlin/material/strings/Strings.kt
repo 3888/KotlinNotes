@@ -1,6 +1,6 @@
 package material.strings
 
-import kotlin_bootcamp.aquarium.Fish
+import bootcamp.aquarium.Fish
 import java.util.*
 
 

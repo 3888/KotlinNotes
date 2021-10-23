@@ -1,6 +1,6 @@
-package kotlin_bootcamp.aquarium
+package bootcamp.aquarium
 
-import kotlin_bootcamp.aquarium.spices.SimpleSpice
+import bootcamp.aquarium.spices.SimpleSpice
 import kotlin.math.PI
 
 open class Aquarium(var lengthBasic: Int = 100, var widthBasic: Int = 20, var heightBasic: Int = 40) {

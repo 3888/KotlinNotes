@@ -1,4 +1,4 @@
-package kotlin_bootcamp.L6
+package bootcamp.l6
 
 class Game {
     var path = mutableListOf<Direction>(Direction.START)

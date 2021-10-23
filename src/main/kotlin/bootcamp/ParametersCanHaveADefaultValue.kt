@@ -1,4 +1,4 @@
-package kotlin_bootcamp
+package bootcamp
 
 fun main(args: Array<String>) {
 

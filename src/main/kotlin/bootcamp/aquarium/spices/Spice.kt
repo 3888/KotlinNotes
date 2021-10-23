@@ -1,4 +1,4 @@
-package kotlin_bootcamp.aquarium.spices
+package bootcamp.aquarium.spices
 
 import material.constants.adt.enum.EnumColors
 

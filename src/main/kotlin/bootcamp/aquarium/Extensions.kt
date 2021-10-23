@@ -1,4 +1,4 @@
-package kotlin_bootcamp.aquarium
+package bootcamp.aquarium
 
 fun main() {
     extensionsExample()

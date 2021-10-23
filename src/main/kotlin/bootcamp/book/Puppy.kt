@@ -1,4 +1,4 @@
-package kotlin_bootcamp.book
+package bootcamp.book
 
 import java.util.*
 
