@@ -1,4 +1,4 @@
-package contest.ytilidoc
+package contest
 
 
 fun main() {

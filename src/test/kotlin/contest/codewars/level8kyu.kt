@@ -1,5 +1,6 @@
 package contest.codewars
 
+import contest.codewars.level6kyu.multiplesOf3Or5
 import contest.codewars.level8kyu.digitize
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

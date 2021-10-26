@@ -2,16 +2,16 @@ package contest.codewars.level8kyu
 
 fun main() {
 
-    digitize(1234567890123456789)
+//    digitize(1234567890123456789)
 //    reversedLongToArrayMy(1234567890123456789)
-        .forEach {
-            println(it)
-        }
+//        .forEach {
+//            println(it)
+//        }
 }
 
 fun digitize(n: Long): IntArray = n.toString().map(Character::getNumericValue).toIntArray().reversedArray()
 
-private fun reversedLongToArrayMy(n: Long): IntArray {
+private fun reverseLongToArrayMy(n: Long): IntArray {
     /*
      https://www.codewars.com/kata/5583090cbe83f4fd8c000051/train/kotlin
      https://www.codewars.com/kata/5583090cbe83f4fd8c000051/solutions/kotlin
