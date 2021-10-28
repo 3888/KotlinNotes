@@ -1,4 +1,4 @@
-package codewars.level5kyu
+package contest.codewars.level5kyu
 
 
 fun main() {
