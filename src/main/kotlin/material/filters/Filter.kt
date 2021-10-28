@@ -2,8 +2,14 @@ package material.filters
 
 
 fun main() {
-    filterData()
+//    filterData()
+    filterNot()
 
+}
+
+fun filterNot() {
+    val newArray = intArrayOf(1, 3, 6, -4, -1, -5, 2, 7, 9, 11, 8).sortedArray().filterNot { it < 1 }
+    println(newArray)
 }
 
 private fun todo() {

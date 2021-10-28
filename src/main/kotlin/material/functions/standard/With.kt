@@ -1,6 +1,6 @@
 package material.functions.standard
 
-import kotlin_bootcamp.aquarium.Fish
+import bootcamp.aquarium.Fish
 
 fun main() {
     fishExamplesWith()
