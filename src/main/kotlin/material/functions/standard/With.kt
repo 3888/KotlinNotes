@@ -4,7 +4,7 @@ import bootcamp.aquarium.Fish
 
 fun main() {
     fishExamplesWith()
-    fishExamplesMyWith()
+//    fishExamplesMyWith()
 }
 
 private fun weNeedObjectReceiverAsAFirstArg() {
@@ -16,11 +16,15 @@ private fun weNeedObjectReceiverAsAFirstArg() {
 
 private fun fishExamplesWith() {
     val fish = Fish("splashy")
-    println(fish.hashCode())
+
     with(fish.name) {
+        println("the name was $this")
         println(capitalize())
         println(hashCode())
     }
+
+    println(fish.hashCode())
+    println(fish.name)
 }
 
 private fun fishExamplesMyWith() {
