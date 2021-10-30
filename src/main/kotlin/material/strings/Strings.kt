@@ -15,9 +15,9 @@ fun main() {
 //    feedTheFish()
 //    println("\nYour fortune is: ${getFortune()}")
 //    maxOf(20, 30)
-    takeAfter()
+//    takeAfter()
 //    takeAndAppend()
-//    joinToString()
+    joinToString()
 //    nullToString()
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
@@ -27,8 +27,8 @@ fun main() {
 
 //    stringToNumber()
 
-//    splitDelimiters()
-//    splitRegex()
+    splitDelimiters()
+    splitRegex()
     // TODO    https://bezkoder.com/kotlin-split-string-example/
 
 }

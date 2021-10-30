@@ -1,7 +1,7 @@
 package material.collections
 
-import contest.codewars.level7kyu.duplicateCountSolutionsExample
-import contest.codewars.level7kyu.duplicateEachCount
+import contest.codewars.level6kyu.duplicateCountSolutionsExample
+import contest.codewars.level6kyu.duplicateEachCount
 
 fun main() {
 //    groupBy()
