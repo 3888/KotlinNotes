@@ -3,12 +3,12 @@ package contest
 import java.util.regex.Pattern
 
 fun main() {
+//    stringToMapAndReverseToStringMy()
     stringToMapAndReverseToString()
-
 }
 
 
-private fun stringToMapAndReverseToString() {
+private fun stringToMapAndReverseToStringMy() {
 //    0=1334:5678:90%1=644:111:000//
 //    сделать из нее Map<Int, List<String>> и обратно точно такой-же String
 //
@@ -44,6 +44,27 @@ private fun stringToMapAndReverseToString() {
     }
 
     println(stringFromMap.substring(0, stringFromMap.length - 1))
+}
+
+private fun stringToMapAndReverseToString() {
+    val permits = "0=1334:5678:90%1=644:111:000"
+
+ val  map =
+    permits.split("%")
+        .map { it.split("=") }
+        .map { listOf(it.first(), it.last()) }
+        .associateBy({ it.first().toInt() }, { it.last().split(":") })
+
+    println(map)
+
+   println(
+       buildString {
+        map.asIterable().forEachIndexed { index, entry ->
+            append("$index=${entry.value.joinToString(":")}")
+            if (index != permits.length - 1) append("%")
+        }
+    }
+   )
 }
 
 fun CharSequence.indicesOf(input: String): List<Int> =
