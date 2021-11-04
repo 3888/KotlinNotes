@@ -11,8 +11,8 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    repeatExample()
-    //    joinToString()
-    repeatAndTransform()
+//    joinToString()
+//    repeatAndTransform()
 
 //    isNullOrEmptyNameVisible()
 //    take()
@@ -38,7 +38,6 @@ fun main() {
 // TODO    https://bezkoder.com/kotlin-split-string-example/
 
 }
-
 
 private fun getFortune(): String {
     val fortunes = listOf(
@@ -103,7 +102,6 @@ private fun fishFood(day: String): String {
     }
 }
 
-
 private fun interpolation() {
     val name: String = "3888"
     val first = 1
@@ -154,6 +152,16 @@ private fun repeatAndTransform() {
     val string = "Hello"
     val result = (1..count).joinToString("") { string.reversed() }
     println(result)
+}
+
+private fun substring() {
+    val string = "1234567890"
+
+    println(string.substring(3))
+    println(string.substring(0, 5))
+    println(string.substringBefore("5"))
+    println(string.substringAfter("5"))
+
 }
 
 private fun isNullOrEmptyNameVisible() {
