@@ -1,5 +1,8 @@
 package material.collections
 
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 fun main() {
 
@@ -14,6 +17,9 @@ fun main() {
 
 //    listContains()
 //    listContainsAll()
+
+//    collectionsJava()
+    collectionsKotlin()
 
 //    listOf()
 //    map()
@@ -30,9 +36,24 @@ fun main() {
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 
-    asReversed()
+//    asReversed()
 }
 
+fun collectionsJava() {
+    println(Collections.max(listOf(12, 3, 4, 5)))
+    println(Collections.min(listOf(12, 3, 4, 5)))
+}
+
+fun collectionsKotlin() {
+    println("minOrNull " + listOf(1, 2, 3, 4).minOrNull())
+    println("first " + listOf(1, 2, 3, 4).first())
+    println("last " + listOf(1, 2, 3, 4).last())
+    println("sum " + (1..4).sum())
+
+
+}
+
+fun findSmallestInt(nums: List<Int>): Int = Collections.min(nums)
 
 private fun asReversed() {
     val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3)

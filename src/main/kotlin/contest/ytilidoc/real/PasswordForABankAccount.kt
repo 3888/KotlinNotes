@@ -1,5 +1,6 @@
 package contest.ytilidoc.real
 
+import material.primitives.isEven
 import material.strings.checkByRegex
 
 fun main() {
@@ -43,6 +44,3 @@ private fun solutionWorkBook(
     return maxLength
 }
 
-private fun isEven(num: Int): Boolean {
-    return num % 2 == 0
-}
