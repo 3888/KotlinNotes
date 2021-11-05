@@ -1,8 +1,11 @@
 package material.collections
 
 import java.util.*
-import kotlin.collections.ArrayList
 
+
+/*
+http://developer.alexanderklimov.ru/android/kotlin/collection.php
+* */
 
 fun main() {
 //    collectionsJava()
@@ -15,6 +18,7 @@ fun main() {
 //    chunked()
 //    flatten()
 //    reduce()
+    reduceRigth()
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -129,14 +133,77 @@ private fun flatten() {
 }
 
 private fun reduce() {
+    println(
+        listOf("1", "2", "3", "4", "5")
+            .reduce { acc, it ->
+                "$it $acc"
+/*
+acc - 1-й элемент, аккумулятор
+it  - следующая строка из листа
+(it = 2) (acc = 1)
+(it = 3) (acc = 2 1)
+(it = 4) (acc = 3 2 1)
+(it = 5) (acc = 4 3 2 1)
+(it = 6) (acc = 5 4 3 2 1)
+(it = 6) (acc = 5 4 3 2 1)
+ */
+
+//                "$acc $it"
+/*
+acc - 1-й элемент, аккумулятор
+it  - следующая строка из листа
+(acc = 1) (it = 2)
+(acc = 1 2) (it = 3)
+(acc = 1 2 3) (it = 4)
+(acc = 1 2 3 4) (it = 5)
+ */
+            }
+    )
+
+
+    /*
+https://www.baeldung.com/kotlin/fold-vs-reduce
+https://metanit.com/kotlin/tutorial/9.8.php
+* */
+
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
 
     println(list)
     val flattenListReduce = list
         .flatten()
-        .reduce { acc, s -> "$acc & $s" }
+        .reduce { accumulator, string -> "$accumulator & $string" }
 
     println(flattenListReduce)
+
+
+}
+
+private fun reduceRigth() {
+    val reduceRight =      listOf("1", "2", "3", "4", "5")
+            .reduceRight { acc, it -> "$acc $it" }
+
+    println(reduceRight)
+/*
+acc - 1-й элемент, аккумулятор
+string  - следующая строка из листа
+(string = 2) (acc = 1)
+(string = 3) (acc = 2 1)
+(string = 4) (acc = 3 2 1)
+(string = 5) (acc = 4 3 2 1)
+(string = 6) (acc = 5 4 3 2 1)
+(string = 6) (acc = 5 4 3 2 1)
+ */
+
+//                "$acc $string"
+/*
+acc - 1-й элемент, аккумулятор
+string  - следующая строка из листа
+(acc = 1) (string = 2)
+(acc = 1 2) (string = 3)
+(acc = 1 2 3) (string = 4)
+(acc = 1 2 3 4) (string = 5)
+ */
+
 }
 
 private fun mutableListAdd() {
