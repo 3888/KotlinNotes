@@ -17,8 +17,8 @@ fun main() {
 //    sortList()
 //    chunked()
 //    flatten()
-//    reduce()
-    reduceRigth()
+    reduce()
+//    reduceRigth()
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -175,12 +175,14 @@ https://metanit.com/kotlin/tutorial/9.8.php
 
     println(flattenListReduce)
 
+    println(intArrayOf(1, 2, 3, 4, 5).reduce(Int::times))
+
 
 }
 
 private fun reduceRigth() {
-    val reduceRight =      listOf("1", "2", "3", "4", "5")
-            .reduceRight { acc, it -> "$acc $it" }
+    val reduceRight = listOf("1", "2", "3", "4", "5")
+        .reduceRight { acc, it -> "$acc $it" }
 
     println(reduceRight)
 /*
