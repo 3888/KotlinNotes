@@ -9,7 +9,7 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 
 fun main() {
 //    collectionsJava()
-//    collectionsKotlin()
+    collectionsKotlin()
 //    listContains()
 //    listContainsAll()
 //    reversedExample()
@@ -17,8 +17,8 @@ fun main() {
 //    sortList()
 //    chunked()
 //    flatten()
-    reduce()
-//    reduceRigth()
+//    reduce()
+//    reduceRight()
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -44,11 +44,20 @@ private fun collectionsJava() {
 }
 
 private fun collectionsKotlin() {
-    println("minOrNull " + listOf(1, 2, 3, 4).minOrNull())
-    println("first " + listOf(1, 2, 3, 4).first())
-    println("last " + listOf(1, 2, 3, 4).last())
-    println("sum " + (1..4).sum())
-    println(listOf("a", "b", "cd").sumBy { it.length }) //chars length of "a b cd" = 4
+//    println("minOrNull " + listOf(1, 2, 3, 4).minOrNull())
+//    println("first " + listOf(1, 2, 3, 4).first())
+//    println("last " + listOf(1, 2, 3, 4).last())
+//    println("sum " + (1..4).sum())
+//    println(listOf("a", "b", "cd").sumBy { it.length }) //chars length of "a b cd" = 4
+    println((listOf("1:0", "2:0", "3:0", "4:0")).sumBy {
+        val (x, y) = it.split(":")
+        when {
+            x > y -> 3
+            x < y -> 0
+            else -> 1
+        }
+    })
+
 
 }
 
@@ -180,7 +189,7 @@ https://metanit.com/kotlin/tutorial/9.8.php
 
 }
 
-private fun reduceRigth() {
+private fun reduceRight() {
     val reduceRight = listOf("1", "2", "3", "4", "5")
         .reduceRight { acc, it -> "$acc $it" }
 

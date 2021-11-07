@@ -1,11 +1,16 @@
 package material.strings
 
+fun main() {
 
+//todo()
+    compareExample()
+
+}
+
+private fun todo() {
 /*
 * https://www.baeldung.com/kotlin-string-comparison
 * */
-fun main() {
-
     val first = "kotlin"
     val second = "kotlin"
     val firstCapitalized = "KOTLIN"
@@ -23,6 +28,17 @@ fun main() {
     val third = String("kotlin".toCharArray())
     println("first == third ${first == third}")
     println("first.equals(third) ${first.equals(third)}")
+}
 
+private fun compareExample() {
+    val arrayNumbers = "0123456789".toByteArray()
+    println(arrayNumbers.contentToString())
+    val binaryNumbers = arrayNumbers.map { Integer.toBinaryString(it.toInt()) }
+    println(binaryNumbers)
+
+    val arrayChars = "ABCDabcd".toByteArray()
+    println(arrayChars.contentToString())
+    val binaryChars = arrayChars.map { Integer.toBinaryString(it.toInt()) }
+    println(binaryChars)
 
 }

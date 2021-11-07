@@ -2,18 +2,11 @@ package contest
 
 
 fun main() {
-
-//    println(factorial(2))
 //    asterisksSeparatedBySpaces(3)
-    triangle(7)
-
+//    triangle(7)
 }
 
-private fun factorial(n: Int): Int {
-    var factorial = 1
-    for (i in 1..n + 1) factorial *= i
-    return factorial
-}
+
 
 private fun asterisksSeparatedBySpaces(heightCount: Int) {
     for (i in 1..heightCount) {

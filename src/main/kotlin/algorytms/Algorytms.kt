@@ -1,7 +1,8 @@
 package algorytms
 
 fun main() {
-    fibonacciFor(10)
+//    fibonacciFor(10)
+    println(factorial(7))
 }
 
 /*
@@ -21,4 +22,11 @@ private fun fibonacciFor(n: Int) {
         t1 = t2
         t2 = sum
     }
+}
+
+
+private fun factorial(n: Int): Int {
+    var factorial = 1
+    for (i in 1..n + 1) factorial *= i
+    return factorial
 }
