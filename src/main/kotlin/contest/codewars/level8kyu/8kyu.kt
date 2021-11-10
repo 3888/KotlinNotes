@@ -9,10 +9,13 @@ fun main() {
 //    println(getAscii3("A".first()))
 }
 
+private fun contains (arr: IntArray, item : Int): Boolean = arr.contains(item)
+private fun contains2(arr: IntArray, item: Int) = item in arr
+val contains = IntArray::contains
+
 private fun getAscii(char: Char): Int = char.toInt()
 private fun getAscii2(char: Char): Int = char.hashCode()
 fun getAscii3(c: Char): Int = c.toByte().toInt()
-
 
 private fun sumOfAllPositive() {
     println(arrayOf(1, 2, 3, 5, -1, -2).filter { it > 0 }.sum())

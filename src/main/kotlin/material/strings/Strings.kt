@@ -11,7 +11,7 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    repeatExample()
-//    joinToString()
+    joinToString()
 //    repeatAndTransform()
 
 //    isNullOrEmptyNameVisible()

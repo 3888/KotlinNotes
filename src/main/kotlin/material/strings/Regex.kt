@@ -2,6 +2,7 @@ package material.strings
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import kotlin.text.Regex
 
 /*
 https://www.youtube.com/watch?v=_pLpx6btq6U
@@ -40,6 +41,9 @@ fun main() {
 
 //    firstLetterIsCapital()
 
+    replaceString("ABCDE", Regex("[aeiouAEIOU]"), "!")
+    replaceRegex("ABCDE", "[aeiouAEIOU]", "!")
+    replaceRegexOptionIgnoreCase("ABCDE", "[aeiou]", "*")
 //    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
 //    replaceAllBrackets()
 
@@ -182,6 +186,15 @@ private fun firstLetterIsCapital() {
     kotlinRegex("test", "[A-Z][A-Za-z'-]+")
     kotlinRegex("Test", "[A-Z][A-Za-z'-]+")
 }
+
+private fun replaceString(string: String, regex: Regex, to: String) =
+    string.replace(regex, to)
+
+private fun replaceRegex(string: String, regex: String, replacement: String) =
+    Regex(regex).replace(string, replacement)
+
+private fun replaceRegexOptionIgnoreCase(string: String, regex: String, to: String) =
+    regex.toRegex(RegexOption.IGNORE_CASE).replace(string, to)
 
 private fun replaceAndRegextoDragonSpeak(phrase: String) =
     phrase.replace(Regex("[aeiou]")) {
