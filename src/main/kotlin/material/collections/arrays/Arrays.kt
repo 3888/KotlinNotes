@@ -11,16 +11,8 @@ fun main() {
 //    arrayToString()
 //    arrayErrors()
 //    sortedArray()
-
-    arrayExample()
-
-}
-
-fun arrayExample() {
-    val array = intArrayOf(1, 2, 3, 5)
-    val valueList: List<Int> = array.map { it * 2 }
-    val valueArray: IntArray = array.map { it * 2 }.toIntArray()
-    val valueArray2: IntArray = IntArray(array.size) { array[it] * 2 }
+//    sortedSet()
+//    arrayExample()
 }
 
 
@@ -28,6 +20,10 @@ private fun sortedArray() {
     val array = intArrayOf(1, 3, 6, 4, 1, 2)
 //    println(Arrays.sort(array)) // Unit
     println(array.sortedArray().contentToString())
+}
+
+private fun sortedSet() {
+    val array = intArrayOf(1, 3, 6, 4, 1, 2)
     println(array.toSortedSet())
 }
 
@@ -51,4 +47,11 @@ private fun arrayToString() {
     val swarm = listOf(fish, plants)
     val bigSwarm = arrayOf(swarm, arrayOf("dolphin", "okra", "whale"))
     println(bigSwarm.contentToString())
+}
+
+fun arrayExample() {
+    val array = intArrayOf(1, 2, 3, 5)
+    val valueList: List<Int> = array.map { it * 2 }
+    val valueArray: IntArray = array.map { it * 2 }.toIntArray()
+    val valueArray2: IntArray = IntArray(array.size) { array[it] * 2 }
 }

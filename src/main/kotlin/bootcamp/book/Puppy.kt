@@ -1,7 +1,6 @@
 package bootcamp.book
 
 import material.Helper
-import java.util.*
 
 fun main() {
     val puppy = Puppy()
