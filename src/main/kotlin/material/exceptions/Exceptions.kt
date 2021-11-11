@@ -1,5 +1,6 @@
 package material.exceptions
 
+import material.Helper
 import java.util.*
 
 fun main() {
@@ -24,7 +25,7 @@ fun main() {
 
 private fun arrayIndexOutOfBoundsException(): String {
     val alphabet = listOf("1", "2", "3")
-    return alphabet[Random().nextInt(10)]
+    return alphabet[Helper.random.nextInt(4, 6)]
 }
 
 private fun notImplementedError(): Nothing = throw NotImplementedError()

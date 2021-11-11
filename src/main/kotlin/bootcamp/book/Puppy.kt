@@ -1,5 +1,6 @@
 package bootcamp.book
 
+import material.Helper
 import java.util.*
 
 fun main() {
@@ -16,7 +17,7 @@ fun main() {
 
 class Puppy() {
     fun playWithBook(book: Book) {
-        book.tornPages(Random().nextInt(12))
+        book.tornPages(Helper.random.nextInt(12))
     }
 }
 

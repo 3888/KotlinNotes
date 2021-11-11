@@ -1,6 +1,7 @@
 package material.strings
 
 import bootcamp.aquarium.Fish
+import material.Helper
 import java.util.*
 
 
@@ -11,7 +12,7 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    repeatExample()
-    joinToString()
+//    joinToString()
 //    repeatAndTransform()
 
 //    isNullOrEmptyNameVisible()
@@ -36,6 +37,8 @@ fun main() {
 //    splitDelimiters()
 //    splitRegex()
 // TODO    https://bezkoder.com/kotlin-split-string-example/
+
+    println(padStartForSingleSymbol(5, 3, '*'))
 
 }
 
@@ -74,7 +77,7 @@ private fun feedTheFish() {
 
 private fun randomDay(): String {
     val week = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-    return week[Random().nextInt(7)]
+    return week[Helper.random.nextInt(7)]
 }
 
 private fun fishFood(day: String): String {
@@ -337,3 +340,6 @@ private fun splitRegex() {
     println(str)
     println(separate1)
 }
+
+private fun padStartForSingleSymbol(input: Any, length: Int, padChar: Char) = input.toString().padStart(length, padChar)
+

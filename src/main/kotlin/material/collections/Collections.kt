@@ -1,6 +1,8 @@
 package material.collections
 
+import material.Helper
 import java.util.*
+import kotlin.random.asKotlinRandom
 
 
 /*
@@ -8,8 +10,11 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 * */
 
 fun main() {
+
+    buildList()
+
 //    collectionsJava()
-    collectionsKotlin()
+//    collectionsKotlin()
 //    listContains()
 //    listContainsAll()
 //    reversedExample()
@@ -37,6 +42,36 @@ fun main() {
 
 
 }
+
+
+@OptIn(ExperimentalStdlibApi::class)
+fun buildList() {
+    val list = listOf('a', 'b')
+
+    val list1 = buildList {
+        add('a')
+        add('b')
+    }
+
+    println(list)
+    println(list1)
+    println(list == list1)
+
+    val phones = buildList {
+        repeat(1) {
+            add("+9 " +
+                    "${Helper.random.nextInt(100, 1000)} " +
+                    "${Helper.random.nextInt(100, 1000)} " +
+                    "${Helper.random.nextInt(0, 100)} " +
+                    (Helper.random.nextInt(0, 100))
+            )
+        }
+    }
+
+    println(phones)
+
+}
+
 
 private fun collectionsJava() {
     println(Collections.max(listOf(12, 3, 4, 5)))
