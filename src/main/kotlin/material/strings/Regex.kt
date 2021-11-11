@@ -34,7 +34,7 @@ fun main() {
 //    wordBoundary()
 //    NoWordBoundary()
 
-    anyFigure()
+//    anyFigure()
 //    anyNonFigure()
 //    wordCharacter()
 //    nonWordCharacter()
@@ -42,13 +42,19 @@ fun main() {
 //    firstLetterIsCapital()
 
     replaceString("ABCDE", Regex("[aeiouAEIOU]"), "!")
-    replaceRegex("ABCDE", "[aeiouAEIOU]", "!")
-    replaceRegexOptionIgnoreCase("ABCDE", "[aeiou]", "*")
+//    replaceRegex("ABCDE", "[aeiouAEIOU]", "!")
+//    replaceRegexOptionIgnoreCase("ABCDE", "[aeiou]", "*")
+
+//    println(regexCount("aaaBBBccc", "a"))
+
 //    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
 //    replaceAllBrackets()
 
 
 }
+
+fun regexCount(string: String, regex: String) = regex.toRegex().findAll(string).count()
+
 
 private fun String.checkRegex() = "[ABC]".toRegex().matches(this)
 
