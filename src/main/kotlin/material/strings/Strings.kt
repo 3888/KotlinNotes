@@ -2,7 +2,6 @@ package material.strings
 
 import bootcamp.aquarium.Fish
 import material.Helper
-import java.util.*
 
 
 fun main() {
@@ -34,11 +33,17 @@ fun main() {
 
 //    stringToNumber()
 
+
+/*
+// TODO    https://bezkoder.com/kotlin-split-string-example/
+ */
 //    splitDelimiters()
 //    splitRegex()
-// TODO    https://bezkoder.com/kotlin-split-string-example/
+//    splitChunked()
+//    splitToSequence()
 
-    println(padStartForSingleSymbol(5, 3, '*'))
+
+//    println(padStartForSingleSymbol(5, 3, '*'))
 
 }
 
@@ -143,6 +148,11 @@ private fun repeatExample() {
 }
 
 private fun joinToString() {
+    println(arrayOf(1, 2, 3, 4).joinToString { "" }) // , , ,
+    println(arrayOf(1, 2, 3, 4).joinToString { it.toString() }) // 1, 2, 3, 4
+    println(arrayOf(1, 2, 3, 4).joinToString("") { it.toString() }) // 1234
+    println(arrayOf(1, 2, 3, 4).joinToString("")) // 1234
+
     val list = listOf(Fish("Flipper"), Fish("Moby Dick"), Fish("Dory"))
     println(list.filter { it.name.contains("i") }.joinToString(" ") { it.name })
 
@@ -340,6 +350,28 @@ private fun splitRegex() {
     println(str)
     println(separate1)
 }
+
+private fun splitChunked() {
+    val str = "qwertyuiop"
+
+    val string = str.chunked(3)
+    println(string)
+}
+
+private fun splitToSequence() {
+    val string = "bitcoin take over the world maybe who knows perhaps"
+    val sequence = string
+//        .splitToSequence(' ')
+        .splitToSequence(" ")
+    println(sequence.joinToString())
+
+    val collection = listOf('a', 'b', 'c')
+    val sequence2 = collection.asSequence()
+
+    println(sequence2.joinToString()) // a, b, c
+
+}
+
 
 private fun padStartForSingleSymbol(input: Any, length: Int, padChar: Char) = input.toString().padStart(length, padChar)
 

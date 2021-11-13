@@ -13,6 +13,13 @@ fun main() {
 //    sortedArray()
 //    sortedSet()
 //    arrayExample()
+    arrayRemoveDuplicates()
+}
+
+fun arrayRemoveDuplicates() {
+    val array = arrayOf(1, 2, 3, 4, 5, 6, 1, 1, 2, 3, 4, 5, 6, 21, 1, 2, 34, 2, 2)
+    println(array.toSet()) // set
+    println(array.distinct()) // List
 }
 
 

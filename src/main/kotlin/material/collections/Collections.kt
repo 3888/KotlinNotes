@@ -11,7 +11,7 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 
 fun main() {
 
-    buildList()
+//    buildList()
 
 //    collectionsJava()
 //    collectionsKotlin()
@@ -21,7 +21,7 @@ fun main() {
 //    sort()
 //    sortList()
 //    chunked()
-//    flatten()
+    flatten()
 //    reduce()
 //    reduceRight()
 
@@ -59,11 +59,12 @@ fun buildList() {
 
     val phones = buildList {
         repeat(1) {
-            add("+9 " +
-                    "${Helper.random.nextInt(100, 1000)} " +
-                    "${Helper.random.nextInt(100, 1000)} " +
-                    "${Helper.random.nextInt(0, 100)} " +
-                    (Helper.random.nextInt(0, 100))
+            add(
+                "+9 " +
+                        "${Helper.random.nextInt(100, 1000)} " +
+                        "${Helper.random.nextInt(100, 1000)} " +
+                        "${Helper.random.nextInt(0, 100)} " +
+                        (Helper.random.nextInt(0, 100))
             )
         }
     }
@@ -80,18 +81,24 @@ private fun collectionsJava() {
 
 private fun collectionsKotlin() {
 //    println("minOrNull " + listOf(1, 2, 3, 4).minOrNull())
+//    println("maxOrNull " + listOf(1, 2, 3, 4).maxOrNull())
+//    println("maxOf " + listOf(1, 2, 3, 4).maxOf { it })
+//    println("minOf " + listOf(1, 2, 3, 4).minOf { it })
+
 //    println("first " + listOf(1, 2, 3, 4).first())
 //    println("last " + listOf(1, 2, 3, 4).last())
+    println("last " + listOf(1, 2, 3, 4).takeLast(3))
+
 //    println("sum " + (1..4).sum())
 //    println(listOf("a", "b", "cd").sumBy { it.length }) //chars length of "a b cd" = 4
-    println((listOf("1:0", "2:0", "3:0", "4:0")).sumBy {
-        val (x, y) = it.split(":")
-        when {
-            x > y -> 3
-            x < y -> 0
-            else -> 1
-        }
-    })
+//    println((listOf("1:0", "2:0", "3:0", "4:0")).sumBy {
+//        val (x, y) = it.split(":")
+//        when {
+//            x > y -> 3
+//            x < y -> 0
+//            else -> 1
+//        }
+//    })
 
 
 }
@@ -145,8 +152,8 @@ private fun chunked() {
     println(list.chunked(1))
     println(list.chunked(2))
     println(list.chunked(3))
-    println(list.chunked(10))
-//    println(list.chunked(0)) // size 0 must be greater than zero
+    println(list.chunked(5))
+//    println(list.chunked(0)) // Error size 0 must be greater than zero
 }
 
 private fun sortList() {

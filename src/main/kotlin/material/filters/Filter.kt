@@ -2,9 +2,22 @@ package material.filters
 
 
 fun main() {
-//    filterData()
-    filterNot()
 
+//    examples()
+//    filterData()
+//    filterNot()
+    filterSingleValue()
+
+}
+
+fun filterSingleValue() {
+    val filterStringCondition = "aaaBBB_c_"
+    val string = "AAAsdvdsfaaaBewbewbBBB___c___"
+    println(filterStringCondition.filter { it in string })
+
+    val filterIntCondition = 111
+    val number = 111111111.toString()
+    println(filterIntCondition.toString().filter { it in number })
 }
 
 fun filterNot() {
@@ -12,9 +25,9 @@ fun filterNot() {
     println(newArray)
 }
 
-private fun todo() {
+private fun examples() {
     val decorations = listOf("paper", "puppy", "board", "player")
-    println("filter ${decorations.filter { true }}")
+    println("filter ${decorations.filter { true }}") // no filter
 
     val eager = decorations.filter { it[0] == 'p' }
     println("filter with conditions ${eager.filter { it[0] == 'p' }}")
