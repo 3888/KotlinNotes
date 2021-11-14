@@ -2,7 +2,6 @@ package material.collections
 
 import material.Helper
 import java.util.*
-import kotlin.random.asKotlinRandom
 
 
 /*
@@ -21,9 +20,10 @@ fun main() {
 //    sort()
 //    sortList()
 //    chunked()
-    flatten()
+//    flatten()
 //    reduce()
 //    reduceRight()
+//    fold(6)
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -99,8 +99,6 @@ private fun collectionsKotlin() {
 //            else -> 1
 //        }
 //    })
-
-
 }
 
 private fun listContains() {
@@ -184,13 +182,37 @@ private fun flatten() {
 }
 
 private fun reduce() {
-    println(
-        listOf("1", "2", "3", "4", "5")
-            .reduce { acc, it ->
-                "$it $acc"
 /*
+https://www.baeldung.com/kotlin/fold-vs-reduce
+https://metanit.com/kotlin/tutorial/9.8.php
+* */
+    val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
+
+    println("list = $list")
+    val flattenListReduce = list
+        .flatten()
+        .reduce { accumulator, string -> "$accumulator & $string" }
+    println("flatten+reduce = $flattenListReduce")
+
+    println("array is ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
+    println("1 * 2 * 3 * 4 * 5 = ${intArrayOf(1, 2, 3, 4, 5).reduce(Int::times)}")
+
+    println("reduce ${
+        listOf("1", "2", "3", "4", "5").reduce { acc, it ->
+            "$acc $it" // 1 2 3 4 5 
+
+            /*
 acc - 1-й элемент, аккумулятор
-it  - следующая строка из листа
+it  - 2-1 следующая строка из листа
+(acc = 1) (it = 2)
+(acc = 1 2) (it = 3)
+(acc = 1 2 3) (it = 4)
+(acc = 1 2 3 4) (it = 5)
+*/
+//                "$it $acc" // 5 4 3 2 1
+/*
+it  - 1-й элемент следующая строка из листа
+acc - 2-й элемент, аккумулятор
 (it = 2) (acc = 1)
 (it = 3) (acc = 2 1)
 (it = 4) (acc = 3 2 1)
@@ -198,44 +220,15 @@ it  - следующая строка из листа
 (it = 6) (acc = 5 4 3 2 1)
 (it = 6) (acc = 5 4 3 2 1)
  */
-
-//                "$acc $it"
-/*
-acc - 1-й элемент, аккумулятор
-it  - следующая строка из листа
-(acc = 1) (it = 2)
-(acc = 1 2) (it = 3)
-(acc = 1 2 3) (it = 4)
-(acc = 1 2 3 4) (it = 5)
- */
-            }
-    )
-
-
-    /*
-https://www.baeldung.com/kotlin/fold-vs-reduce
-https://metanit.com/kotlin/tutorial/9.8.php
-* */
-
-    val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
-
-    println(list)
-    val flattenListReduce = list
-        .flatten()
-        .reduce { accumulator, string -> "$accumulator & $string" }
-
-    println(flattenListReduce)
-
-    println(intArrayOf(1, 2, 3, 4, 5).reduce(Int::times))
-
-
+        }
+    }")
 }
 
 private fun reduceRight() {
     val reduceRight = listOf("1", "2", "3", "4", "5")
         .reduceRight { acc, it -> "$acc $it" }
 
-    println(reduceRight)
+    println("reduceRight = $reduceRight")
 /*
 acc - 1-й элемент, аккумулятор
 string  - следующая строка из листа
@@ -256,6 +249,14 @@ string  - следующая строка из листа
 (acc = 1 2 3) (string = 4)
 (acc = 1 2 3 4) (string = 5)
  */
+
+}
+
+fun fold(n: Int) {
+    println((1 until n).fold(4) { acc, i ->
+        println("acc $acc + i $i = ${acc + i}")
+        acc + i
+    })
 
 }
 
