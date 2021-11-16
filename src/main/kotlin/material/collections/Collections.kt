@@ -21,7 +21,7 @@ fun main() {
 //    sortList()
 //    chunked()
 //    flatten()
-//    reduce()
+    reduce()
 //    reduceRight()
 //    fold(6)
 
