@@ -11,7 +11,7 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    repeatExample()
-//    joinToString()
+    joinToString()
 //    repeatAndTransform()
 
 //    isNullOrEmptyNameVisible()
@@ -152,6 +152,7 @@ private fun joinToString() {
     println(arrayOf(1, 2, 3, 4).joinToString { it.toString() }) // 1, 2, 3, 4
     println(arrayOf(1, 2, 3, 4).joinToString("") { it.toString() }) // 1234
     println(arrayOf(1, 2, 3, 4).joinToString("")) // 1234
+    println(arrayOf(1, 2, 3, 4).joinToString("*","START","END")) // START1*2*3*4END
 
     val list = listOf(Fish("Flipper"), Fish("Moby Dick"), Fish("Dory"))
     println(list.filter { it.name.contains("i") }.joinToString(" ") { it.name })
