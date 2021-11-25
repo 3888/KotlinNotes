@@ -10,7 +10,7 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 
 fun main() {
 
-//    buildList()
+    buildList()
 
 //    collectionsJava()
 //    collectionsKotlin()
@@ -21,7 +21,7 @@ fun main() {
 //    sortList()
 //    chunked()
 //    flatten()
-    reduce()
+//    reduce()
 //    reduceRight()
 //    fold(6)
 
@@ -58,7 +58,7 @@ fun buildList() {
     println(list == list1)
 
     val phones = buildList {
-        repeat(1) {
+        repeat(3) {
             add(
                 "+9 " +
                         "${Helper.random.nextInt(100, 1000)} " +
