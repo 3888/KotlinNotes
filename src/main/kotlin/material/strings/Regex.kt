@@ -23,7 +23,7 @@ fun main() {
 
 //    quantificationNTimes()
 
-//    symbolFromRange()
+    symbolFromRange()
 //    symbolNotFromRange()
 
 //    startOfTheLine()
@@ -42,7 +42,7 @@ fun main() {
 //    firstLetterIsCapital()
 
     replaceString("ABCDE", Regex("[aeiouAEIOU]"), "!")
-//    replaceRegex("ABCDE", "[aeiouAEIOU]", "!")
+    replaceRegex("ABCDE", "[aeiouAEIOU]", "!")
 //    replaceRegexOptionIgnoreCase("ABCDE", "[aeiou]", "*")
 
 //    println(regexCount("aaaBBBccc", "a"))
@@ -113,8 +113,10 @@ private fun symbolFromRange() {
 //    kotlinRegex("gweEYZX123", "[a-zA-Z0-9]+")
 //    kotlinRegex("22354", "[1234567890]+")
 //    kotlinRegex("22354", "[0-9]+")
-    kotlinRegex("-2345345", "-[0-9]+") // All negative and positive
-//    kotlinRegex("22354", "[1-0]+") // Error PatternSyntaxException
+    //    kotlinRegex("+123456", "[+1-9]+")
+//    kotlinRegex("-2345345", "-[0-9]+") // All negative and positive
+//    kotlinRegex("22354", "[1-0]+") // Error PatternSyntaxException [0-1] is correct
+
 }
 
 private fun symbolNotFromRange() {

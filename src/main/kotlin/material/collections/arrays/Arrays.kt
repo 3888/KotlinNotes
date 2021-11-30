@@ -1,6 +1,5 @@
 package material.collections.arrays
 
-import java.util.*
 import kotlin.math.pow
 
 /*
@@ -13,10 +12,28 @@ fun main() {
 //    sortedArray()
 //    sortedSet()
 //    arrayExample()
-    arrayRemoveDuplicates()
+//    arrayRemoveDuplicates()
+//    all()
+    initArray()
 }
 
-fun arrayRemoveDuplicates() {
+fun initArray() {
+    /*
+https://discuss.kotlinlang.org/t/arrays-from-ranges/5216
+ */
+    val arraySize = 10
+    println(IntArray(arraySize) { it }.contentToString())           // ascending
+    println(IntArray(arraySize) { arraySize - 1 - it }.contentToString())      // descending
+}
+
+fun all() {
+    val array = intArrayOf(2, 4, 6, 8, 10, 12)
+    println(array.all { it % 2 == 0 })
+    println(array.all { it > 2 })
+    println(array.all { it.toString().isNotEmpty() })
+}
+
+private fun arrayRemoveDuplicates() {
     val array = arrayOf(1, 2, 3, 4, 5, 6, 1, 1, 2, 3, 4, 5, 6, 21, 1, 2, 34, 2, 2)
     println(array.toSet()) // set
     println(array.distinct()) // List
