@@ -6,8 +6,25 @@ fun main() {
 //    examples()
 //    filterData()
 //    filterNot()
-    filterSingleValue()
+//    filterSingleValue()
+    filterMultiplyValue()
+}
 
+fun filterMultiplyValue() {
+    val list = listOf(
+        DataExample("a", true),
+        DataExample("b", false),
+        DataExample("", true)
+    )
+
+    println(list.filter {
+        when {
+            it.data.isNotEmpty() -> it.data.isNotEmpty() && it.isActive
+            it.isActive -> true
+            else -> false
+        }
+    }
+    )
 }
 
 fun filterSingleValue() {
@@ -66,10 +83,10 @@ private fun examples() {
 }
 
 private fun filterData() {
-    val list: List<Data> = listOf(
-        Data("first", false),
-        Data("second", false),
-        Data("third ", true)
+    val list: List<DataExample> = listOf(
+        DataExample("first", false),
+        DataExample("second", false),
+        DataExample("third ", true)
     )
 
     val result = list.filter { it.isActive }
@@ -77,7 +94,7 @@ private fun filterData() {
     print(result.first().data)
 }
 
-private data class Data(val data: String, val isActive: Boolean)
+private data class DataExample(val data: String, val isActive: Boolean)
 
 
 
