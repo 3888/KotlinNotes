@@ -10,7 +10,7 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 
 fun main() {
 
-    buildList()
+//    buildList()
 
 //    collectionsJava()
 //    collectionsKotlin()
@@ -37,15 +37,24 @@ fun main() {
 //    set()
 //    setMutable()
 
+    linkedListHeadTail()
+
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 
+}
 
+private fun linkedListHeadTail() {
+    val list = LinkedList(listOf(2, 3, 4))
+
+    list.push(1)
+    list.add(5)
+    println(list)    // [1, 2, 3, 4, 5]
 }
 
 
 @OptIn(ExperimentalStdlibApi::class)
-fun buildList() {
+private fun buildList() {
     val list = listOf('a', 'b')
 
     val list1 = buildList {

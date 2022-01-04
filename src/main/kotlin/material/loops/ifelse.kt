@@ -10,6 +10,7 @@ fun main() {
 
 private fun ifElse() {
     val age = Random.nextInt(20, 50)
+    println("age is $age")
     if (age > 35) {
         println("You are older 35 years")
     } else {

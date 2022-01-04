@@ -14,10 +14,29 @@ fun main() {
 //    arrayExample()
 //    arrayRemoveDuplicates()
 //    all()
-    initArray()
+//    initArray()
+    minMaxArrayValue()
 }
 
-fun initArray() {
+private fun minMaxArrayValue() {
+    /*
+    https://www.techiedelight.com/find-minimum-maximum-element-array-kotlin/
+    */
+    val arr: Array<Int> = arrayOf(6, 3, 2, 5, 10)
+
+    val max = arr.indices.map { i: Int -> arr[i] }.maxOrNull()
+    val min = arr.indices.map { i: Int -> arr[i] }.minOrNull()
+
+    println("Minimum: $min")
+    println("Maximum: $max")
+
+    arr.sort();
+
+    println("Minimum: ${arr.first()}")
+    println("Maximum: ${arr.last()}")
+}
+
+private fun initArray() {
     /*
 https://discuss.kotlinlang.org/t/arrays-from-ranges/5216
  */
@@ -26,7 +45,7 @@ https://discuss.kotlinlang.org/t/arrays-from-ranges/5216
     println(IntArray(arraySize) { arraySize - 1 - it }.contentToString())      // descending
 }
 
-fun all() {
+private fun all() {
     val array = intArrayOf(2, 4, 6, 8, 10, 12)
     println(array.all { it % 2 == 0 })
     println(array.all { it > 2 })
@@ -73,7 +92,7 @@ private fun arrayToString() {
     println(bigSwarm.contentToString())
 }
 
-fun arrayExample() {
+private fun arrayExample() {
     val array = intArrayOf(1, 2, 3, 5)
     val valueList: List<Int> = array.map { it * 2 }
     val valueArray: IntArray = array.map { it * 2 }.toIntArray()
