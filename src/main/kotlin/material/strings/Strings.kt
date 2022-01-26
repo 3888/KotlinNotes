@@ -11,7 +11,7 @@ fun main() {
 //    interpolation()
 //    concatenate()
 //    repeatExample()
-    joinToString()
+//    joinToString()
 //    repeatAndTransform()
 
 //    isNullOrEmptyNameVisible()
@@ -25,7 +25,7 @@ fun main() {
 //    takeAndAppend()
 
 //    nullToString()
-//    isEmptyVsIsBlank()
+    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 
 //    multiString_trimIndent()

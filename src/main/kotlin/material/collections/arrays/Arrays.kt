@@ -15,7 +15,24 @@ fun main() {
 //    arrayRemoveDuplicates()
 //    all()
 //    initArray()
-    minMaxArrayValue()
+//    minMaxArrayValue()
+
+    withIndex()
+//    sortedDescending()
+
+}
+
+private fun withIndex() {
+    arrayOf(66, 55, 100, 68, 46, -82, 12, 72, 12, 38)
+        .withIndex()
+        .map {
+            print("${it.index} ")
+        }
+
+}
+
+private fun sortedDescending() {
+    println(arrayOf(66, 55, 100, 68, 46, -82, 12, 72, 12, 38).sortedDescending())
 }
 
 private fun minMaxArrayValue() {

@@ -19,7 +19,7 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
-//    chunked()
+    chunked()
 //    flatten()
 //    reduce()
 //    reduceRight()
@@ -37,7 +37,7 @@ fun main() {
 //    set()
 //    setMutable()
 
-    linkedListHeadTail()
+//    linkedListHeadTail()
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
