@@ -33,7 +33,7 @@ fun main() {
 //    wordBoundary()
 //    NoWordBoundary()
 
-    anyFigure()
+//    anyFigure()
 //    anyNonFigure()
 //    wordCharacter()
 //    nonWordCharacter()
@@ -43,6 +43,7 @@ fun main() {
 //    println(replaceAndRegextoDragonSpeak("Humpty dumpty seat on the wall"))
 //    replaceAllBrackets()
 
+    regexNoShielding()
 
 }
 
@@ -210,12 +211,11 @@ private fun regexNoShielding() {
 //    2017 Kotlin in Action (94)
     val path = "/Users/yole/kotlin-book/chapter.adoc"
 
-    val regex = """( • +) / ( . +) \. ( . +) """.toRegex()
+    val regex = """(.+)/(.+)\.(.+)""".toRegex()
     val matchResult = regex.matchEntire(path)
     if (matchResult != null) {
         val (directory, filename, extension) = matchResult.destructured
         println("Dir : $directory, name: $filename , ext : $extension")
-
     }
 }
 
