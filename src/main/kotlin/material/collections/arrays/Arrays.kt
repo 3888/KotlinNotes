@@ -10,7 +10,8 @@ https://stackoverflow.com/questions/46235579/how-to-add-an-item-to-an-arraylist-
 fun main() {
 //    arrayToString()
 //    arrayErrors()
-    sortedArray()
+//    sortedArray()
+    spreadOperator()
 }
 
 fun sortedArray() {
@@ -40,4 +41,10 @@ private fun arrayToString() {
     val swarm = listOf(fish, plants)
     val bigSwarm = arrayOf(swarm, arrayOf("dolphin", "okra", "whale"))
     println(Arrays.toString(bigSwarm))
+}
+
+private fun spreadOperator() {
+    val array = arrayOf(1, 2, 3, 4, 5)
+    val list = listOf("Args", *array)
+    println(list)
 }

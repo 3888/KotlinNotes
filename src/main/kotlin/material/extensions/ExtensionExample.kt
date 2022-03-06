@@ -4,8 +4,8 @@ fun main() {
 //    extension()
 //    extensionAsProperty()
 //    nullableExtension()
-    infixExtension()
-
+//    infixExtension()
+    extensionIsNotOverride()
 
 }
 
@@ -31,4 +31,13 @@ private fun nullableExtension() {
 private fun infixExtension() {
     null printWithDefaultInfix "Default string" // C infix
     null.printWithDefault("Default string") // Без infix
+}
+
+private fun extensionIsNotOverride() {
+    val view: View = Button()
+    view.click() // Button clicked
+    view.showOff() // I'm View
+
+    val button = Button()
+    button.methodIsFirst() // in case name shadowing class is always first
 }

@@ -14,7 +14,6 @@ private fun solutionWorkBook(
 //"test" // tests that contains one word only
 "abcde1 abcdf2 abcdg3" // all words have odd number of digits
 ): Int {
-
     val strArray = input.split(" ").toTypedArray()
     val passwords = HashSet<String>()
 

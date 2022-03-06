@@ -7,6 +7,9 @@ fun main() {
     nullableExample()
 }
 
+val AquariumPlant.isGreen: Boolean
+    get() = color == "Green"
+
 private fun String.hasSpacesBoilerplate(): Boolean {
     val found: Char? = this.find { it == ' ' }
     return found != null
@@ -18,12 +21,6 @@ private fun extensionsExample() {
     println("Does it have spaces?".hasSpacesBoilerplate())
     println("Does it have spaces?".hasSpacesRefactored())
 }
-
-open class AquariumPlant(val color: String, private val size: Int)
-class GreenLeafyPlant(size: Int) : AquariumPlant("Green", size)
-
-val AquariumPlant.isGreen: Boolean
-    get() = color == "Green"
 
 private fun propertyExample() {
     val plant = AquariumPlant("Green", 50)
@@ -54,3 +51,6 @@ private fun nullableExample() {
     val plant: AquariumPlant? = null
     plant.pull() // ok
 }
+
+open class AquariumPlant(val color: String, private val size: Int)
+class GreenLeafyPlant(size: Int) : AquariumPlant("Green", size)

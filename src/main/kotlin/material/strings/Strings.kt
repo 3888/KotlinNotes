@@ -5,20 +5,23 @@ import java.util.*
 
 
 fun main() {
+//    println("\nYour fortune is: ${getFortune()}")
 
 //    interpolation()
 //    concatenate()
-//    isNullOrEmptyNameVisible()
+
 //    take()
 //    takeLast()
 //    replace()
 //    feedTheFish()
-//    println("\nYour fortune is: ${getFortune()}")
-//    maxOf(20, 30)
-    takeAfter()
+
+//    takeAfter()
 //    takeAndAppend()
+    substring()
 //    joinToString()
+
 //    nullToString()
+//    isNullOrEmptyNameVisible()
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 
@@ -33,7 +36,7 @@ fun main() {
 
 }
 
-fun interpolation() {
+private fun interpolation() {
     val name: String = "3888"
     val first = 1
     val second = 2
@@ -65,7 +68,7 @@ private fun splitRegex() {
     println(separate1)
 }
 
-fun isEmptyVsIsBlank() {
+private fun isEmptyVsIsBlank() {
     val string = "ABC"
     val emptyString = ""
     val spaceString = "   "
@@ -78,7 +81,7 @@ fun isEmptyVsIsBlank() {
     println("spaceString  isEmpty ${spaceString.isEmpty()}")
 }
 
-fun nullOrEmptyVSNullOrBlank() {
+private fun nullOrEmptyVSNullOrBlank() {
     val thisIsBlank = "   "
 
     println("thisIsBlank length = ${thisIsBlank.length}")
@@ -132,7 +135,7 @@ private fun take() {
     println(address.take(24).plus("..."))
 }
 
-fun takeLast() {
+private fun takeLast() {
     val address = "A very long street name somewhere in the Earth"
     println(address.takeLast(1))
 }
@@ -293,7 +296,6 @@ private fun multiString_trimMargin() {
     )
 }
 
-
 private fun stringToNumber() {
     val number = "123"
     val decimal = "1.2"
@@ -311,3 +313,15 @@ private fun stringToNumber() {
 
     println(decimal.toIntOrNull() ?: "Oo-ops!")
 }
+
+private fun substring() {
+    val path = "/Users/yole/kotlin-book/chapter.adoc"
+    val directory = path.substringBeforeLast("/")
+    val fullName = path.substringAfterLast("/")
+    val fileName = fullName.substringBeforeLast(".")
+    val extension = fullName.substringAfterLast(".")
+
+    println(" Dir : $directory, name: $fileName, ext : $extension")
+}
+
+
