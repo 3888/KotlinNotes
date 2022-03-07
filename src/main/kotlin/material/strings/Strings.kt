@@ -7,7 +7,7 @@ import material.Helper
 fun main() {
 //    println("\nYour fortune is: ${getFortune()}")
 
-    //    feedTheFish()
+//    feedTheFish()
 
 //    interpolation()
 //    concatenate()
@@ -21,7 +21,7 @@ fun main() {
 //    replace()
 
 //    takeAndAppend()
-    //    substring()
+//    substring()
 //    joinToString()
 
 //    substring()
@@ -126,28 +126,6 @@ private fun interpolation() {
     println("Value = ${first + second}")
 }
 
-private fun splitDelimiters() {
-    val webAddress = "http://someadderess.com"
-
-    println(webAddress.split("//")[0])
-    println(webAddress.split("//")[1])
-
-    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
-
-    val separate2 = str.split("=", "-").map { it.trim() }
-    println(str)
-    println(separate2)
-}
-
-private fun splitRegex() {
-//    TODO  https://stackoverflow.com/questions/51460166/split-text-using-regex-java-kotlin-with-multiple-delimiter
-    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
-
-    val separate1 = str.split("=|-".toRegex()).map { it.trim() }
-    println(str)
-    println(separate1)
-}
-
 private fun isEmptyVsIsBlank() {
     val string = "ABC"
     val emptyString = ""
@@ -230,6 +208,14 @@ private fun substring() {
     println(string.substring(0, 5))
     println(string.substringBefore("5"))
     println(string.substringAfter("5"))
+
+    val path = "/Users/yole/kotlin-book/chapter.adoc"
+    val directory = path.substringBeforeLast("/")
+    val fullName = path.substringAfterLast("/")
+    val fileName = fullName.substringBeforeLast(".")
+    val extension = fullName.substringAfterLast(".")
+
+    println(" Dir : $directory, name: $fileName, ext : $extension")
 
 }
 
@@ -321,32 +307,6 @@ private fun nullToString() {
 //    println(test is String) // false
 }
 
-fun isEmptyVsIsBlank() {
-    val string = "ABC"
-    val emptyString = ""
-    val spaceString = "   "
-
-    println("string isBlank ${string.isBlank()}")
-    println("string isEmpty ${string.isEmpty()}")
-    println("emptyString isBlank ${emptyString.isBlank()}")
-    println("emptyString isEmpty ${emptyString.isEmpty()}")
-    println("spaceString isBlank ${spaceString.isBlank()}")
-    println("spaceString  isEmpty ${spaceString.isEmpty()}")
-}
-
-fun nullOrEmptyVSNullOrBlank() {
-    val thisIsBlank = "   "
-
-    println("thisIsBlank length = ${thisIsBlank.length}")
-    println("isNullOrEmpty ${thisIsBlank.isNullOrEmpty()}")
-    println("isNullOrBlank ${thisIsBlank.isNullOrBlank()}")
-
-    val thisIsEmpty = ""
-
-    println("thisIsEmpty length = ${thisIsEmpty.length}")
-    println("isNullOrEmpty ${thisIsEmpty.isNullOrEmpty()}")
-    println("isNullOrBlank ${thisIsEmpty.isNullOrBlank()}")
-}
 
 private fun stringToNumber() {
     val number = "123"
@@ -366,7 +326,6 @@ private fun stringToNumber() {
     println(decimal.toIntOrNull() ?: "Oo-ops!")
 }
 
-private fun multiString_trimIndent() {
 private fun multiString() {
     val price = """${'$'}99.9"""
     println(price)
@@ -441,18 +400,4 @@ private fun splitToSequence() {
 
 }
 
-
 private fun padStartForSingleSymbol(input: Any, length: Int, padChar: Char) = input.toString().padStart(length, padChar)
-
-
-private fun substring() {
-    val path = "/Users/yole/kotlin-book/chapter.adoc"
-    val directory = path.substringBeforeLast("/")
-    val fullName = path.substringAfterLast("/")
-    val fileName = fullName.substringBeforeLast(".")
-    val extension = fullName.substringAfterLast(".")
-
-    println(" Dir : $directory, name: $fileName, ext : $extension")
-}
-
-
