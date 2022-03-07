@@ -4,13 +4,12 @@ fun main() {
     val fish = 12
     val plants = 5
     val swarm = listOf(fish, plants)
-    val fishes = arrayOf("dolphin", "orka", "whale")
 
-    contentToString(arrayOf(swarm, fishes))
-    allElements(swarm)
-    withIndex(fishes)
-    valueInRange(1..5, 3)
-    charInCharRange('a'..'z', 'l')
+
+//    contentToString(arrayOf(swarm, fishes))
+//    allElements(swarm)
+//    valueInRange(1..5, 3)
+//    charInCharRange('a'..'z', 'l')
 
 }
 
@@ -22,11 +21,6 @@ private fun allElements(swarm: List<Any>) {
     for (element in swarm) println("element = $element ")
 }
 
-private fun withIndex(fishes: Array<String>) {
-    for ((index, element) in fishes.withIndex()) {
-        println("The fish value at index $index = $element")
-    }
-}
 
 private fun valueInRange(range: IntRange, value: Int) {
     println("Is $value in $range  ${value in range}")

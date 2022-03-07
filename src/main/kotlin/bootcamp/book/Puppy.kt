@@ -1,6 +1,6 @@
 package bootcamp.book
 
-import java.util.*
+import material.Helper
 
 fun main() {
     val puppy = Puppy()
@@ -16,7 +16,7 @@ fun main() {
 
 class Puppy() {
     fun playWithBook(book: Book) {
-        book.tornPages(Random().nextInt(12))
+        book.tornPages(Helper.random.nextInt(12))
     }
 }
 

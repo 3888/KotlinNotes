@@ -15,7 +15,8 @@ https://www.baeldung.com/kotlin/dates
 fun main() {
 
 //    daysLeft()
-//    millisToMinAndSeconds()
+    timeUniExamples()
+
 //    millisToDate()
 
 //    firstDayOfCurrentMonth()
@@ -27,7 +28,7 @@ fun main() {
 
 //    is18YearsOld()
 
-    dateToString()
+//    dateToString()
 }
 
 private fun millisToDate() {
@@ -44,15 +45,21 @@ private fun millisToDate() {
 
 }
 
-private fun millisToMinAndSeconds(millis: Long): String {
+private fun timeUniExamples() {
     val format = "%d min, %02d sec"
-
-    return String.format(
+    val millis = 10000000L
+    val millesToFromat = String.format(
         format,
         TimeUnit.MILLISECONDS.toMinutes(millis),
         TimeUnit.MILLISECONDS.toSeconds(millis) -
                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
     )
+
+    println(millesToFromat)
+
+    println(TimeUnit.HOURS.toMillis(1L))
+    println(TimeUnit.MINUTES.toMillis(1L))
+
 }
 
 private fun daysLeft() {

@@ -1,40 +1,119 @@
 package material.strings
 
 import bootcamp.aquarium.Fish
-import java.util.*
+import material.Helper
 
 
 fun main() {
 //    println("\nYour fortune is: ${getFortune()}")
 
+    //    feedTheFish()
+
 //    interpolation()
 //    concatenate()
+//    repeatExample()
+//    joinToString()
+//    repeatAndTransform()
 
+//    isNullOrEmptyNameVisible()
 //    take()
 //    takeLast()
 //    replace()
-//    feedTheFish()
 
-//    takeAfter()
 //    takeAndAppend()
+    //    substring()
+//    joinToString()
+
 //    substring()
 //    joinToString()
 
 //    nullToString()
+   // isEmptyVsIsBlank()
 //    isNullOrEmptyNameVisible()
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 
     multiString()
-//    multiStringLiteral_trimIndent()
-//    multiStringLiteral_trimMargin()
+//    multiString_trimIndent()
+//    multiString_trimMargin()
 
 //    stringToNumber()
 
+
+/*
+// TODO    https://bezkoder.com/kotlin-split-string-example/
+ */
 //    splitDelimiters()
 //    splitRegex()
-    // TODO    https://bezkoder.com/kotlin-split-string-example/
+//    splitChunked()
+//    splitToSequence()
 
+
+//    println(padStartForSingleSymbol(5, 3, '*'))
+
+}
+
+private fun getFortune(): String {
+    val fortunes = listOf(
+        "You will have a great day!",
+        "Things will go well for you today.",
+        "Enjoy a wonderful day of success.",
+        "Be humble and all will turn out well.",
+        "Today is a good day for exercising restraint.",
+        "Take it easy and enjoy life!",
+        "Treasure your friends, because they are your greatest fortune."
+    )
+    print("\nEnter your birthday: ")
+    val birthday = readLine()?.toIntOrNull() ?: 1
+    println(
+        "index = remainder of dividing birthday ($birthday) by the fortunes.size (${fortunes.size}) = " +
+                "${birthday.rem(fortunes.size)}"
+    )
+    return fortunes[birthday.rem(fortunes.size)]
+
+//
+//    var fortune: String
+//    for (i in 1..2) {
+//        fortune = getFortune()
+//        println("\nYour fortune is: $fortune")
+//        if (fortune.contains("Take it easy")) break
+//    }
+}
+
+private fun feedTheFish() {
+    val day = randomDay()
+    val food = fishFood(day)
+    println("Today is $day and the fish eat $food")
+}
+
+private fun randomDay(): String {
+    val week = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    return week[Helper.random.nextInt(7)]
+}
+
+private fun fishFood(day: String): String {
+//    var food = "fasting"
+//    when (day) {
+//        "Monday" -> food = "flakes"
+//        "Tuesday" -> food = "pellets"
+//        "Wednesday" -> food = "redworms"
+//        "Thursday" -> food = "granules"
+//        "Friday" -> food = "mosquitoes"
+//        "Saturday" -> food = "lettuce"
+//        "Sunday" -> food = "plankton"
+//    }
+//    return food
+
+    return when (day) {
+        "Monday" -> "flakes"
+        "Tuesday" -> "pellets"
+        "Wednesday" -> "redworms"
+        "Thursday" -> "granules"
+        "Friday" -> "mosquitoes"
+        "Saturday" -> "lettuce"
+        "Sunday" -> "plankton"
+        else -> "fasting"
+    }
 }
 
 private fun interpolation() {
@@ -119,6 +198,41 @@ private fun concatenate() {
     println("Totally there are a ${numberOfDogs + numberOfCats} pets in my house.")
 }
 
+private fun repeatExample() {
+    println("STRING".repeat(3))
+}
+
+private fun joinToString() {
+    println(arrayOf(1, 2, 3, 4).joinToString { "" }) // , , ,
+    println(arrayOf(1, 2, 3, 4).joinToString { it.toString() }) // 1, 2, 3, 4
+    println(arrayOf(1, 2, 3, 4).joinToString("") { it.toString() }) // 1234
+    println(arrayOf(1, 2, 3, 4).joinToString("")) // 1234
+    println(arrayOf(1, 2, 3, 4).joinToString("*","START","END")) // START1*2*3*4END
+
+    val list = listOf(Fish("Flipper"), Fish("Moby Dick"), Fish("Dory"))
+    println(list.filter { it.name.contains("i") }.joinToString(" ") { it.name })
+
+    val list2 = listOf("Flipper", "Moby Dick", "Dory")
+    println(list2.filter { it.contains("i") }.joinToString(" ") { it })
+}
+
+private fun repeatAndTransform() {
+    val count = 3
+    val string = "Hello"
+    val result = (1..count).joinToString("") { string.reversed() }
+    println(result)
+}
+
+private fun substring() {
+    val string = "1234567890"
+
+    println(string.substring(3))
+    println(string.substring(0, 5))
+    println(string.substringBefore("5"))
+    println(string.substringAfter("5"))
+
+}
+
 private fun isNullOrEmptyNameVisible() {
     /*
     https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/is-null-or-empty.html
@@ -193,69 +307,6 @@ private fun replace() {
     println(path.replace("\\", ""))
 }
 
-private fun getFortune(): String {
-    val fortunes = listOf(
-        "You will have a great day!",
-        "Things will go well for you today.",
-        "Enjoy a wonderful day of success.",
-        "Be humble and all will turn out well.",
-        "Today is a good day for exercising restraint.",
-        "Take it easy and enjoy life!",
-        "Treasure your friends, because they are your greatest fortune."
-    )
-    print("\nEnter your birthday: ")
-    val birthday = readLine()?.toIntOrNull() ?: 1
-    println(
-        "index = remainder of dividing birthday ($birthday) by the fortunes.size (${fortunes.size}) = " +
-                "${birthday.rem(fortunes.size)}"
-    )
-    return fortunes[birthday.rem(fortunes.size)]
-
-//
-//    var fortune: String
-//    for (i in 1..2) {
-//        fortune = getFortune()
-//        println("\nYour fortune is: $fortune")
-//        if (fortune.contains("Take it easy")) break
-//    }
-}
-
-private fun feedTheFish() {
-    val day = randomDay()
-    val food = fishFood(day)
-    println("Today is $day and the fish eat $food")
-}
-
-private fun randomDay(): String {
-    val week = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-    return week[Random().nextInt(7)]
-}
-
-private fun fishFood(day: String): String {
-//    var food = "fasting"
-//    when (day) {
-//        "Monday" -> food = "flakes"
-//        "Tuesday" -> food = "pellets"
-//        "Wednesday" -> food = "redworms"
-//        "Thursday" -> food = "granules"
-//        "Friday" -> food = "mosquitoes"
-//        "Saturday" -> food = "lettuce"
-//        "Sunday" -> food = "plankton"
-//    }
-//    return food
-
-    return when (day) {
-        "Monday" -> "flakes"
-        "Tuesday" -> "pellets"
-        "Wednesday" -> "redworms"
-        "Thursday" -> "granules"
-        "Friday" -> "mosquitoes"
-        "Saturday" -> "lettuce"
-        "Sunday" -> "plankton"
-        else -> "fasting"
-    }
-}
-
 private fun takeAfter() {
     val myString = "http://address//change-phone-number?token=b27897c2-a8ff-4254-95d0-e80429632a3b.html"
     val toBeSearched = "token="
@@ -264,20 +315,58 @@ private fun takeAfter() {
     print(token.substring(0, token.length - 5))
 }
 
-private fun joinToString() {
-    val list = listOf(Fish("Flipper"), Fish("Moby Dick"), Fish("Dory"))
-    println(list.filter { it.name.contains("i") }.joinToString(" ") { it.name })
-
-    val list2 = listOf("Flipper", "Moby Dick", "Dory")
-    println(list2.filter { it.contains("i") }.joinToString(" ") { it })
-}
-
 private fun nullToString() {
     val test: String? = null
     println(test.toString() is String) // true
 //    println(test is String) // false
 }
 
+fun isEmptyVsIsBlank() {
+    val string = "ABC"
+    val emptyString = ""
+    val spaceString = "   "
+
+    println("string isBlank ${string.isBlank()}")
+    println("string isEmpty ${string.isEmpty()}")
+    println("emptyString isBlank ${emptyString.isBlank()}")
+    println("emptyString isEmpty ${emptyString.isEmpty()}")
+    println("spaceString isBlank ${spaceString.isBlank()}")
+    println("spaceString  isEmpty ${spaceString.isEmpty()}")
+}
+
+fun nullOrEmptyVSNullOrBlank() {
+    val thisIsBlank = "   "
+
+    println("thisIsBlank length = ${thisIsBlank.length}")
+    println("isNullOrEmpty ${thisIsBlank.isNullOrEmpty()}")
+    println("isNullOrBlank ${thisIsBlank.isNullOrBlank()}")
+
+    val thisIsEmpty = ""
+
+    println("thisIsEmpty length = ${thisIsEmpty.length}")
+    println("isNullOrEmpty ${thisIsEmpty.isNullOrEmpty()}")
+    println("isNullOrBlank ${thisIsEmpty.isNullOrBlank()}")
+}
+
+private fun stringToNumber() {
+    val number = "123"
+    val decimal = "1.2"
+
+    println(number.toInt())
+    println(decimal.toDouble())
+
+    println(number.toFloat())
+    try {
+        println(decimal.toInt())
+
+    } catch (e: Exception) {
+        println(e)
+    }
+
+    println(decimal.toIntOrNull() ?: "Oo-ops!")
+}
+
+private fun multiString_trimIndent() {
 private fun multiString() {
     val price = """${'$'}99.9"""
     println(price)
@@ -309,23 +398,52 @@ private fun multiStringLiteral_trimMargin() {
     println(kotlinLogo.trimMargin("."))
 }
 
-private fun stringToNumber() {
-    val number = "123"
-    val decimal = "1.2"
+private fun splitDelimiters() {
+    val webAddress = "http://someadderess.com"
 
-    println(number.toInt())
-    println(decimal.toDouble())
+    println(webAddress.split("//")[0])
+    println(webAddress.split("//")[1])
 
-    println(number.toFloat())
-    try {
-        println(decimal.toInt())
+    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
 
-    } catch (e: Exception) {
-        println(e)
-    }
-
-    println(decimal.toIntOrNull() ?: "Oo-ops!")
+    val separate2 = str.split("=", "-").map { it.trim() }
+    println(str)
+    println(separate2)
 }
+
+private fun splitRegex() {
+//    TODO  https://stackoverflow.com/questions/51460166/split-text-using-regex-java-kotlin-with-multiple-delimiter
+    val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
+
+    val separate1 = str.split("=|-".toRegex()).map { it.trim() }
+    println(str)
+    println(separate1)
+}
+
+private fun splitChunked() {
+    val str = "qwertyuiop"
+
+    val string = str.chunked(3)
+    println(string)
+}
+
+private fun splitToSequence() {
+    val string = "bitcoin take over the world maybe who knows perhaps"
+    val sequence = string
+//        .splitToSequence(' ')
+        .splitToSequence(" ")
+    println(sequence.joinToString())
+
+    val collection = listOf('a', 'b', 'c')
+    val sequence2 = collection.asSequence()
+
+    println(sequence2.joinToString()) // a, b, c
+
+}
+
+
+private fun padStartForSingleSymbol(input: Any, length: Int, padChar: Char) = input.toString().padStart(length, padChar)
+
 
 private fun substring() {
     val path = "/Users/yole/kotlin-book/chapter.adoc"

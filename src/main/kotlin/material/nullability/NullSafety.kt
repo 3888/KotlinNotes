@@ -21,6 +21,7 @@ fun main(args: Array<String>) {
 //    safeCallsLetIgnoreNullCalls()
 
 //    doubleBangOperator()
+//    doubleBangOperator2()
 
 /*
 Elvis operator "?:" it's like Java ternary operator
@@ -29,7 +30,7 @@ Elvis operator "?:" it's like Java ternary operator
 //    elvisReturn()
 //    letElvis()
 
-    collectionsOfNullableType()
+//    collectionsOfNullableType()
 
 }
 
@@ -153,9 +154,14 @@ private fun safeCallsLetIgnoreNullCalls() {
 }
 
 private fun doubleBangOperator() {
-    val b: String? = null
-    val l = b!!.length
-    println(l)
+    val string: String? = null
+    val value = string!!.length
+    println(value)
+}
+
+private fun doubleBangOperator2() {
+    val string: String = null!!
+    println(string)
 }
 
 private fun safeCast() {

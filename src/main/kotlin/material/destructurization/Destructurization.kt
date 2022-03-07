@@ -9,10 +9,20 @@ fun main() {
 
 //    example()
 //    listExample()
-    oneListElementExample()
+//    oneListElementExample()
 //    pairExample()
 //dataClassExample()
 
+    withIndex()
+
+
+}
+
+private fun withIndex() {
+    val fishes = arrayOf("dolphin", "orka", "whale")
+    for ((index, element) in fishes.withIndex()) {
+        println("The fish value at index $index = $element")
+    }
 }
 
 

@@ -1,4 +1,7 @@
 package material.dataclass
+/*
+http://developer.alexanderklimov.ru/android/kotlin/data.php
+*/
 
 fun main() {
 
@@ -8,14 +11,12 @@ fun main() {
 //    hashCode()
 //    hashCodeStandardClass()
 //    hashCodeOverridedClass()
-    hashCodeDataClass()
+//    hashCodeDataClass()
 
 //    copy()
 }
 
-/*
-http://developer.alexanderklimov.ru/android/kotlin/data.php
-*/
+
 
 private fun toString() {
     val cat = WhiteCat("Murzik", 7)
@@ -68,34 +69,34 @@ private fun hashCode() {
 
 fun hashCodeStandardClass() {
     val person = Person("Adam", 25)
-    println("person ${person.hashCode()}")
-    val hashSet = hashSetOf(person.also { println("hashSet person ${it.hashCode()}") })
-    println(hashSet.contains(person.also { println("hashSet contains person ${it.hashCode()}") })) // true
+    println("person hashCode is ${person.hashCode()}")
+    val hashSet = hashSetOf(person.also { println("put person in hashSet with hashCode  ${it.hashCode()}") })
+    println(hashSet.contains(person.also { println("Is hashSet contains person with hashCode ${it.hashCode()}?") })) // true
 
     val hashSet1 = hashSetOf(Person("Adam", 25).also {
-        println("hashSet1 anonymous person ${it.hashCode()}")
+        println("Put anonymous person in hashSet1 with hashCode ${it.hashCode()}")
     })
     println(hashSet1.contains(Person("Adam", 25).also {
-        println("hashSet1 contains anonymous person ${it.hashCode()}")
+        println("Is hashSet1 contains anonymous person with hashCode ${it.hashCode()}")
     })) // false bcs it's anonymous
 }
 
 fun hashCodeOverridedClass() {
     val personOverrided = PersonOverrided("Adam", 25)
-    println("personOverrided ${personOverrided.hashCode()}")
+    println("personOverrided hashCode is  ${personOverrided.hashCode()}")
 
     val hashSet2 = hashSetOf(personOverrided
-        .also { println("hashSet2 personOverrided ${it.hashCode()}") })
+        .also { println("Put personOverrided to hashSet2 with hashCode ${it.hashCode()}") })
 
     println(hashSet2.contains(personOverrided)
-        .also { println("hashSet2 contains personOverrided ${it.hashCode()}") }) // true
+        .also { println("Is hashSet2 contains personOverrided with hashCode  ${it.hashCode()}") }) // true
 
     val hashSet3 = hashSetOf(PersonOverrided("Adam", 25)
-        .also { println("hashSet3 anonymous personOverrided ${it.hashCode()}") })
+        .also { println("hashSet3 anonymous personOverrided with hashCode  ${it.hashCode()}") })
 
     println(
         hashSet3.contains(PersonOverrided("Adam", 25)
-            .also { println("hashSet3 contains anonymous personOverrided ${it.hashCode()}") })
+            .also { println("Is hashSet3 contains anonymous personOverrided  with hashCode ${it.hashCode()}") })
     ) // true
 }
 
@@ -125,7 +126,7 @@ private fun copy() {
 
 private data class PersonDataClass(val name: String, val age: Int)
 
-class Person(val name: String, val age: Int)
+private class Person(val name: String, val age: Int)
 
 private class PersonOverrided(val name: String, val age: Int) {
     override fun toString() = "Person(name = $name , age = $age )"
@@ -138,7 +139,6 @@ private class PersonOverrided(val name: String, val age: Int) {
 
     override fun hashCode(): Int = name.hashCode() * 31 + age
 }
-
 
 
 
