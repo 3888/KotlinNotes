@@ -208,7 +208,9 @@ private fun replaceAllBrackets() {
 }
 
 private fun regexNoShielding() {
-//    2017 Kotlin in Action (94)
+/*
+  2017 Kotlin in Action (92)
+*/
     val path = "/Users/yole/kotlin-book/chapter.adoc"
 
     val regex = """(.+)/(.+)\.(.+)""".toRegex()

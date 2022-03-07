@@ -17,7 +17,7 @@ fun main() {
 
 //    takeAfter()
 //    takeAndAppend()
-    substring()
+//    substring()
 //    joinToString()
 
 //    nullToString()
@@ -25,8 +25,9 @@ fun main() {
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 
-//    multiString_trimIndent()
-//    multiString_trimMargin()
+    multiString()
+//    multiStringLiteral_trimIndent()
+//    multiStringLiteral_trimMargin()
 
 //    stringToNumber()
 
@@ -277,7 +278,12 @@ private fun nullToString() {
 //    println(test is String) // false
 }
 
-private fun multiString_trimIndent() {
+private fun multiString() {
+    val price = """${'$'}99.9"""
+    println(price)
+}
+
+private fun multiStringLiteral_trimIndent() {
     val name = "Aramis"
     print(
         """
@@ -287,13 +293,20 @@ private fun multiString_trimIndent() {
     )
 }
 
-private fun multiString_trimMargin() {
+private fun multiStringLiteral_trimMargin() {
     println(
         """This is the first line
 |and this is the second one
 |and this is the third one
 |...""".trimMargin()
     )
+/*
+  2017 Kotlin in Action (94)
+*/
+    val kotlinLogo = """| //
+        .|//
+        .|/ \ """
+    println(kotlinLogo.trimMargin("."))
 }
 
 private fun stringToNumber() {
