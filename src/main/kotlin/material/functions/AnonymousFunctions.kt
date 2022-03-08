@@ -1,5 +1,7 @@
 package material.functions
 
+import material.Helper
+
 
 fun main() {
 
@@ -40,8 +42,13 @@ private fun countLambda() = println("Mississippi".count { letter ->
 
 
 private fun whatIsTheDifferenceBetween() {
-    println("random ${Math.random()}")
-    println("random ${{ Math.random() }}")
+    println("random ${Helper.random}")
+    println("random ${
+        {
+            //some logic here
+            Helper.random
+        }
+    }")
 }
 
 
