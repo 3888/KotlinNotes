@@ -5,11 +5,11 @@ class Driver(var lastName: String) : Person("Bob") {
         println("New number")
     }
 
-    override val age: Int
+    override val ageOpenVal: Int
         get() = 35
 
     override fun toString(): String {
-        return "Driver name is ${name + " " + lastName} and age is $age "
+        return "Driver name is ${name + " " + lastName} and age is $ageOpenVal "
     }
 
     override val nickName: String = "C3PO"

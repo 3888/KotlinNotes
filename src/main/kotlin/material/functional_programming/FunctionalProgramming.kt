@@ -1,16 +1,15 @@
 package material.functional_programming
 
-import java.util.*
 import kotlin.system.measureNanoTime
 import kotlin.system.measureTimeMillis
 
 
 fun main() {
-    transformationMap()
-    transformationMapIndexed()
+//    transformationMap()
+//    transformationMapIndexed()
 //    transformationFlatMap()
 
-    transformationSumOf()
+//    transformationSumOf()
 
 //    filter()
 
@@ -19,8 +18,8 @@ fun main() {
 
 //    generateSequencePrimes(10)
 
-//    nano()
-//    milli(1000000)
+    measureNanoTime()
+//    measureTimeMillis()
 }
 
 fun transformationSumOf() {
@@ -73,6 +72,13 @@ private fun transformationFlatMap() {
     }
     println(value)
 
+    val books = listOf(
+        Book("Thursday Next", listOf("Jasper Forde")),
+        Book("Mort", listOf("Terry Pratchett")),
+        Book("Good Omens", listOf("Terry Pratchett", "Neil Gaiman")),
+    )
+
+    println(books.flatMap { it.authors }.toSet())
 }
 
 private fun filter() {
@@ -142,47 +148,43 @@ private fun Int.isPrime(): Boolean {
     return true
 }
 
-private fun nano() {
+private fun measureNanoTime() {
+    val endValue = 1000000
+    val listOfNumbers = (0 until endValue)
+
     val listInNanos = measureNanoTime {
 // Цепочка функций для обработки списка
-        val employees = listOf("Denny", "Claudette", "Peter")
-        val shirtSizes = listOf("large", "x-large", "medium")
-        val employeeShirtSizes: MutableMap<String, String> = HashMap()
-        for (i in employees.indices) {
-            employeeShirtSizes[employees[i]] = shirtSizes[i]
-        }
-        println(employeeShirtSizes["Denny"])
+        listOfNumbers.map { it + 1 }.filter { it % 2 == 0 }
     }
 
     println("список обработан за $listInNanos наносекунд ")
 
     val sequenceInNanos = measureNanoTime {
 // Цепочка функций для обработки последовательности
-        val employees = listOf("Denny", "Claudette", "Peter")
-        val shirtSize = listOf("large", "x-large", "medium")
-        val employeeShirtSizes = employees.zip(shirtSize).toMap()
-        println(employeeShirtSizes["Denny"])
+        listOfNumbers.asSequence().map { it + 1 }.filter { it % 2 == 0 }
+
     }
-    println("последовательность обработана за $sequenceInNanos наносекунд")//
+    println("последовательность обработана за $sequenceInNanos наносекунд")
+
 }
 
-private fun milli(count: Long) {
+private fun measureTimeMillis() {
+    val endValue = 1000000
+    val listOfNumbers = (0 until endValue)
+
     val listInNanos = measureTimeMillis {
 // Цепочка функций для обработки списка
-        (0 until count).toList()
+        listOfNumbers.map { it + 1 }.filter { it % 2 == 0 }
     }
 
     println("список обработан за $listInNanos милисекунд ")
 
     val sequenceInNanos = measureTimeMillis {
 // Цепочка функций для обработки последовательности
-        var value = count
+        listOfNumbers.asSequence().map { it + 1 }.filter { it % 2 == 0 }
 
-        val sequence = generateSequence {
-            (value++).takeIf { it <= value }
-        }
     }
-    println("последовательность обработана за $sequenceInNanos милисекунд")//
+    println("последовательность обработана за $sequenceInNanos милисекунд")
 }
 
 private data class TransactionsItem(
@@ -190,3 +192,5 @@ private data class TransactionsItem(
     val depositEuro: Double,
     val depositDollar: Double
 )
+
+private class Book(val title: String, val authors: List<String>)

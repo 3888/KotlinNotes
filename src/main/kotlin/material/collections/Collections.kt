@@ -9,7 +9,6 @@ http://developer.alexanderklimov.ru/android/kotlin/collection.php
 * */
 
 fun main() {
-
 //    buildList()
 
 //    collectionsJava()
@@ -19,7 +18,7 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
-    chunked()
+//    chunked()
 //    flatten()
 //    reduce()
 //    reduceRight()
@@ -178,7 +177,6 @@ private fun sortList() {
         .sortedBy {
             it.id
         })
-
 }
 
 private fun flatten() {
@@ -266,7 +264,6 @@ fun fold(n: Int) {
         println("acc $acc + i $i = ${acc + i}")
         acc + i
     })
-
 }
 
 private fun mutableListAdd() {
