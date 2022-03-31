@@ -43,25 +43,7 @@ fun filterNot() {
 }
 
 private fun examples() {
-    val decorations = listOf("paper", "puppy", "board", "player")
-    println("filter ${decorations.filter { true }}") // no filter
 
-    val eager = decorations.filter { it[0] == 'p' }
-    println("filter with conditions ${eager.filter { it[0] == 'p' }}")
-
-//    apply filter lazily
-    val filtered = decorations.asSequence().filter { it[0] == 'p' }
-    println("filtered = $filtered")
-    println("filtered.toList() = ${filtered.toList()}")
-
-//    apply map lazily
-    val lazyMap = decorations.asSequence().map {
-        println("map: $it")
-    }
-
-    println(lazyMap)
-    println("first: ${lazyMap.first()}")
-    println("all: ${lazyMap.toList()}")
 
     val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper")
 

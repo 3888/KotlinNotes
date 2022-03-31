@@ -18,8 +18,6 @@ fun main() {
 
 //    generateSequencePrimes(10)
 
-    measureNanoTime()
-//    measureTimeMillis()
 }
 
 fun transformationSumOf() {
@@ -146,45 +144,6 @@ private fun Int.isPrime(): Boolean {
         }
     }
     return true
-}
-
-private fun measureNanoTime() {
-    val endValue = 1000000
-    val listOfNumbers = (0 until endValue)
-
-    val listInNanos = measureNanoTime {
-// Цепочка функций для обработки списка
-        listOfNumbers.map { it + 1 }.filter { it % 2 == 0 }
-    }
-
-    println("список обработан за $listInNanos наносекунд ")
-
-    val sequenceInNanos = measureNanoTime {
-// Цепочка функций для обработки последовательности
-        listOfNumbers.asSequence().map { it + 1 }.filter { it % 2 == 0 }
-
-    }
-    println("последовательность обработана за $sequenceInNanos наносекунд")
-
-}
-
-private fun measureTimeMillis() {
-    val endValue = 1000000
-    val listOfNumbers = (0 until endValue)
-
-    val listInNanos = measureTimeMillis {
-// Цепочка функций для обработки списка
-        listOfNumbers.map { it + 1 }.filter { it % 2 == 0 }
-    }
-
-    println("список обработан за $listInNanos милисекунд ")
-
-    val sequenceInNanos = measureTimeMillis {
-// Цепочка функций для обработки последовательности
-        listOfNumbers.asSequence().map { it + 1 }.filter { it % 2 == 0 }
-
-    }
-    println("последовательность обработана за $sequenceInNanos милисекунд")
 }
 
 private data class TransactionsItem(
