@@ -13,7 +13,7 @@ data class SlothGeneric(
     val slothName: String,
     val isTwoFingered: Boolean,
     var slothWeight: Int
-) : Mammal(slothName) {}
+) : Mammal(slothName)
 
 data class PandaGeneric(val pandaName: String) : Mammal(pandaName)
 
