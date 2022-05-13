@@ -2,14 +2,13 @@ package contest.codewars.level8kyu
 
 fun main() {
 
-//    println(countPositivesSumNegatives().contentToString())
+    println(countPositivesSumNegatives().contentToString())
+    println(countPositivesSumNegatives2().contentToString())
 
-//    println(getAscii("A".first()))
-//    println(getAscii2("A".first()))
-//    println(getAscii3("A".first()))
+
 }
 
-private fun contains (arr: IntArray, item : Int): Boolean = arr.contains(item)
+private fun contains(arr: IntArray, item: Int): Boolean = arr.contains(item)
 private fun contains2(arr: IntArray, item: Int) = item in arr
 val contains = IntArray::contains
 
@@ -33,11 +32,18 @@ private fun countPositivesSumNegatives(
     val negative: Int
     return if (input != null && input.isNotEmpty()) {
 
-        positive = input.filter { it > 0 }.count()
+        positive = input.count { it > 0 }
         negative = input.filter { it < 0 }.sum()
         arrayOf(positive, negative)
     } else arrayOf()
 }
+
+private fun countPositivesSumNegatives2(
+    input: Array<Int>? =
+        arrayOf(0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14),
+): Array<Int> = if (input != null && input.isNotEmpty()) arrayOf (input.count { it > 0 }, input.filter { it < 0 }.sum())
+else arrayOf()
+
 
 private fun greet() {
     println("hello world!".toByteArray().contentToString())
