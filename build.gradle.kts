@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.6.10"
 }
 group = "me.kara4uni"
 version = "1.0-SNAPSHOT"
@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation("io.arrow-kt:arrow-core-data:0.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     testImplementation(kotlin("test-junit"))
 
 }
