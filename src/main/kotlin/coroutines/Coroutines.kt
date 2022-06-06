@@ -6,7 +6,7 @@ import java.util.*
 fun main(): Unit = runBlocking {
 
 //sequentialExamples(this)
-//    parallelExamples(this)
+    parallelExamples(this)
 //    joinExample(this)
 }
 
@@ -34,15 +34,40 @@ private suspend fun sequentialExamples(scope: CoroutineScope) {
 //    scope.async {
 //        doWork(scope)
 //    }
+
+//    val deferredList: List<Deferred<String>> = List(10) {
+//        scope.async(start = CoroutineStart.LAZY) {
+//            getNameWithDelay(it.toString())
+//        }
+//    }
+//    deferredList.forEach { println(it.await()) }
 }
 
 private suspend fun parallelExamples(scope: CoroutineScope) {
-    val deferredList: List<Deferred<String>> = List(10) {
+//    val deferredList: List<Deferred<String>> = List(10) {
+//        scope.async {
+//            getNameWithDelay(it.toString())
+//        }
+//    }
+//    deferredList.forEach { println(it.await()) }
+
+    val documentsList = listOf(
+        Document("1", "111"),
+        Document("2", "222"),
+        Document("3", "333"),
+        Document("4", "444"),
+        Document("5", "555")
+    )
+
+    val documentIds = getDocumentsIds()
+    val documents: List<Deferred<Document>> = documentIds.map { id ->
         scope.async {
-            getNameWithDelay(it.toString())
+            getDocumentById(id, documentsList)
         }
     }
-    deferredList.forEach { println(it.await()) }
+
+    println(documents.awaitAll())
+
 }
 
 private suspend fun joinExample(scope: CoroutineScope) {
@@ -56,3 +81,9 @@ private suspend fun joinExample(scope: CoroutineScope) {
     job.join()
     println("job is done  ${Thread.currentThread().name}")
 }
+
+private fun getDocumentById(id: String, list: List<Document>): Document = list.filter { it.id == id }[0]
+
+private fun getDocumentsIds() = listOf("3", "5")
+
+private data class Document(val id: String, val data: String)
