@@ -31,3 +31,5 @@ private fun reverseSeq2(n: Int) = List(n) {
     n - it
 }
 
+fun reverseSeq3(n: Int): List<Int> = IntRange(1, n).reversed().toList()
+
