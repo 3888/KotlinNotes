@@ -61,3 +61,6 @@ private fun greet() {
 
     println(hello)
 }
+
+fun maps(x: IntArray): IntArray = x.map { it * 2 }.toIntArray()
+fun maps2(x: IntArray): IntArray =  IntArray( x.size) { x[it] * 2 }
