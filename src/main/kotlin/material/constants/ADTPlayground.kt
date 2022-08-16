@@ -50,3 +50,13 @@ private fun studentMessageSealedClass(status: StudentStatusSealed): String {
         is StudentStatusSealed.Graduated -> "Congratulations!"
     }
 }
+
+sealed class Type(val value: String) {
+    object A : Type("a")
+    object B : Type("b")
+}
+// is equivalent to this sealed class:
+sealed class TypeSealed(val value: String) {
+    object A : TypeSealed("a")
+    object B : TypeSealed("b")
+}
