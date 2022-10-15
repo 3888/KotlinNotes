@@ -15,6 +15,8 @@ repositories {
 
 dependencies {
     implementation("io.arrow-kt:arrow-core-data:0.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+
     testImplementation(kotlin("test-junit"))
 
 }
