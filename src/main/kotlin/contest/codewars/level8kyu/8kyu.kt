@@ -53,11 +53,18 @@ private fun countPositivesSumNegatives(
     val negative: Int
     return if (input != null && input.isNotEmpty()) {
 
-        positive = input.filter { it > 0 }.count()
+        positive = input.count { it > 0 }
         negative = input.filter { it < 0 }.sum()
         arrayOf(positive, negative)
     } else arrayOf()
 }
+
+private fun countPositivesSumNegatives2(
+    input: Array<Int>? =
+        arrayOf(0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14),
+): Array<Int> = if (input != null && input.isNotEmpty()) arrayOf (input.count { it > 0 }, input.filter { it < 0 }.sum())
+else arrayOf()
+
 
 private fun greet() {
     println("hello world!".toByteArray().contentToString())
@@ -75,3 +82,6 @@ private fun greet() {
 
     println(hello)
 }
+
+fun maps(x: IntArray): IntArray = x.map { it * 2 }.toIntArray()
+fun maps2(x: IntArray): IntArray =  IntArray( x.size) { x[it] * 2 }
