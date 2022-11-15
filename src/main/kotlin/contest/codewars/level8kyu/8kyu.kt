@@ -7,9 +7,29 @@ fun main() {
 //    println(getAscii("A".first()))
 //    println(getAscii2("A".first()))
 //    println(getAscii3("A".first()))
+
+    println(grow())
+
 }
 
-private fun contains (arr: IntArray, item : Int): Boolean = arr.contains(item)
+fun growMy(arr: IntArray = intArrayOf(1, 2, 3, 4)): Int {
+    var result = 1
+
+    arr.forEach { i ->
+        result *= i
+    }
+    return result
+}
+
+fun grow(arr: IntArray = intArrayOf(1, 2, 3, 4)): Int = arr.reduce { acc, i -> acc * i }
+fun grow1(arr: IntArray = intArrayOf(1, 2, 3, 4)): Int = arr.reduce (Int::times)
+
+fun getAgeMy(yearsOld: String = "4 years old"): Int = yearsOld.substring(0, 1).toInt() // digitToInt()?
+fun getAge(yearsOld: String = "4 years old"): Int = yearsOld.take(1).toInt()
+fun getAge1(yearsOld: String = "4 years old"): Int = yearsOld.first().toInt()
+fun getAge2(yearsOld: String = "4 years old"): Int = yearsOld.substring(0, 1).toInt()
+
+private fun contains(arr: IntArray, item: Int): Boolean = arr.contains(item)
 private fun contains2(arr: IntArray, item: Int) = item in arr
 val contains = IntArray::contains
 

@@ -156,10 +156,11 @@ private fun sort() {
 
 private fun chunked() {
     val list = listOf("A", "B", "C", "D", "E", "F")
-    println(list.chunked(1))
-    println(list.chunked(2))
-    println(list.chunked(3))
-    println(list.chunked(5))
+    println(list)
+    println("size 1 " + list.chunked(1))
+    println("size 2 " + list.chunked(2))
+    println("size 3 " + list.chunked(3))
+    println("size 4 " + list.chunked(5))
 //    println(list.chunked(0)) // Error size 0 must be greater than zero
 }
 
@@ -191,21 +192,20 @@ private fun flatten() {
 }
 
 private fun reduce() {
-/*
-https://www.baeldung.com/kotlin/fold-vs-reduce
-https://metanit.com/kotlin/tutorial/9.8.php
-* */
-    val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
+    /*
+    https://www.baeldung.com/kotlin/fold-vs-reduce
+    https://metanit.com/kotlin/tutorial/9.8.php
+    * */
+    val list = listOf("A", "B", "C","E", "F", "G")
 
     println("list = $list")
-    val flattenListReduce = list
-        .flatten()
+    val reduceList = list
         .reduce { accumulator, string -> "$accumulator & $string" }
-    println("flatten+reduce = $flattenListReduce")
+    println("reduce = $reduceList")
 
     println("array is ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
-    println("1 * 2 * 3 * 4 * 5 = ${intArrayOf(1, 2, 3, 4, 5).reduce(Int::times)}")
 
+    println("1 * 2 * 3 * 4 * 5 = ${intArrayOf(1, 2, 3, 4, 5).reduce(Int::times)}")
     println("reduce ${
         listOf("1", "2", "3", "4", "5").reduce { acc, it ->
             "$acc $it" // 1 2 3 4 5 
@@ -219,16 +219,16 @@ it  - 2-1 следующая строка из листа
 (acc = 1 2 3 4) (it = 5)
 */
 //                "$it $acc" // 5 4 3 2 1
-/*
-it  - 1-й элемент следующая строка из листа
-acc - 2-й элемент, аккумулятор
-(it = 2) (acc = 1)
-(it = 3) (acc = 2 1)
-(it = 4) (acc = 3 2 1)
-(it = 5) (acc = 4 3 2 1)
-(it = 6) (acc = 5 4 3 2 1)
-(it = 6) (acc = 5 4 3 2 1)
- */
+            /*
+            it  - 1-й элемент следующая строка из листа
+            acc - 2-й элемент, аккумулятор
+            (it = 2) (acc = 1)
+            (it = 3) (acc = 2 1)
+            (it = 4) (acc = 3 2 1)
+            (it = 5) (acc = 4 3 2 1)
+            (it = 6) (acc = 5 4 3 2 1)
+            (it = 6) (acc = 5 4 3 2 1)
+             */
         }
     }")
 }
@@ -238,26 +238,26 @@ private fun reduceRight() {
         .reduceRight { acc, it -> "$acc $it" }
 
     println("reduceRight = $reduceRight")
-/*
-acc - 1-й элемент, аккумулятор
-string  - следующая строка из листа
-(string = 2) (acc = 1)
-(string = 3) (acc = 2 1)
-(string = 4) (acc = 3 2 1)
-(string = 5) (acc = 4 3 2 1)
-(string = 6) (acc = 5 4 3 2 1)
-(string = 6) (acc = 5 4 3 2 1)
- */
+    /*
+    acc - 1-й элемент, аккумулятор
+    string  - следующая строка из листа
+    (string = 2) (acc = 1)
+    (string = 3) (acc = 2 1)
+    (string = 4) (acc = 3 2 1)
+    (string = 5) (acc = 4 3 2 1)
+    (string = 6) (acc = 5 4 3 2 1)
+    (string = 6) (acc = 5 4 3 2 1)
+     */
 
 //                "$acc $string"
-/*
-acc - 1-й элемент, аккумулятор
-string  - следующая строка из листа
-(acc = 1) (string = 2)
-(acc = 1 2) (string = 3)
-(acc = 1 2 3) (string = 4)
-(acc = 1 2 3 4) (string = 5)
- */
+    /*
+    acc - 1-й элемент, аккумулятор
+    string  - следующая строка из листа
+    (acc = 1) (string = 2)
+    (acc = 1 2) (string = 3)
+    (acc = 1 2 3) (string = 4)
+    (acc = 1 2 3 4) (string = 5)
+     */
 
 }
 
