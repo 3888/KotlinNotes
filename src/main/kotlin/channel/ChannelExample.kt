@@ -4,18 +4,20 @@ package channel
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.channels.produce
 
 fun main() {
-    runBlocking {
-        val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
 
+    val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
+    runBlocking {
         runBlocking {
 //            channelConsumerTillClose(fruitArray)
-
-            printChannelClosedValues(fruitArray)
-
+//            printChannelClosedValues(fruitArray)
         }
     }
+
+    produceFruits(fruitArray)
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
@@ -87,4 +89,23 @@ private fun stopChannel(
         println("Channel stopped $fruit isClosedForSend ${kotlinChannel.isClosedForSend}")
         println("Channel stopped $fruit isClosedForReceive ${kotlinChannel.isClosedForReceive}")
     }
+}
+
+private fun produceFruits(fruitArray: Array<String>) {
+    val fruits = GlobalScope.produce {
+        for (fruit in fruitArray) {
+            send(fruit)
+// Conditional close
+            if (fruit == "Pear") {
+// Signal that closure of channel
+                close()
+            }
+        }
+    }
+
+    runBlocking {
+        fruits.consumeEach { println(it) }
+        println("Done!")
+    }
+
 }
