@@ -1,10 +1,9 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package channel
 
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 fun main() {
     runBlocking {
@@ -22,7 +21,7 @@ fun main() {
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
     val kotlinChannel = Channel<String>()
     GlobalScope.launch {
-//        putDataToChannel(fruitArray, kotlinChannel, fruitArray[3], true)
+        putDataToChannel(fruitArray, kotlinChannel, fruitArray[3], true)
         putDataToChannel(fruitArray, kotlinChannel, "", false)
     }
 // Another way to iterate over the channel values
