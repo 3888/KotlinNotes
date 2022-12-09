@@ -11,21 +11,27 @@ import kotlinx.coroutines.runBlocking
 @ExperimentalCoroutinesApi
 fun main() {
     runBlocking {
-
-        val fruitsChannel = produceFruits( produceItems())
-        iterateItems(fruitsChannel, "iterate fruitsChannel", true)
+        val isItemsChannelLogged = false
+        val itemsChannel = produceItems(isItemsChannelLogged)
+        iterateItems(itemsChannel, "itemsChannel", isItemsChannelLogged)
         println()
 
-        delay(200)
-        val redFruitsChannel = produceRedFruits( produceItems())
-        iterateItems(redFruitsChannel, "iterate redFruitsChannel", true)
+        val isFruitsChannelLogged = false
+        val fruitsChannel = produceFruits(produceItems(isFruitsChannelLogged))
+        iterateItems(fruitsChannel, "fruitsChannel", isFruitsChannelLogged)
+        println()
 
+        val isRedFruitsChannelLogged = true
+        val redFruitsChannel = produceRedFruits(produceFruits(produceItems(isRedFruitsChannelLogged)))
+        iterateItems(redFruitsChannel, "redFruitsChannel", isRedFruitsChannelLogged)
+
+        itemsChannel.cancel()
         redFruitsChannel.cancel()
         fruitsChannel.cancel()
     }
 }
 
-private fun produceItems() = GlobalScope.produce {
+private fun produceItems(isLogActive: Boolean) = GlobalScope.produce {
     val itemsArray = ArrayList<Item2>()
     itemsArray.add(Fruit2("Apple", true))
     itemsArray.add(Fruit2("Strawberry", true))
@@ -38,10 +44,12 @@ private fun produceItems() = GlobalScope.produce {
     itemsArray.add(Vegetable2("Radishes", true))
 
     itemsArray.forEach {
-        println("send ${it.name} is Vegetable ${it is Vegetable2}")
         delay(10)
+        if (isLogActive) {
+            val type = if (it is Vegetable2) "Vegetable" else "Fruit"
+            println("send ${it.name} type $type isRed ${it.isRed}")
+        }
         send(it)
-
     }
 }
 
@@ -61,11 +69,9 @@ private fun produceRedFruits(items: ReceiveChannel<Item2>) = GlobalScope.produce
 
 private suspend fun iterateItems(channel: ReceiveChannel<Item2>, message: String, isLogActive: Boolean) {
     if (isLogActive) {
-        println("$message ")
-
         for (item in channel) {
             delay(10)
-            println("ReceiveChannel item ${item.name}  isRed ${item.isRed}")
+            println("$message ReceiveChannel item ${item.name}  isRed ${item.isRed}")
         }
     }
 }
