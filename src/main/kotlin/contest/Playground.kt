@@ -13,7 +13,7 @@ fun main() {
 fun reverseWords(str: String) = str.split(" ")
     .reversed()
     .toString()
-    .substring(0,)
+    .substring(0)
     .replace(",", "")
     .replace("[", "")
     .replace("]", "")
