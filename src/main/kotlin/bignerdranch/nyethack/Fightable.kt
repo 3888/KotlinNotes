@@ -1,6 +1,6 @@
 package bignerdranch.nyethack
 
-import material.Helper
+import kotlin.random.Random.Default.nextInt
 
 
 interface Fightable {
@@ -9,7 +9,7 @@ interface Fightable {
     val diceSides: Int
     val damageRoll: Int // default getter
         get() = (0 until diceCount).map {
-            Helper.random.nextInt(diceSides + 1)
+            nextInt(diceSides + 1)
         }.sum()
 
     fun attack(opponent: Fightable): Int
