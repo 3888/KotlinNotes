@@ -17,7 +17,7 @@ fun main() {
         }
     }
 
-    produceFruits(fruitArray)
+//    produceFruits(fruitArray)
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
