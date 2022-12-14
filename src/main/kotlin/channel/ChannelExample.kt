@@ -17,7 +17,7 @@ fun main() {
         }
     }
 
-//    produceFruits(fruitArray)
+    produceFruits(fruitArray)
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
@@ -97,7 +97,7 @@ private fun produceFruits(fruitArray: Array<String>) {
             send(fruit)
 // Conditional close
             if (fruit == "Pear") {
-// Signal that closure of channel
+// Signal that closure of channel. Than we'll receive ClosedSendChannelException
                 close()
             }
         }
