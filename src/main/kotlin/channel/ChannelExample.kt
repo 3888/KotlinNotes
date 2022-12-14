@@ -11,13 +11,13 @@ fun main() {
 
     val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
     runBlocking {
-        runBlocking {
 //            channelConsumerTillClose(fruitArray)
 //            printChannelClosedValues(fruitArray)
-        }
+        offer(fruitArray)
     }
 
-    produceFruits(fruitArray)
+//    produceFruits(fruitArray)
+
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
@@ -63,10 +63,7 @@ private suspend fun channelConsumerTillClose(fruitArray: Array<String>) {
 }
 
 private suspend fun putDataToChannel(
-    fruitArray: Array<String>,
-    kotlinChannel: Channel<String>,
-    breakPoint: String,
-    isClose: Boolean
+    fruitArray: Array<String>, kotlinChannel: Channel<String>, breakPoint: String, isClose: Boolean
 ) {
     for (fruit in fruitArray) {
         kotlinChannel.send(fruit)
@@ -79,9 +76,7 @@ private suspend fun putDataToChannel(
 }
 
 private fun stopChannel(
-    fruit: String,
-    breakPoint: String,
-    kotlinChannel: Channel<String>
+    fruit: String, breakPoint: String, kotlinChannel: Channel<String>
 ) {
     if (fruit == breakPoint) {
         println("Channel stopped at $breakPoint")
@@ -108,4 +103,27 @@ private fun produceFruits(fruitArray: Array<String>) {
         println("Done!")
     }
 
+}
+
+private fun offer(fruitArray: Array<String>) {
+    val kotlinChannel = Channel<String>()
+    runBlocking {
+        launch {
+            for (fruit in fruitArray) {
+                val wasSent = kotlinChannel.trySend(fruit).isSuccess //  .offer(fruit) is deprecated
+
+                if (wasSent) {
+                    println("Sent: $fruit")
+                } else {
+                    println("$fruit wasn’t sent")
+                }
+            }
+            kotlinChannel.close()
+        }
+
+        for (fruit in kotlinChannel) {
+            println("Received: $fruit")
+        }
+        println("Done!")
+    }
 }
