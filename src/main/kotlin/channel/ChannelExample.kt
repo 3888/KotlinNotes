@@ -8,12 +8,13 @@ import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.channels.produce
 
 fun main() {
-
     val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
     runBlocking {
 //            channelConsumerTillClose(fruitArray)
 //            printChannelClosedValues(fruitArray)
-        offer(fruitArray)
+
+//        offer(fruitArray)
+        poll(fruitArray)
     }
 
 //    produceFruits(fruitArray)
@@ -127,3 +128,35 @@ private fun offer(fruitArray: Array<String>) {
         println("Done!")
     }
 }
+
+private fun poll(fruitArray: Array<String>) {
+    val kotlinChannel = Channel<String>()
+    runBlocking {
+        launch {
+            for (fruit in fruitArray) {
+                if (fruit == "Pear") {
+                    break
+                }
+                println("Sent: $fruit")
+                kotlinChannel.send(fruit)
+            }
+        }
+
+        launch {
+            repeat(fruitArray.size) {
+                val fruit = kotlinChannel
+                    .tryReceive()
+                // .poll() is deprecated
+//                if (fruit != null) {
+                if (fruit.isSuccess) {
+                    println("Received: $fruit")
+                } else {
+                    println("Channel is empty")
+                }
+                delay(500)
+            }
+            println("Done!")
+        }
+    }
+}
+
