@@ -17,12 +17,12 @@ fun main() {
         println()
 
         val isFruitsChannelLogged = false
-        val fruitsChannel = produceFruits(produceItems(isFruitsChannelLogged))
+        val fruitsChannel = produceFruitsAndClose(produceItems(isFruitsChannelLogged))
         iterateItems(fruitsChannel, "fruitsChannel", isFruitsChannelLogged)
         println()
 
         val isRedFruitsChannelLogged = true
-        val redFruitsChannel = produceRedFruits(produceFruits(produceItems(isRedFruitsChannelLogged)))
+        val redFruitsChannel = produceRedFruits(produceFruitsAndClose(produceItems(isRedFruitsChannelLogged)))
         iterateItems(redFruitsChannel, "redFruitsChannel", isRedFruitsChannelLogged)
 
         itemsChannel.cancel()
@@ -53,7 +53,7 @@ private fun produceItems(isLogActive: Boolean) = GlobalScope.produce {
     }
 }
 
-private fun produceFruits(items: ReceiveChannel<Item2>) = GlobalScope.produce {
+private fun produceFruitsAndClose(items: ReceiveChannel<Item2>) = GlobalScope.produce {
     for (item in items) {
 // Send each item in the channel only if it is a fruit
         if (isFruit(item)) send(item)

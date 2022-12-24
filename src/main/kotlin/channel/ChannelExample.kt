@@ -3,22 +3,26 @@
 package channel
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.channels.produce
 
 fun main() {
     val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
+
     runBlocking {
 //            channelConsumerTillClose(fruitArray)
 //            printChannelClosedValues(fruitArray)
 
 //        offer(fruitArray)
-        poll(fruitArray)
+//        poll(fruitArray)
     }
 
-//    produceFruits(fruitArray)
+//    produceFruitsAndClose(fruitArray)
 
+//    raceConditionExample(fruitArray)
+    broadCastChannelExample(fruitArray)
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
@@ -87,7 +91,7 @@ private fun stopChannel(
     }
 }
 
-private fun produceFruits(fruitArray: Array<String>) {
+private fun produceFruitsAndClose(fruitArray: Array<String>) {
     val fruits = GlobalScope.produce {
         for (fruit in fruitArray) {
             send(fruit)
@@ -158,5 +162,95 @@ private fun poll(fruitArray: Array<String>) {
             println("Done!")
         }
     }
+
 }
 
+private fun raceConditionExample(fruitArray: Array<String>) {
+    val kotlinChannel = Channel<String>()
+    val firstConsumer = mutableListOf<String>()
+    val secondConsumer = mutableListOf<String>()
+
+    runBlocking {
+//  Producer
+        GlobalScope.launch {
+// Send data in channel
+            fruitArray.forEach {
+                kotlinChannel.send(it)
+                delay(10)
+            }
+        }
+
+//  Consumers
+        GlobalScope.launch {
+            kotlinChannel.consumeEach { value ->
+                firstConsumer.add(value)
+            }
+        }
+        GlobalScope.launch {
+            kotlinChannel.consumeEach { value ->
+                secondConsumer.add(value)
+            }
+        }
+
+        delay(500)
+        kotlinChannel.close()
+
+        /*
+         there are two consumers — i.e., two consumeEach calls on the channel being executed to consume the values being
+         emitted by the channel. Now, which of these two consumers gets the value is not obvious
+         */
+
+        println("firstConsumer $firstConsumer")
+        println("secondConsumer $secondConsumer")
+    }
+}
+
+@ObsoleteCoroutinesApi
+private fun broadCastChannelExample(fruitArray: Array<String>) {
+    val kotlinChannel = BroadcastChannel<String>(
+//       Channel.RENDEZVOUS // Error
+//       Channel.UNLIMITED// Error
+//       Channel.CONFLATED // all data send
+        Channel.BUFFERED // without first?
+    )
+
+    val firstConsumer = mutableListOf<String>()
+    val secondConsumer = mutableListOf<String>()
+
+    runBlocking {
+
+//  Producer
+        GlobalScope.launch {
+// Send data in channel
+            fruitArray.forEach {
+                kotlinChannel.send(it)
+                delay(100)
+            }
+        }
+
+//  Consumers
+        GlobalScope.launch {
+            kotlinChannel.consumeEach { value ->
+                firstConsumer.add(value)
+            }
+        }
+        GlobalScope.launch {
+            kotlinChannel.consumeEach { value ->
+                secondConsumer.add(value)
+            }
+        }
+
+
+
+        delay(600)
+        kotlinChannel.close()
+
+        /*
+         there are two consumers — i.e., two consumeEach calls on the channel being executed to consume the values being
+         emitted by the channel. Now, which of these two consumers gets the value is not obvious
+         */
+
+        println("firstConsumer $firstConsumer")
+        println("secondConsumer $secondConsumer")
+    }
+}
