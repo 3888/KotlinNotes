@@ -17,6 +17,7 @@ fun main() {
 
 //    isNullOrEmptyNameVisible()
 //    take()
+    takeVsDrop()
 //    takeLast()
 //    replace()
 
@@ -28,12 +29,12 @@ fun main() {
 //    joinToString()
 
 //    nullToString()
-   // isEmptyVsIsBlank()
+    // isEmptyVsIsBlank()
 //    isNullOrEmptyNameVisible()
 //    isEmptyVsIsBlank()
 //    nullOrEmptyVSNullOrBlank()
 
-    multiString()
+//    multiString()
 //    multiString_trimIndent()
 //    multiString_trimMargin()
 
@@ -185,7 +186,7 @@ private fun joinToString() {
     println(arrayOf(1, 2, 3, 4).joinToString { it.toString() }) // 1, 2, 3, 4
     println(arrayOf(1, 2, 3, 4).joinToString("") { it.toString() }) // 1234
     println(arrayOf(1, 2, 3, 4).joinToString("")) // 1234
-    println(arrayOf(1, 2, 3, 4).joinToString("*","START","END")) // START1*2*3*4END
+    println(arrayOf(1, 2, 3, 4).joinToString("*", "START", "END")) // START1*2*3*4END
 
     val list = listOf(Fish("Flipper"), Fish("Moby Dick"), Fish("Dory"))
     println(list.filter { it.name.contains("i") }.joinToString(" ") { it.name })
@@ -234,6 +235,12 @@ private fun isNullOrEmptyNameVisible() {
 private fun take() {
     val address = "A very long street name somewhere in the Earth"
     println(address.take(24).plus("..."))
+}
+
+private fun takeVsDrop() {
+    val test = "1234567"
+    println("value is $test drop 2 ${test.drop(2)}")
+    println("value is $test take 2 ${test.take(2)}")
 }
 
 private fun takeLast() {
