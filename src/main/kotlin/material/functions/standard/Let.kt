@@ -1,6 +1,6 @@
 package material.functions.standard
 
-import bootcamp.aquarium.Fish
+import courses.bootcamp.aquarium.Fish
 
 fun main() {
 /*
