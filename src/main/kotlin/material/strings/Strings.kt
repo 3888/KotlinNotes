@@ -1,6 +1,6 @@
 package material.strings
 
-import bootcamp.aquarium.Fish
+import courses.bootcamp.aquarium.Fish
 import material.Helper
 
 
