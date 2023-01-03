@@ -9,7 +9,8 @@ fun main() {
 
 //    concurrentErrorFlow()
 //    concurrentFlow()
-    switchContextFlow()
+//    switchContextFlow()
+    errorHandling()
 }
 
 private fun simpleFlow() {
@@ -94,4 +95,29 @@ private fun switchContextFlow() {
             }
     }
     Thread.sleep(1000)
+}
+
+private fun errorHandling() {
+    val flowOfStrings = flow {
+        emit("")
+        for (number in 0..100) {
+            emit("Emitting: $number")
+        }
+    }
+
+    GlobalScope.launch {
+        flowOfStrings
+            .map { it.split(" ") }
+            .map { it[1] }
+            .catch {
+                println("Error")
+                it.printStackTrace()
+                emit("Fallback")
+            }
+            .flowOn(Dispatchers.Default)
+            .collect { println(it) }
+
+    }
+    Thread.sleep(100)
+    println("The code still works!")
 }
