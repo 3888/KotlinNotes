@@ -4,16 +4,20 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
 fun main() {
-//    simpleFlow()
+//    simpleFlowCollect()
+    simpleFlowLaunchIn()
+
 //    backpressureFlow()
 
 //    concurrentErrorFlow()
 //    concurrentFlow()
 //    switchContextFlow()
-    errorHandling()
+//    errorHandling()
+
 }
 
-private fun simpleFlow() {
+
+private fun simpleFlowCollect() {
     val flowOfStrings = flow {
         for (number in 0..100) {
             emit("Emitting: $number")
@@ -25,6 +29,20 @@ private fun simpleFlow() {
             println(value)
         }
     }
+    Thread.sleep(1000)
+}
+
+private fun simpleFlowLaunchIn() {
+    val flowOfStrings = flow {
+        for (number in 0..10) {
+            emit("Emitting: $number")
+        }
+    }
+
+    flowOfStrings
+        .onEach { println(it) }
+        .launchIn(GlobalScope)
+
     Thread.sleep(1000)
 }
 
