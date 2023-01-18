@@ -16,8 +16,10 @@ repositories {
 dependencies {
     implementation("io.arrow-kt:arrow-core-data:0.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
-    testImplementation(kotlin("test-junit"))
 
+    //For runBlockingTest, CoroutineDispatcher etc.
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.5")
+    testImplementation(kotlin("test-junit"))
 }
 
 tasks.withType<KotlinCompile>() {
