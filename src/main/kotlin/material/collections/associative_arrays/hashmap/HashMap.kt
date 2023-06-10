@@ -6,7 +6,7 @@ fun main() {
     https://bezkoder.com/kotlin-hashmap/
     */
 
-    var bzkMap: HashMap<String, Int> = hashMapOf("zero" to 0, "onek" to 1, "twok" to 2, "bezkoder" to 9)
+    val bzkMap: HashMap<String, Int> = hashMapOf("zero" to 0, "onek" to 1, "twok" to 2, "bezkoder" to 9)
     println(bzkMap)
 
     bzkMap.put("bezkoder", 9999)
@@ -21,6 +21,8 @@ fun main() {
     println(".get " + bzkMap.get("bezkoder"))
 
     println("[key] " + bzkMap["bezkoder"])
+    println("[keyIsNotIsHashMap] " + bzkMap["nonExistKey"])
+    println("getOrDefault " + bzkMap.getOrDefault("nonExistKey", "There is no spoon."))
 
     println(bzkMap.getOrElse("zkoder") { 123 })
 
