@@ -7,3 +7,5 @@ class ATemplate : BaseTemplate() {
         println("Count $count")
     }
 }
+
+
