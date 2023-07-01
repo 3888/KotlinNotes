@@ -7,6 +7,7 @@ import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.channels.produce
+import kotlin.random.Random
 
 fun main() {
     val fruitArray = arrayOf("Apple", "Banana", "Pear", "Grapes", "Strawberry")
@@ -20,9 +21,10 @@ fun main() {
     }
 
 //    produceFruitsAndClose(fruitArray)
+    produceExampleWithSafeLogic()
 
 //    raceConditionExample(fruitArray)
-    broadCastChannelExample(fruitArray)
+//    broadCastChannelExample(fruitArray)
 }
 
 private suspend fun printChannelClosedValues(fruitArray: Array<String>) {
@@ -254,3 +256,31 @@ private fun broadCastChannelExample(fruitArray: Array<String>) {
         println("secondConsumer $secondConsumer")
     }
 }
+
+private fun produceExampleWithSafeLogic() {
+    val producer = GlobalScope.produce(capacity = 10) {
+        while (isActive) {
+//            if (!isClosedForSend) {
+//                val number = Random.nextInt(0, 20)
+//                if (trySend(number).isSuccess) {
+//                    println("$number sent")
+//                } else {
+//                    println("$number discarded")
+//                }
+//        }
+
+            val number = Random.nextInt(0, 20)
+            send(number)
+            println("$number sent")
+
+        }
+    }
+    Thread.sleep(30L)
+
+    /*
+  As you can see the previous code generates 10 elements — the capacity of the
+    channel — and then it discards the following because the channel is full
+    * */
+
+}
+
