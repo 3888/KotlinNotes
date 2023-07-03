@@ -22,7 +22,6 @@ private fun saveUser(user: User) {
     validateLocalFunction(user, null, "Error")
 }
 
-
 class User(
     val id: Int, val name: String?,
     val address: String
