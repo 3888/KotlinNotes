@@ -20,6 +20,7 @@ dependencies {
     //For runBlockingTest, CoroutineDispatcher etc.
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.5")
     testImplementation(kotlin("test-junit"))
+    implementation(kotlin("reflect"))
 }
 
 tasks.withType<KotlinCompile>() {
