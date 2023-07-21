@@ -130,6 +130,7 @@ private suspend fun parallelExamples(scope: CoroutineScope) {
 
     val documentIds = getDocumentsIds()
     val documents: List<Deferred<Document>> = documentIds.map { id ->
+        println("id $id")
         scope.async {
             getDocumentById(id, documentsList)
         }
