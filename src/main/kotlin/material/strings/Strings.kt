@@ -25,9 +25,6 @@ fun main() {
 //    substring()
 //    joinToString()
 
-//    substring()
-//    joinToString()
-
 //    nullToString()
     // isEmptyVsIsBlank()
 //    isNullOrEmptyNameVisible()

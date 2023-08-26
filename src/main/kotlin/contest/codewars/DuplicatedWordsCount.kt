@@ -26,8 +26,7 @@ object DuplicatedWordsCount {
             if (!uniqueWords.add(str)) repeatedWords.add(str)
         }
 
-        println("uniqueWords $uniqueWords")
-        println("repeatedWords $repeatedWords")
-        println(repeatedWords.size)
+        println("uniqueWords size ${uniqueWords.size}: $uniqueWords")
+        println("repeatedWords size ${repeatedWords.size}: $repeatedWords" )
     }
 }
