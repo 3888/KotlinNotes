@@ -2,12 +2,11 @@ package contest
 
 
 fun main() {
-//    asterisksSeparatedBySpaces(3)
-//    triangle(7)
-//    println(reverseWords("The greatest victory is that which requires no battle"))
-    val position = IntArray(2)
+    println( maxMultiple(2, 7))
 
 }
+
+fun maxMultiple(d: Int, b: Int): Int = (b / d) * d
 
 // "battle no requires which that is victory greatest The"
 fun reverseWords(str: String) = str.split(" ")
@@ -17,7 +16,6 @@ fun reverseWords(str: String) = str.split(" ")
     .replace(",", "")
     .replace("[", "")
     .replace("]", "")
-
 
 private fun asterisksSeparatedBySpaces(heightCount: Int) {
     for (i in 1..heightCount) {
