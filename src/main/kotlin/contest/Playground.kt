@@ -2,9 +2,12 @@ package contest
 
 
 fun main() {
-    println( maxMultiple(2, 7))
+
+
 
 }
+
+
 
 fun maxMultiple(d: Int, b: Int): Int = (b / d) * d
 
