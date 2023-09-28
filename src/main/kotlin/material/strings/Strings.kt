@@ -17,7 +17,7 @@ fun main() {
 
 //    isNullOrEmptyNameVisible()
 //    take()
-    takeVsDrop()
+//    takeVsDrop()
 //    takeLast()
 //    replace()
 
@@ -41,7 +41,7 @@ fun main() {
 /*
 // TODO    https://bezkoder.com/kotlin-split-string-example/
  */
-//    splitDelimiters()
+    splitDelimiters()
 //    splitRegex()
 //    splitChunked()
 //    splitToSequence()

@@ -3,11 +3,20 @@ package contest
 
 fun main() {
 
+    val value: String = "abcd\nefgh\nijkl\nmnop"
+    val vert_mirror = "dcba\nhgfe\nlkji\nponm"
+    val hor_mirror = "mnop\nijkl\nefgh\nabcd"
 
+    fun vertMirror(string: String) = string.reversed().split("\n").reversed().joinToString("") { "$it\n" }.trim()
 
+    fun horMirror(string: String) = string.split("\n").reversed().joinToString("") { "$it\n" }.trim()
+
+    println( oper({ vertMirror(string = value) }, value))
 }
 
 
+
+fun oper(mirrorType: (String) -> String, s: String): String = mirrorType(s)
 
 fun maxMultiple(d: Int, b: Int): Int = (b / d) * d
 
