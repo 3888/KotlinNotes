@@ -15,18 +15,17 @@ fun main() {
 private fun applyString() {
     val string = "value"
 
-    println(string)
-
     string.apply {
         substring(0,2)
     }
 
-    println(string)
+    println(string) // not work bcs Sting is immutable
 
+    val result = StringBuilder(string).apply {
+        this.replace(0, 5, "Hi")
+    }.toString()
 
-    println("string".apply {
-        substring(0,2)
-    })
+    println(result) // Hi
 }
 
 private fun applySettingToFish() {

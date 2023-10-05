@@ -112,7 +112,6 @@ private fun combiningFold(initialValue: Int) {
     println("Final value: $foldedValue")
 }
 
-
 private fun generateSequence(count: Int) {
     var value = count
 

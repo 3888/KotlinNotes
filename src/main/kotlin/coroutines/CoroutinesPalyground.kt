@@ -2,15 +2,18 @@ package coroutines
 
 import kotlinx.coroutines.*
 import java.util.*
+import kotlin.random.Random.Default.nextLong
 
 fun main() {
 //    joinExample()
 //childrenJobExample()
+    dispatchersExample()
 
     runBlocking {
         //sequentialExamples(this)
-        parallelExamples(this)
+//        parallelExamples(this)
         //    joinExample(this)
+//        settingTimeouts(this)
     }
 }
 
@@ -130,6 +133,7 @@ private suspend fun parallelExamples(scope: CoroutineScope) {
 
     val documentIds = getDocumentsIds()
     val documents: List<Deferred<Document>> = documentIds.map { id ->
+        println("id $id")
         scope.async {
             getDocumentById(id, documentsList)
         }
@@ -144,3 +148,38 @@ private fun getDocumentById(id: String, list: List<Document>): Document = list.f
 private fun getDocumentsIds() = listOf("3", "5")
 
 private data class Document(val id: String, val data: String)
+
+private suspend fun settingTimeouts(scope: CoroutineScope) {
+    val coroutine = scope.async {
+        withTimeout(500) {
+            try {
+                val time = nextLong(1000)
+                println("It will take me $time to do")
+                delay(time)
+                println("Returning profile")
+                "Profile"
+            } catch (e: TimeoutCancellationException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    val result = try {
+        coroutine.await()
+    } catch (e: TimeoutCancellationException) {
+        "No Profile"
+    }
+    println(result)
+}
+
+private fun dispatchersExample() {
+    runBlocking {
+        launch {
+            println(Thread.currentThread().name)
+        }
+    }
+
+    GlobalScope.launch {
+        println("GlobalScope.launch: ${Thread.currentThread().name}")
+    }
+}

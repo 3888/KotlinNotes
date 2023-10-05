@@ -1,9 +1,13 @@
 package material.interfaces
 
 fun main(args: Array<String>) {
+//example()
+exampleSameMethodName()
+}
 
-    var v1: IKotlinExample = A()
-    var v2: IKotlinExample = B()
+private fun example() {
+    val v1: IKotlinExample = A()
+    val v2: IKotlinExample = B()
 
 
     v1.method()
@@ -11,3 +15,13 @@ fun main(args: Array<String>) {
     v2.method()
     v2.methodWithDefaultRealization()
 }
+
+private fun exampleSameMethodName() {
+    val interfaceImpl = InterfaceImpl()
+    interfaceImpl.methodWIthDefaultRealisation()
+
+    val sameMethodNameInInterface = SameMethodNameInInterface()
+    sameMethodNameInInterface.methodWIthDefaultRealisation()
+
+}
+

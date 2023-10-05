@@ -3,7 +3,8 @@ package material.functions.standard
 import courses.bootcamp.aquarium.Fish
 
 fun main() {
-    alsoExample()
+//    alsoExample()
+    alsoString()
 }
 
 private fun alsoExample() {
@@ -20,4 +21,20 @@ private fun alsoExample() {
         }
 
     println(fish.hashCode())
+}
+
+private fun alsoString() {
+    val string = "value"
+
+    string.also {
+        it.substring(0,2)
+    }
+
+    println(string) // not work bcs Sting is immutable
+
+    val result = StringBuilder(string).also {
+        it.replace(0, 5, "Hi")
+    }.toString()
+
+    println(result) // Hi
 }
