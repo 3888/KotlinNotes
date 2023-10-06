@@ -16,9 +16,9 @@ fun main() {
 //    arrayRemoveDuplicates()
 //    all()
 //    initArray()
-//    minMaxArrayValue()
+    minMaxArrayValue()
 
-    withIndex()
+//    withIndex()
 //    sortedDescending()
 
 }
@@ -48,7 +48,7 @@ private fun minMaxArrayValue() {
     println("Minimum: $min")
     println("Maximum: $max")
 
-    arr.sort();
+    arr.sort()
 
     println("Minimum: ${arr.first()}")
     println("Maximum: ${arr.last()}")
