@@ -13,14 +13,20 @@ fun main() {
 
 //    collectionsJava()
 //    collectionsKotlin()
+
 //    listContains()
 //    listContainsAll()
+
 //    reversedExample()
 //    sort()
 //    sortList()
+
 //    chunked()
+//    windowed()
+
 //    flatten()
-//    reduce()
+
+    reduce()
 //    reduceRight()
 //    fold(6)
 
@@ -162,6 +168,16 @@ private fun chunked() {
 //    println(list.chunked(0)) // Error size 0 must be greater than zero
 }
 
+private fun windowed() {
+    val list = listOf("A", "B", "C", "D", "E", "F", "J")
+    println(list.windowed(3, 1, true))
+    println(list.windowed(3, 1, false))
+    println(list.windowed(2, 2, true))
+    println(list.windowed(2, 2, false))
+
+//    println(list.chunked(0)) // Error size 0 must be greater than zero
+}
+
 private fun sortList() {
     val list: List<IdList> = kotlin.collections.listOf(
         IdList(id = 4),
@@ -189,19 +205,17 @@ private fun flatten() {
 }
 
 private fun reduce() {
-/*
-https://www.baeldung.com/kotlin/fold-vs-reduce
-https://metanit.com/kotlin/tutorial/9.8.php
-* */
-    val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
+    /*
+    https://www.baeldung.com/kotlin/fold-vs-reduce
+    https://metanit.com/kotlin/tutorial/9.8.php
+    * */
 
-    println("list = $list")
-    val flattenListReduce = list
-        .flatten()
-        .reduce { accumulator, string -> "$accumulator & $string" }
-    println("flatten+reduce = $flattenListReduce")
+    val result = listOf("A", "B", "C", "E", "F", "G")
+    println("example 1. we have a  list = $result")
 
-    println("array is ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
+    println("reduce = ${result.reduce { accumulator, string -> "$accumulator$string" }}")
+
+    println("example 2. we have array ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
     println("1 * 2 * 3 * 4 * 5 = ${intArrayOf(1, 2, 3, 4, 5).reduce(Int::times)}")
 
     println("reduce ${
@@ -217,45 +231,45 @@ it  - 2-1 следующая строка из листа
 (acc = 1 2 3 4) (it = 5)
 */
 //                "$it $acc" // 5 4 3 2 1
-/*
-it  - 1-й элемент следующая строка из листа
-acc - 2-й элемент, аккумулятор
-(it = 2) (acc = 1)
-(it = 3) (acc = 2 1)
-(it = 4) (acc = 3 2 1)
-(it = 5) (acc = 4 3 2 1)
-(it = 6) (acc = 5 4 3 2 1)
-(it = 6) (acc = 5 4 3 2 1)
- */
+            /*
+            it  - 1-й элемент следующая строка из листа
+            acc - 2-й элемент, аккумулятор
+            (it = 2) (acc = 1)
+            (it = 3) (acc = 2 1)
+            (it = 4) (acc = 3 2 1)
+            (it = 5) (acc = 4 3 2 1)
+            (it = 6) (acc = 5 4 3 2 1)
+            (it = 6) (acc = 5 4 3 2 1)
+             */
         }
     }")
 }
 
 private fun reduceRight() {
-    val reduceRight = listOf("1", "2", "3", "4", "5")
-        .reduceRight { acc, it -> "$acc $it" }
+    val numbers = listOf("1", "2", "3", "4", "5")
+    val result = numbers.reduceRight { num, acc -> "$acc $num" }
+    println(result)
 
-    println("reduceRight = $reduceRight")
-/*
-acc - 1-й элемент, аккумулятор
-string  - следующая строка из листа
-(string = 2) (acc = 1)
-(string = 3) (acc = 2 1)
-(string = 4) (acc = 3 2 1)
-(string = 5) (acc = 4 3 2 1)
-(string = 6) (acc = 5 4 3 2 1)
-(string = 6) (acc = 5 4 3 2 1)
- */
+    /*
+    acc - 1-й элемент, аккумулятор
+    string  - следующая строка из листа
+    (string = 2) (acc = 1)
+    (string = 3) (acc = 2 1)
+    (string = 4) (acc = 3 2 1)
+    (string = 5) (acc = 4 3 2 1)
+    (string = 6) (acc = 5 4 3 2 1)
+    (string = 6) (acc = 5 4 3 2 1)
+     */
 
 //                "$acc $string"
-/*
-acc - 1-й элемент, аккумулятор
-string  - следующая строка из листа
-(acc = 1) (string = 2)
-(acc = 1 2) (string = 3)
-(acc = 1 2 3) (string = 4)
-(acc = 1 2 3 4) (string = 5)
- */
+    /*
+    acc - 1-й элемент, аккумулятор
+    string  - следующая строка из листа
+    (acc = 1) (string = 2)
+    (acc = 1 2) (string = 3)
+    (acc = 1 2 3) (string = 4)
+    (acc = 1 2 3 4) (string = 5)
+     */
 
 }
 

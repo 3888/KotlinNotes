@@ -1,11 +1,9 @@
 package contest
 
-
 fun main() {
 
 
 }
-
 
 private fun asterisksSeparatedBySpaces(heightCount: Int) {
     for (i in 1..heightCount) {
