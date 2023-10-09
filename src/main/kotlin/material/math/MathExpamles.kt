@@ -1,11 +1,14 @@
 package material.math
 
+import kotlin.math.ln
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 fun main() {
-//    pow()
+    logarithm()
+}
 
+private fun algebraic(){
     var fish = 2;
 
     println("times ${fish.times(6)}")
@@ -18,7 +21,6 @@ fun main() {
 
     println("% vs .rem ${1234 % 10}")
     println("% vs .rem ${1234.rem(10)}")
-
 }
 
 private fun maxOf(a: Int, b: Int) {
@@ -35,4 +37,8 @@ private fun sqrt() {
 
 private fun pow() {
     println(10.0.pow(3)) // 10 * 10 * 10 = 1000
+}
+
+private fun logarithm() {
+    println( ln(100.0))
 }
