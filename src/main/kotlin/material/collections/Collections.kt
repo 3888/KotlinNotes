@@ -26,7 +26,7 @@ fun main() {
 
 //    flatten()
 
-    reduce()
+//    reduce()
 //    reduceRight()
 //    fold(6)
 
@@ -46,6 +46,8 @@ fun main() {
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
+
+    statistics()
 
 }
 
@@ -386,6 +388,18 @@ private fun mutableListVsArrayList() {
     https://proandroiddev.com/the-mystery-of-mutable-kotlin-collections-e82cbf5d781
     https://stackoverflow.com/questions/43114367/difference-between-arrayliststring-and-mutablelistofstring-in-kotlin
     * */
+}
+
+private fun statistics() {
+    val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    val statistics = numbers.stream().mapToInt { it }.summaryStatistics()
+
+    println("Count: ${statistics.count}")
+    println("Sum: ${statistics.sum}")
+    println("Min: ${statistics.min}")
+    println("Max: ${statistics.max}")
+    println("Average: ${statistics.average}")
 }
 
 data class IdList(

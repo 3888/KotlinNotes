@@ -1,10 +1,10 @@
 package contest.codewars.level7kyu
 
-import java.util.Collections
+import java.util.*
 import kotlin.math.abs
 import kotlin.math.max
 
-fun main() {
+private fun main() {
     val a1 = arrayOf(
         "hoqq",
         "bbllkw",
@@ -23,7 +23,7 @@ fun main() {
     val a22 = arrayOf("bbbaaayddqbbrrrv") // 10
 
 //    mxdiflg2(a1, a2)
-    mxdiflg2(a11, a22)
+//    mxdiflg2(a11, a22)
 
 }
 
@@ -43,10 +43,10 @@ private fun mxdiflgMy(a1: Array<String>, a2: Array<String>): Int {
     }
 }
 
-fun mxdiflg(a1: Array<String>, a2: Array<String>) =
+private fun mxdiflg(a1: Array<String>, a2: Array<String>) =
     a1.flatMap { s1 -> a2.map { kotlin.math.abs(s1.length - it.length) } }.maxOrNull() ?: -1
 
-fun mxdiflg2(a1: Array<String>, a2: Array<String>): Int {
+private fun mxdiflg2(a1: Array<String>, a2: Array<String>): Int {
     var m = -1
     for (x in a1) {
         println("x $x")
@@ -62,4 +62,49 @@ fun mxdiflg2(a1: Array<String>, a2: Array<String>): Int {
     }
 
     return m
+}
+
+private fun mxdiflg3(a1: Array<String>, a2: Array<String>): Int {
+
+    // Don't try to calculate anything for empty arrays.
+    if (a1.isEmpty() || a2.isEmpty()) return -1
+
+    // Sort both arrays by length.
+    a1.sortBy { it.length }
+    a2.sortBy { it.length }
+
+    /**
+     * Get length difference of two arrays.
+     * Firstly measure the length difference between the longest word from a2 and shortest from a1.
+     * Then measure the length difference between the longest word from a1 and shortest from a2.
+     */
+    val firstLengthDifference = a2.last().length - a1.first().length
+    val secondLengthDifference = a1.last().length - a2.first().length
+
+    // Get a bigger value of two length differences.
+    return maxOf(firstLengthDifference, secondLengthDifference)
+}
+
+private fun mxdiflg4(a1: Array<String>, a2: Array<String>): Int =
+    if (a1.isEmpty() || a2.isEmpty()) -1
+    else {
+        val maxA = a1.maxOfOrNull { it.length } ?: 0
+        val minA = a1.minOfOrNull { it.length } ?: 0
+        val maxB = a2.maxOfOrNull { it.length } ?: 0
+        val minB = a2.minOfOrNull { it.length } ?: 0
+
+        val difference1 = Math.abs(maxA - minB)
+        val difference2 = Math.abs(minA - maxB)
+        if (difference1 > difference2) difference1 else difference2
+    }
+
+
+fun mxdiflg5 (a1:Array<String>, a2:Array<String>):Int {
+    if (a1.size < 1 || a2.size < 1) return -1
+
+    val statisticsA1 = a1.toList().stream().mapToInt {it.length}.summaryStatistics()
+    val statisticsA2 = a2.toList().stream().mapToInt {it.length}.summaryStatistics()
+
+    return Math.max(Math.abs(statisticsA1.max - statisticsA2.min), Math.abs(statisticsA2.max - statisticsA1.min))
+
 }
