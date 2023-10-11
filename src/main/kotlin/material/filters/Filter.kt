@@ -42,9 +42,13 @@ fun filterNot() {
     println(newArray)
 }
 
+fun isLetter(str: String): String {
+//    return str.filter(Char::isLetter)
+    return str.filter { it.isLetter() }
+//    return str.filter { it in 'a'..'z' || it in 'A'..'Z' }
+}
+
 private fun examples() {
-
-
     val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper")
 
     println(
