@@ -19,12 +19,17 @@ private fun decimalFormat() {
     val number = BigDecimal("10.5532355")
     val decimal = BigDecimal(3.14159265359)
 
+    println("number $number")
+    println("decimal $decimal")
+
     val decimalFormat = DecimalFormat(".##").apply { roundingMode = RoundingMode.HALF_UP }
-    println(decimalFormat.format(number))
+
+    println("decimalFormat ${decimalFormat.format(decimal)}")
+    println("Rounded HALF_EVEN: ${decimal.setScale(2, RoundingMode.HALF_EVEN)}")
 
     println("Rounded UP: ${number.setScale(2, RoundingMode.UP)}")
     println("Rounded DOWN: ${number.setScale(2, RoundingMode.DOWN)}")
-    println("Rounded HALF_EVEN: ${decimal.setScale(2, RoundingMode.HALF_EVEN)}")
+
 }
 
 
