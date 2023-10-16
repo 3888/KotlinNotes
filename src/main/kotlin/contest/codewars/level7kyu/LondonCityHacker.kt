@@ -64,7 +64,32 @@ fun londonCityHacker(journey: Array<Any>): String =
         .sumOf { if (it == 'B') 1.5 else 2.4 }
         .let { "£%.2f".format(it) }
 
+fun londonCityHacker2(journey: Array<Any>): String {
+
+    if (journey.isEmpty()) return "£0.00"
+
+    val price = journey
+        .map {
+            if (it is String) "2.40" else "1.50"
+        }
+        .joinToString()
+        .replace("1.50, 1.50", "1.50")
+        .split(",")
+        .sumOf { it -> it.toDouble() }
 
 
+    return "£%.2f".format(price)
+}
+
+fun londonCityHacker3(journey: Array<Any>) =
+    journey.fold(0.0 to false) { (fare, bus), x ->
+        println("fare $fare")
+        println("bus $bus")
+        when {
+            x is String -> fare + 2.4 to false
+            bus -> fare to false
+            else -> fare + 1.5 to true
+        }
+    }.first.let { "£%.2f".format(it) }
 
 
