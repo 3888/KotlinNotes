@@ -1,10 +1,20 @@
 package contest.codewars.level7kyu
 
+import kotlin.math.abs
+import kotlin.math.sqrt
+
 
 fun main() {
 
 
 }
+
+
+private fun smallEnoughMy(a: IntArray, limit: Int): Boolean = a.sorted().last() <= limit
+private fun smallEnoughMy2(a: IntArray, limit: Int): Boolean = a.maxOrNull()!! <= limit
+private fun smallEnough(a: IntArray, limit: Int) = a.all { it <= limit }
+
+private fun predictAge(vararg ages: Int): Int = sqrt(ages.map { it * it * 1.0 }.sum()).div(2).toInt()
 
 private fun reverseLetter(str: String): String = str.replace(Regex("[^a-zA-Z]"), "").reversed()
 

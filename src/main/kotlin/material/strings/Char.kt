@@ -6,8 +6,7 @@ fun main() {
 }
 
 private fun partitionExample() {
-
-    println(charArrayOf('A', 'B', 'c', 'd').partition { char ->
+    println(charArrayOf('A', 'c', 'd', 'B').partition { char ->
         char.isUpperCase()
     })
 }
