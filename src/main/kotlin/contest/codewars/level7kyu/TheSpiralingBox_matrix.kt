@@ -38,3 +38,14 @@ fun createBox3(width: Int, length: Int) =
             listOf(i, j, length - 1 - i, width - 1 - j).minOrNull()!! + 1
         }
     }
+
+fun createBox4(width: Int, length: Int): Array<IntArray> {
+    val matrix = Array(length) { IntArray(width) }
+
+    for (i in 0 until length) {
+        for (j in 0 until width) {
+            matrix[i][j] = minOf(i, j, length - i - 1, width - j - 1) + 1
+        }
+    }
+    return matrix
+}

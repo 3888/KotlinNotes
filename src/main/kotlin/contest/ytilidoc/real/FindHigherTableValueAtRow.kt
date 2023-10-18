@@ -85,8 +85,7 @@ private fun solution(string: String, columnFilter: String): Int {
 
         if (checkByRegex(filteredValue, "-?[0-9]+")) {
 //        println(filteredValue)
-            if (filteredValue.toInt() < result) result = filteredValue.toInt()
-            if (filteredValue.toInt() > result) result = filteredValue.toInt()
+            if (filteredValue.toInt() != 0 ) result = filteredValue.toInt()
         }
     }
 
