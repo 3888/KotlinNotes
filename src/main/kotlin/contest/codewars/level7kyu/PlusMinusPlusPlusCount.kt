@@ -1,13 +1,23 @@
 package contest.codewars.level7kyu
 
 fun main() {
-    val test =
-//        catchSignChange4(arrayOf(1, 3, 4, 5))    // 0
-//        catchSignChange(arrayOf()) //0
-//        catchSignChange(arrayOf(1, -3, -4, 0, 5)) // 2
-        catchSignChange(arrayOf(-1, 1, -2, -2, -2, 3, 3)) // 3
+
 }
 
+
+fun catchSignChangeMy(arr: Array<Int>): Int = if (arr.isEmpty()) 0 else {
+    var isChanged: Boolean = arr.first() >= 0
+    var count = 0
+
+    arr.forEach { value ->
+
+        if (isChanged != value >= 0) {
+            count++
+            isChanged = value >= 0
+        }
+    }
+    count
+}
 
 private fun catchSignChange(arr: Array<Int>): Int = arr.map { it > 0 }.zipWithNext { a, b -> a != b }.count { it }
 
