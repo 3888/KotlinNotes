@@ -14,7 +14,7 @@ private fun asterisksSeparatedBySpaces(heightCount: Int) {
     }
 }
 
-private fun triangle(heightCount: Int) {
+private fun triangle_matrix(heightCount: Int) {
     for (i in 1..heightCount) {
         var value = 0
         for (j in 1..heightCount - i) {

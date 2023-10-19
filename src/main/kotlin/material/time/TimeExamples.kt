@@ -48,17 +48,23 @@ private fun millisToDate() {
 private fun timeUniExamples() {
     val format = "%d min, %02d sec"
     val millis = 10000000L
-    val millesToFromat = String.format(
+    val millisToFormat = String.format(
         format,
         TimeUnit.MILLISECONDS.toMinutes(millis),
         TimeUnit.MILLISECONDS.toSeconds(millis) -
                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
     )
 
-    println(millesToFromat)
+    println(millisToFormat)
 
     println(TimeUnit.HOURS.toMillis(1L))
     println(TimeUnit.MINUTES.toMillis(1L))
+
+    val number = 5
+
+    val formattedNumber = String.format("%02d", number)
+
+    println(formattedNumber)
 
 }
 
