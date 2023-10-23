@@ -345,12 +345,23 @@ private fun listOf() {
     println(listOf("a", "b", "cd").sumBy { it.length })//chars length of "a b cd" = 4
 }
 
-private fun set() {
+private fun setAndAnyExample() {
     val allBooks = setOf("Macbeth", "Romeo and Juliet", "Hamlet", "Hamlet", "A Midsummer Night's Dream")
     println("allBooks = $allBooks")
 
     val library = mapOf("William Shakespeare " to allBooks)
     println(library.any { it.value.contains("Hamlet") })
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+
+    // Проверяем, есть ли хотя бы один элемент, который больше 3
+    val isAnyGreaterThanThree = numbers.any { it > 3 }
+
+    if (isAnyGreaterThanThree) {
+        println("Есть элементы больше 3")
+    } else {
+        println("Нет элементов больше 3")
+    }
 }
 
 private fun setMutable() {
