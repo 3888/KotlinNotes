@@ -25,6 +25,7 @@ fun main() {
 //    windowed()
 
 //    flatten()
+    flattenVsConcat()
 
 //    reduce()
 //    reduceRight()
@@ -47,7 +48,7 @@ fun main() {
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
 
-    statistics()
+//    statistics()
 
 }
 
@@ -204,6 +205,16 @@ private fun flatten() {
     val flattenList = list.flatten()
 
     println(flattenList)
+}
+
+private fun flattenVsConcat() {
+    val list1 = listOf(1, 2, 3)
+    val list2 = listOf(4, 5, 6)
+    val list3 = listOf(listOf(1, 2, 3), listOf(4, 5, 6))
+    val result = list1 + list2 //  simple concatenation of lists
+    val result2 = list3.flatten() //  to combine nested lists into one
+    println(result)
+    println(result2)
 }
 
 private fun reduce() {
