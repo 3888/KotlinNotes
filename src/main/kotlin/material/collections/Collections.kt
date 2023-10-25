@@ -20,12 +20,13 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
+    sortedWith()
 
 //    chunked()
 //    windowed()
 
 //    flatten()
-    flattenVsConcat()
+//    flattenVsConcat()
 
 //    reduce()
 //    reduceRight()
@@ -196,6 +197,21 @@ private fun sortList() {
         .sortedBy {
             it.id
         })
+}
+
+private fun sortedWith() {
+    val arrayAny = arrayOf<Any>("Banana", 0, "Apple", 2, "Mango", 0, "Orange", 2, 2)
+
+    val compareByType = Comparator { a: Any, b: Any ->
+        when {
+            a is Int && b is Int -> a.compareTo(b)
+            a is String && b is String -> a.compareTo(b)
+            a is Int && b is String -> -1
+            else -> 1
+        }
+    }
+
+    println(arrayAny.sortedWith(compareByType))
 }
 
 private fun flatten() {

@@ -14,4 +14,6 @@ object DoubleSort {
 
     fun dbSort2(a:Array<Any>): Array<Any> =
         a.partition { it !is String }.let { (n, s) -> (n as List<Int>).sorted() + (s as List<String>).sorted() }.toTypedArray()
+
+
 }
