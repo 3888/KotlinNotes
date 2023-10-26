@@ -20,7 +20,8 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
-    sortedWith()
+//    sortedWithCompareBy()
+    sortedWithThenBy()
 
 //    chunked()
 //    windowed()
@@ -199,19 +200,48 @@ private fun sortList() {
         })
 }
 
-private fun sortedWith() {
+private fun sortedWithCompareBy() {
+
+    val list = listOf("Banana", "Apple", "Orange")
+    val sortedList = list.sortedWith(compareBy { it.length })
+
+    println(sortedList)
+
     val arrayAny = arrayOf<Any>("Banana", 0, "Apple", 2, "Mango", 0, "Orange", 2, 2)
 
-    val compareByType = Comparator { a: Any, b: Any ->
+    val customComparatorCompareByType = Comparator { a: Any, b: Any ->
         when {
             a is Int && b is Int -> a.compareTo(b)
             a is String && b is String -> a.compareTo(b)
-            a is Int && b is String -> -1
-            else -> 1
+            a is Int && b is String -> -1 //  Это означает, что целые числа "меньше" строк в порядке сортировки = сначала массива
+            else -> 1  // Во всех остальных случаях считаются "больше" в порядке сортировки = в конце массива
         }
     }
 
-    println(arrayAny.sortedWith(compareByType))
+    println(arrayAny.sortedWith(customComparatorCompareByType))
+
+
+}
+
+private fun sortedWithThenBy() {
+    val people = listOf(
+        Person("Alice", 25, 170),
+        Person("Bob", 30, 165),
+        Person("Bob", 30, 190),
+        Person("Charlie", 25, 175),
+        Person("David", 35, 160),
+        Person("Charlie", 30, 175)
+    )
+
+    val sortedPeople = people
+        .sortedWith(
+            compareBy(Person::age)
+                .thenBy(Person::height)
+        )
+
+    for (person in sortedPeople) {
+        println("${person.name}, ${person.age} years old, ${person.height} cm tall")
+    }
 }
 
 private fun flatten() {
@@ -440,6 +470,10 @@ private fun statistics() {
     println("Average: ${statistics.average}")
 }
 
-data class IdList(
+private data class IdList(
     val id: Int? = null,
 )
+
+private data class Person(val name: String, val age: Int, val height: Int)
+
+
