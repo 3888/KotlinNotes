@@ -1,7 +1,7 @@
 package contest.codewars.level7kyu
 
 fun main() {
-    validParentheses("((")
+    println(validParentheses3("(((())()))"))
 }
 
 private fun validParenthesesMy(str: String): Boolean = when {
@@ -17,15 +17,16 @@ private fun validParenthesesMy(str: String): Boolean = when {
 }
 
 private fun validParentheses(str: String): Boolean =
-    try { Regex(str); true }
-    catch (error: Exception) {
+    try {
+        Regex(str); true
+    } catch (error: Exception) {
         println(error) // !!! PatternSyntaxException: Unclosed group near index
         false
     }
 
 private fun validParentheses2(str: String): Boolean {
     var s = str
-    while ("()" in s) s = s.replace("()","")
+    while ("()" in s) s = s.replace("()", "")
     return s == ""
 }
 

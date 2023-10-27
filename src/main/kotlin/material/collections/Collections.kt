@@ -20,8 +20,8 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
-//    sortedWithCompareBy()
-    sortedWithThenBy()
+    sortedWithCompareBy()
+//    sortedWithThenBy()
 
 //    chunked()
 //    windowed()
@@ -201,8 +201,7 @@ private fun sortList() {
 }
 
 private fun sortedWithCompareBy() {
-
-    val list = listOf("Banana", "Apple", "Orange")
+    val list = listOf("Banana", "Apple", "Cucumber", "Bee")
     val sortedList = list.sortedWith(compareBy { it.length })
 
     println(sortedList)
@@ -219,8 +218,6 @@ private fun sortedWithCompareBy() {
     }
 
     println(arrayAny.sortedWith(customComparatorCompareByType))
-
-
 }
 
 private fun sortedWithThenBy() {
