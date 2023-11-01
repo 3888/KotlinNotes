@@ -5,10 +5,53 @@ import kotlin.math.sqrt
 
 fun main() {
     println(
-
+        hidePasswordFromConnectionMy("jdbc:mysql://sdasdasdasd:szdasdasd:dfsdfsdfsdf/sdfsdfsdf?password=12345&user=root")
     )
 
+
 }
+
+fun hidePasswordFromConnectionMy(urlString: String): String =
+    "${urlString.split("?").first()}?${urlString.split("?").last().split("&").joinToString("&") {
+        if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
+        else it
+    }}"
+
+fun hidePasswordFromConnectionRegex(url: String): String {
+    return Regex("(?<=password=)[^&]*").replace(url) { "*".repeat(it.value.length) }
+}
+
+
+fun alphaSeqMy(str: String): String =
+    str.map { it.lowercase() }.sorted().joinToString("").fold("") { acc: String, c: Char ->
+        "$acc${(c.toString().repeat(c.code - 96)).capitalize()},"
+    }.dropLast(1)
+
+fun alphaSeq(str: String) =
+    str.toLowerCase().toCharArray().sorted().joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
+
+fun capitalizeMy(text: String): List<String> = listOf(
+    text.foldIndexed("") { index, acc, c ->
+        "$acc${if (index % 2 == 0) c.uppercase() else c}"
+    }, text.foldIndexed("") { index, acc, c ->
+        "$acc${if (index % 2 != 0) c.uppercase() else c}"
+    }
+)
+
+fun capitalize(text: String): List<String> =
+    listOf(
+        text.mapIndexed { index, c -> if (index % 2 == 0) c.uppercaseChar() else c }.joinToString(""),
+        text.mapIndexed { index, c -> if (index % 2 == 1) c.uppercaseChar() else c }.joinToString("")
+    )
+
+fun alphaSeq2(str: String): String =
+    str.lowercase().toList().sorted().joinToString(",") {
+        it.toString().repeat(it.code - 96)
+            .replaceFirstChar { char -> char.uppercase() }
+    }
+
+fun alphaSeq3(str: String) =
+    str.toLowerCase().toList().sorted().joinToString(",") { "$it".repeat(it - '`').capitalize() }
 
 fun leaderBoard(user: String, userScore: Int, yourScore: Int): String {
     val aim = userScore - yourScore
@@ -19,6 +62,7 @@ fun leaderBoard(user: String, userScore: Int, yourScore: Int): String {
         else -> "To beat $user's score, I must complete ${aim / 3} Beta kata and ${aim % 3} 8kyu kata."
     }
 }
+
 
 private fun findScreenHeightMy(width: Int, ratio: String): String =
     "$width" + "x" + "${
