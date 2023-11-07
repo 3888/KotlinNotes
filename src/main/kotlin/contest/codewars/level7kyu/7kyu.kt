@@ -1,21 +1,36 @@
 package contest.codewars.level7kyu
 
 import kotlin.math.sqrt
+import kotlin.time.times
 
 
 fun main() {
+
     println(
-        hidePasswordFromConnectionMy("jdbc:mysql://sdasdasdasd:szdasdasd:dfsdfsdfsdf/sdfsdfsdf?password=12345&user=root")
+        nameValue(
+            arrayOf(
+//                "abc", "abc abc"
+                "codewars", "abc", "xyz"
+            )
+        ).contentToString()
     )
-
-
 }
 
+fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
+    s.split(" ").sumOf { str ->
+        str.fold(0) { acc: Int, c: Char ->
+            acc + c.code - 96
+        }
+    }.times(index + 1)
+}.toIntArray()
+
 fun hidePasswordFromConnectionMy(urlString: String): String =
-    "${urlString.split("?").first()}?${urlString.split("?").last().split("&").joinToString("&") {
-        if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
-        else it
-    }}"
+    "${urlString.split("?").first()}?${
+        urlString.split("?").last().split("&").joinToString("&") {
+            if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
+            else it
+        }
+    }"
 
 fun hidePasswordFromConnectionRegex(url: String): String {
     return Regex("(?<=password=)[^&]*").replace(url) { "*".repeat(it.value.length) }
