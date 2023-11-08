@@ -1,19 +1,40 @@
 package contest.codewars.level7kyu
 
 import kotlin.math.sqrt
-import kotlin.time.times
 
 
 fun main() {
 
-    println(
-        nameValue(
-            arrayOf(
-//                "abc", "abc abc"
-                "codewars", "abc", "xyz"
-            )
-        ).contentToString()
-    )
+    println("HEY BRO")
+}
+
+
+fun reverseMy(a: List<String>): List<String> {
+    var strReversed = a.fold("") { acc, s ->
+        acc + s
+    }.reversed()
+
+    val list = mutableListOf<String>()
+
+    a.indices.forEach {
+        list.add(strReversed.take(a[it].length))
+        strReversed = strReversed.drop(a[it].length)
+    }
+    return list
+}
+
+fun reverse(a: List<String>): List<String> {
+    val str: CharIterator = a.joinToString("").reversed().iterator()
+    return a.map { Array(it.length) { str.nextChar() }.joinToString("") }
+}
+
+fun reverse2(a: List<String>): List<String> {
+    var str = a.joinToString("").reversed()
+    return a.map {
+        val s = str.take(it.length)
+        str = str.drop(it.length)
+        s
+    }
 }
 
 fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
@@ -43,7 +64,8 @@ fun alphaSeqMy(str: String): String =
     }.dropLast(1)
 
 fun alphaSeq(str: String) =
-    str.toLowerCase().toCharArray().sorted().joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
+    str.toLowerCase().toCharArray().sorted()
+        .joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
 
 fun capitalizeMy(text: String): List<String> = listOf(
     text.foldIndexed("") { index, acc, c ->
