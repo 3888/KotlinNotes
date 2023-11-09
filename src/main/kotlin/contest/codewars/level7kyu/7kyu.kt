@@ -5,7 +5,6 @@ import kotlin.math.sqrt
 
 fun main() {
 
-    println("HEY BRO")
 }
 
 
