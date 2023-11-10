@@ -4,8 +4,8 @@ import contest.codewars.level6kyu.duplicateCountSolutionsExample
 import contest.codewars.level6kyu.duplicateEachCount
 
 fun main() {
-    groupBy()
-//    groupByDuplicateCount()
+//    groupBy()
+    groupByDuplicateCount()
 //    groupByDuplicateEachCount()
 
 
