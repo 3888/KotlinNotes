@@ -20,7 +20,7 @@ fun main() {
 //    reversedExample()
 //    sort()
 //    sortList()
-    sortedWithCompareBy()
+//    sortedWithCompareBy()
 //    sortedWithThenBy()
 
 //    chunked()
@@ -51,6 +51,8 @@ fun main() {
 //    nullableCollectionsGetOrNull()
 
 //    statistics()
+
+    groupingByVsGroupBy()
 
 }
 
@@ -465,6 +467,23 @@ private fun statistics() {
     println("Min: ${statistics.min}")
     println("Max: ${statistics.max}")
     println("Average: ${statistics.average}")
+}
+
+private fun groupingByVsGroupBy() {
+    val phones = buildList {
+        repeat(10) {
+            add(
+                Helper.random.nextInt(-1000, 1000)
+            )
+        }
+    }
+
+    val groupingBy: Map<Boolean, Int> = phones.groupingBy { it > 0 }.eachCount()
+    val groupBy: Map<Boolean, List<Int>> = phones.groupBy { it > 0 }
+
+    println(groupingBy)
+    println(groupBy)
+
 }
 
 private data class IdList(

@@ -3,7 +3,9 @@ package contest.codewars.level7kyu
 import kotlin.math.min
 
 fun main() {
-    createBox2(8, 7)
+    createBox4(8, 7).map {
+        println(it.contentToString())
+    }
 }
 
 
