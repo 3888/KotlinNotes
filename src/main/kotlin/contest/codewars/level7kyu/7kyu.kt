@@ -5,17 +5,59 @@ import kotlin.math.sqrt
 
 fun main() {
 
-    partlist(
-        arrayOf("cdIw", "tzIy", "xDu", "rThG")
-    )
+    partlistMy(arrayOf("cdIw", "tzIy", "xDu", "rThG"))
+
+
 }
 
-fun partlist(arr: Array<String>): Array<Array<String>> {
-
+fun partlistMy(arr: Array<String>): Array<Array<String>> {
     val array: Array<Array<String>> = Array(arr.size - 1) {
         Array(2) { "" }
     }
-    val pair = arrayOf("", "")
+
+    arr.forEachIndexed { index, char ->
+        if (index + 1 == arr.size) return@forEachIndexed
+        val pair = arrayOf("", "")
+        pair[0] = if (index == 0) "${array[index].first()} $char".trim() else
+            "${array[index - 1].first()} $char".trim()
+
+        pair[1] = arr.drop(index + 1).reduce { acc, s -> "$acc $s" }
+
+        array[index] = pair
+    }
+
+    return array
+}
+
+fun partlist(arr: Array<String>): Array<Array<String>> {
+    return (1 until arr.size).map {
+        arrayOf(arr.take(it).joinToString(" "), arr.drop(it).joinToString(" "))
+    }.toTypedArray()
+}
+
+fun partlist2(arr: Array<String>): Array<Array<String>> {
+    val newArr = Array<Array<String>>(arr.size - 1) { Array(2) { "" } }
+    for (i in 0 until arr.size - 1) {
+        newArr[i] = arrayOf(
+            arr.sliceArray(0..i).joinToString().replace(", ", " "),
+            arr.sliceArray(i + 1 until arr.size).joinToString().replace(", ", " ")
+        )
+    }
+    return newArr
+}
+
+
+fun partlist3(arr: Array<String>): Array<Array<String>> {
+    val out = ArrayList<Array<String>>();
+    for (stop in 1 until arr.size) {
+        val pair = arrayOf(
+            arr.copyOfRange(0, stop).joinToString(" "),
+            arr.copyOfRange(stop, arr.size).joinToString(" "),
+        )
+        out.add(pair)
+    }
+    return out.toTypedArray()
+}
 
     arr.forEachIndexed { index, char ->
         if (index + 1 == arr.size) return@forEachIndexed

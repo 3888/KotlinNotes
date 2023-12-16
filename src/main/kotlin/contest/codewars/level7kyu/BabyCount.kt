@@ -27,3 +27,9 @@ fun babyCount3(x: String): Int? {
 //    minOf(b / 2, a, y)
     return if (count > 0) count else null
 }
+
+fun babyCount4(x: String): Int? {
+//    println(x)
+    val count = Regex("baby|babi", RegexOption.IGNORE_CASE).findAll(x).count()
+    return if (count > 0) count else null
+}
