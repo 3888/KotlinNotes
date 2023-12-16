@@ -5,10 +5,38 @@ import kotlin.math.sqrt
 
 fun main() {
 
-
+    partlist(
+        arrayOf("cdIw", "tzIy", "xDu", "rThG")
+    )
 }
 
+fun partlist(arr: Array<String>): Array<Array<String>> {
 
+    val array: Array<Array<String>> = Array(arr.size - 1) {
+        Array(2) { "" }
+    }
+    val pair = arrayOf("", "")
+
+    arr.forEachIndexed { index, char ->
+        if (index + 1 == arr.size) return@forEachIndexed
+
+
+        pair[0] = "${pair[0]} $char".trim()
+        pair[1] = arr.drop(index + 1).reduce { acc, s -> "$acc $s" }
+
+
+        array[index] = pair
+println("ADDED ${pair.contentToString()}")
+    }
+    println(array.map { it.contentToString() })
+//    val a = "EBALA [[cdIw, tzIy xDu rThG], [cdIw tzIy, xDu rThG], [cdIw tzIy xDu, rThG]]"
+//    println(a)
+
+    return array
+}
+
+fun twoOldestAgesMy(ages: List<Int>): List<Int> = ages.sorted().drop(ages.size - 2)
+fun twoOldestAges(ages: List<Int>): List<Int> = ages.sorted().takeLast(2)
 fun reverseMy(a: List<String>): List<String> {
     var strReversed = a.fold("") { acc, s ->
         acc + s
@@ -45,13 +73,12 @@ fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
     }.times(index + 1)
 }.toIntArray()
 
-fun hidePasswordFromConnectionMy(urlString: String): String =
-    "${urlString.split("?").first()}?${
-        urlString.split("?").last().split("&").joinToString("&") {
-            if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
-            else it
-        }
-    }"
+fun hidePasswordFromConnectionMy(urlString: String): String = "${urlString.split("?").first()}?${
+    urlString.split("?").last().split("&").joinToString("&") {
+        if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
+        else it
+    }
+}"
 
 fun hidePasswordFromConnectionRegex(url: String): String {
     return Regex("(?<=password=)[^&]*").replace(url) { "*".repeat(it.value.length) }
@@ -64,16 +91,13 @@ fun alphaSeqMy(str: String): String =
     }.dropLast(1)
 
 fun alphaSeq(str: String) =
-    str.toLowerCase().toCharArray().sorted()
-        .joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
+    str.toLowerCase().toCharArray().sorted().joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
 
-fun capitalizeMy(text: String): List<String> = listOf(
-    text.foldIndexed("") { index, acc, c ->
-        "$acc${if (index % 2 == 0) c.uppercase() else c}"
-    }, text.foldIndexed("") { index, acc, c ->
-        "$acc${if (index % 2 != 0) c.uppercase() else c}"
-    }
-)
+fun capitalizeMy(text: String): List<String> = listOf(text.foldIndexed("") { index, acc, c ->
+    "$acc${if (index % 2 == 0) c.uppercase() else c}"
+}, text.foldIndexed("") { index, acc, c ->
+    "$acc${if (index % 2 != 0) c.uppercase() else c}"
+})
 
 fun capitalize(text: String): List<String> =
     listOf(
@@ -81,11 +105,9 @@ fun capitalize(text: String): List<String> =
         text.mapIndexed { index, c -> if (index % 2 == 1) c.uppercaseChar() else c }.joinToString("")
     )
 
-fun alphaSeq2(str: String): String =
-    str.lowercase().toList().sorted().joinToString(",") {
-        it.toString().repeat(it.code - 96)
-            .replaceFirstChar { char -> char.uppercase() }
-    }
+fun alphaSeq2(str: String): String = str.lowercase().toList().sorted().joinToString(",") {
+    it.toString().repeat(it.code - 96).replaceFirstChar { char -> char.uppercase() }
+}
 
 fun alphaSeq3(str: String) =
     str.toLowerCase().toList().sorted().joinToString(",") { "$it".repeat(it - '`').capitalize() }
@@ -101,10 +123,9 @@ fun leaderBoard(user: String, userScore: Int, yourScore: Int): String {
 }
 
 
-private fun findScreenHeightMy(width: Int, ratio: String): String =
-    "$width" + "x" + "${
-        ((width.toDouble() / ratio.split(":").first().toInt()) * ratio.last().toString().toInt()).toInt()
-    }"
+private fun findScreenHeightMy(width: Int, ratio: String): String = "$width" + "x" + "${
+    ((width.toDouble() / ratio.split(":").first().toInt()) * ratio.last().toString().toInt()).toInt()
+}"
 
 fun findScreenHeight(width: Int, ratio: String): String {
     val (w, h) = ratio.split(":").map { it.toInt() }

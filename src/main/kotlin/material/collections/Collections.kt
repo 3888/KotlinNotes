@@ -32,6 +32,7 @@ fun main() {
 //    reduce()
 //    reduceRight()
 //    fold(6)
+    reduceVsFold()
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -52,7 +53,7 @@ fun main() {
 
 //    statistics()
 
-    groupingByVsGroupBy()
+//    groupingByVsGroupBy()
 
 }
 
@@ -336,6 +337,13 @@ fun fold(n: Int) {
         println("acc $acc + i $i = ${acc + i}")
         acc + i
     })
+}
+
+fun reduceVsFold() {
+    val result = listOf("A", "B", "C", "E", "F", "G")
+
+    println(result.fold("Inintian value") { acc, s -> "$acc $s" })
+    println(result.reduce { acc, s -> "$acc $s" })
 }
 
 private fun mutableListAdd() {
