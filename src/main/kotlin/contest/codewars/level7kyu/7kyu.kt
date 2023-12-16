@@ -59,20 +59,22 @@ fun partlist3(arr: Array<String>): Array<Array<String>> {
     return out.toTypedArray()
 }
 
+fun partlist4(arr: Array<String>): Array<Array<String>> {
+
+    val array: Array<Array<String>> = Array(arr.size - 1) {
+        Array(2) { "" }
+    }
+    val pair = arrayOf("", "")
+
     arr.forEachIndexed { index, char ->
         if (index + 1 == arr.size) return@forEachIndexed
-
-
         pair[0] = "${pair[0]} $char".trim()
         pair[1] = arr.drop(index + 1).reduce { acc, s -> "$acc $s" }
 
-
         array[index] = pair
-println("ADDED ${pair.contentToString()}")
+        println("ADDED ${pair.contentToString()}")
     }
     println(array.map { it.contentToString() })
-//    val a = "EBALA [[cdIw, tzIy xDu rThG], [cdIw tzIy, xDu rThG], [cdIw tzIy xDu, rThG]]"
-//    println(a)
 
     return array
 }
