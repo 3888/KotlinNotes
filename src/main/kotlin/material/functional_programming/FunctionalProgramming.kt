@@ -15,6 +15,13 @@ fun main() {
 
 //    generateSequencePrimes(10)
 
+
+        val primes: Sequence<Int> = generateSequence(0) { value ->
+            value + 1
+        }.take(10)
+
+    println(primes.toList())
+
 }
 
 fun transformationSumOf() {
@@ -59,21 +66,6 @@ fun transformationMapIndexed() {
         .map { animal -> "A baby $animal" }
         .mapIndexed { index, baby -> "index $index $baby, with the cutest little tail ever!" }
     println(babies)
-}
-
-private fun transformationFlatMap() {
-    val value = listOf(listOf(1, 2, 3), listOf(4, 5, 6)).flatMap {
-        it
-    }
-    println(value)
-
-    val books = listOf(
-        Book("Thursday Next", listOf("Jasper Forde")),
-        Book("Mort", listOf("Terry Pratchett")),
-        Book("Good Omens", listOf("Terry Pratchett", "Neil Gaiman")),
-    )
-
-    println(books.flatMap { it.authors }.toSet())
 }
 
 private fun filter() {
@@ -148,4 +140,3 @@ private data class TransactionsItem(
     val depositDollar: Double
 )
 
-private class Book(val title: String, val authors: List<String>)

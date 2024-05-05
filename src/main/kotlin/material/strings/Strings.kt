@@ -41,8 +41,8 @@ fun main() {
 /*
 // TODO    https://bezkoder.com/kotlin-split-string-example/
  */
-    splitDelimiters()
-//    splitRegex()
+//    splitWithDelimitersExample()
+    splitRegex()
 //    splitChunked()
 //    splitToSequence()
 
@@ -361,26 +361,39 @@ private fun multiStringLiteral_trimMargin() {
     println(kotlinLogo.trimMargin("."))
 }
 
-private fun splitDelimiters() {
+private fun splitWithDelimitersExample() {
     val webAddress = "http://someadderess.com"
 
-    println(webAddress.split("//")[0])
-    println(webAddress.split("//")[1])
+//    println(webAddress.split("//")[0])
+//    println(webAddress.split("//").first())
+//    println(webAddress.split("//")[1])
+//    println(webAddress.split("//").last())
 
     val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
 
     val separate2 = str.split("=", "-").map { it.trim() }
     println(str)
     println(separate2)
+
+    println(
+        "2+2=4".split('+', '=')
+    )
 }
 
 private fun splitRegex() {
 //    TODO  https://stackoverflow.com/questions/51460166/split-text-using-regex-java-kotlin-with-multiple-delimiter
     val str = "bezkoder.com = Programming Tutorials - Web Development - Mobile App"
 
-    val separate1 = str.split("=|-".toRegex()).map { it.trim() }
+    val separate1 = str.split(
+        "=|-".toRegex() //
+//        "=-".toRegex()
+    ).map { it.trim() }
     println(str)
     println(separate1)
+
+    println(
+        "2+2=4".split(Regex("[+=]"))
+    )
 }
 
 private fun splitChunked() {

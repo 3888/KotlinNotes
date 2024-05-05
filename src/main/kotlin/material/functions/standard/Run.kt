@@ -11,8 +11,11 @@ fun main() {
 //    runWithoutObjectExample(100)
 //    runAndLinksToFunction()
 
-    weNeedRunToSimplifyCode()
+//    weNeedRunToSimplifyCode()
+
+    runWithSeveralFunctions()
 }
+
 
 private fun runWithObjectExample() {
     val fish = Fish("Big Shark")
@@ -59,4 +62,9 @@ fun playerCreateMessage(nameTooLong: Boolean): String {
     } else {
         "Welcome, adventurer"
     }
+}
+
+fun runWithSeveralFunctions() {
+    var value = ""
+    println(run { value = "hello value"; value.reversed() })
 }

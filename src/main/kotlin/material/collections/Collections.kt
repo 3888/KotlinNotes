@@ -13,16 +13,26 @@ fun main() {
 
 //    collectionsJava()
 //    collectionsKotlin()
+
 //    listContains()
 //    listContainsAll()
+
 //    reversedExample()
 //    sort()
 //    sortList()
+//    sortedWithCompareBy()
+//    sortedWithThenBy()
+
 //    chunked()
+//    windowed()
+
 //    flatten()
+//    flattenVsConcat()
+
 //    reduce()
 //    reduceRight()
 //    fold(6)
+    reduceVsFold()
 
 //    mutableListAdd()
 //    mutableListAddByIndex()
@@ -40,6 +50,10 @@ fun main() {
 
 //    nullableCollectionsGetOrElse()
 //    nullableCollectionsGetOrNull()
+
+//    statistics()
+
+//    groupingByVsGroupBy()
 
 }
 
@@ -163,6 +177,16 @@ private fun chunked() {
 //    println(list.chunked(0)) // Error size 0 must be greater than zero
 }
 
+private fun windowed() {
+    val list = listOf("A", "B", "C", "D", "E", "F", "J")
+    println(list.windowed(3, 1, true))
+    println(list.windowed(3, 1, false))
+    println(list.windowed(2, 2, true))
+    println(list.windowed(2, 2, false))
+
+//    println(list.chunked(0)) // Error size 0 must be greater than zero
+}
+
 private fun sortList() {
     val list: List<IdList> = kotlin.collections.listOf(
         IdList(id = 4),
@@ -180,6 +204,47 @@ private fun sortList() {
         })
 }
 
+private fun sortedWithCompareBy() {
+    val list = listOf("Banana", "Apple", "Cucumber", "Bee")
+    val sortedList = list.sortedWith(compareBy { it.length })
+
+    println(sortedList)
+
+    val arrayAny = arrayOf<Any>("Banana", 0, "Apple", 2, "Mango", 0, "Orange", 2, 2)
+
+    val customComparatorCompareByType = Comparator { a: Any, b: Any ->
+        when {
+            a is Int && b is Int -> a.compareTo(b)
+            a is String && b is String -> a.compareTo(b)
+            a is Int && b is String -> -1 //  Это означает, что целые числа "меньше" строк в порядке сортировки = сначала массива
+            else -> 1  // Во всех остальных случаях считаются "больше" в порядке сортировки = в конце массива
+        }
+    }
+
+    println(arrayAny.sortedWith(customComparatorCompareByType))
+}
+
+private fun sortedWithThenBy() {
+    val people = listOf(
+        Person("Alice", 25, 170),
+        Person("Bob", 30, 165),
+        Person("Bob", 30, 190),
+        Person("Charlie", 25, 175),
+        Person("David", 35, 160),
+        Person("Charlie", 30, 175)
+    )
+
+    val sortedPeople = people
+        .sortedWith(
+            compareBy(Person::age)
+                .thenBy(Person::height)
+        )
+
+    for (person in sortedPeople) {
+        println("${person.name}, ${person.age} years old, ${person.height} cm tall")
+    }
+}
+
 private fun flatten() {
     val list = listOf(listOf("A", "B", "C"), listOf("E", "F", "G"))
 
@@ -189,21 +254,30 @@ private fun flatten() {
     println(flattenList)
 }
 
+private fun flattenVsConcat() {
+    val list1 = listOf(1, 2, 3)
+    val list2 = listOf(4, 5, 6)
+    val list3 = listOf(listOf(1, 2, 3), listOf(4, 5, 6))
+    val result = list1 + list2 //  simple concatenation of lists
+    val result2 = list3.flatten() //  to combine nested lists into one
+    println(result)
+    println(result2)
+}
+
 private fun reduce() {
     /*
     https://www.baeldung.com/kotlin/fold-vs-reduce
     https://metanit.com/kotlin/tutorial/9.8.php
     * */
-    val list = listOf("A", "B", "C","E", "F", "G")
 
-    println("list = $list")
-    val reduceList = list
-        .reduce { accumulator, string -> "$accumulator & $string" }
-    println("reduce = $reduceList")
+    val result = listOf("A", "B", "C", "E", "F", "G")
+    println("example 1. we have a  list = $result")
 
-    println("array is ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
+    println("reduce = ${result.reduce { accumulator, string -> "$accumulator$string" }}")
 
+    println("example 2. we have array ${intArrayOf(1, 2, 3, 4, 5).contentToString()}")
     println("1 * 2 * 3 * 4 * 5 = ${intArrayOf(1, 2, 3, 4, 5).reduce(Int::times)}")
+
     println("reduce ${
         listOf("1", "2", "3", "4", "5").reduce { acc, it ->
             "$acc $it" // 1 2 3 4 5 
@@ -232,10 +306,10 @@ it  - 2-1 следующая строка из листа
 }
 
 private fun reduceRight() {
-    val reduceRight = listOf("1", "2", "3", "4", "5")
-        .reduceRight { acc, it -> "$acc $it" }
+    val numbers = listOf("1", "2", "3", "4", "5")
+    val result = numbers.reduceRight { num, acc -> "$acc $num" }
+    println(result)
 
-    println("reduceRight = $reduceRight")
     /*
     acc - 1-й элемент, аккумулятор
     string  - следующая строка из листа
@@ -264,6 +338,13 @@ fun fold(n: Int) {
         println("acc $acc + i $i = ${acc + i}")
         acc + i
     })
+}
+
+fun reduceVsFold() {
+    val result = listOf("A", "B", "C", "E", "F", "G")
+
+    println(result.fold("Inintian value") { acc, s -> "$acc $s" })
+    println(result.reduce { acc, s -> "$acc $s" })
 }
 
 private fun mutableListAdd() {
@@ -329,12 +410,23 @@ private fun listOf() {
     println(listOf("a", "b", "cd").sumBy { it.length })//chars length of "a b cd" = 4
 }
 
-private fun set() {
+private fun setAndAnyExample() {
     val allBooks = setOf("Macbeth", "Romeo and Juliet", "Hamlet", "Hamlet", "A Midsummer Night's Dream")
     println("allBooks = $allBooks")
 
     val library = mapOf("William Shakespeare " to allBooks)
     println(library.any { it.value.contains("Hamlet") })
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+
+    // Проверяем, есть ли хотя бы один элемент, который больше 3
+    val isAnyGreaterThanThree = numbers.any { it > 3 }
+
+    if (isAnyGreaterThanThree) {
+        println("Есть элементы больше 3")
+    } else {
+        println("Нет элементов больше 3")
+    }
 }
 
 private fun setMutable() {
@@ -374,6 +466,39 @@ private fun mutableListVsArrayList() {
     * */
 }
 
-data class IdList(
+private fun statistics() {
+    val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    val statistics = numbers.stream().mapToInt { it }.summaryStatistics()
+
+    println("Count: ${statistics.count}")
+    println("Sum: ${statistics.sum}")
+    println("Min: ${statistics.min}")
+    println("Max: ${statistics.max}")
+    println("Average: ${statistics.average}")
+}
+
+private fun groupingByVsGroupBy() {
+    val phones = buildList {
+        repeat(10) {
+            add(
+                Helper.random.nextInt(-1000, 1000)
+            )
+        }
+    }
+
+    val groupingBy: Map<Boolean, Int> = phones.groupingBy { it > 0 }.eachCount()
+    val groupBy: Map<Boolean, List<Int>> = phones.groupBy { it > 0 }
+
+    println(groupingBy)
+    println(groupBy)
+
+}
+
+private data class IdList(
     val id: Int? = null,
 )
+
+private data class Person(val name: String, val age: Int, val height: Int)
+
+

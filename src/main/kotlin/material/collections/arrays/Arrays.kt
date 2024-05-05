@@ -16,9 +16,9 @@ fun main() {
 //    arrayRemoveDuplicates()
 //    all()
 //    initArray()
-//    minMaxArrayValue()
+    minMaxAverageArrayValue()
 
-    withIndex()
+//    withIndex()
 //    sortedDescending()
 
 }
@@ -36,22 +36,24 @@ private fun sortedDescending() {
     println(arrayOf(66, 55, 100, 68, 46, -82, 12, 72, 12, 38).sortedDescending())
 }
 
-private fun minMaxArrayValue() {
+private fun minMaxAverageArrayValue() {
     /*
     https://www.techiedelight.com/find-minimum-maximum-element-array-kotlin/
     */
     val arr: Array<Int> = arrayOf(6, 3, 2, 5, 10)
 
-    val max = arr.indices.map { i: Int -> arr[i] }.maxOrNull()
-    val min = arr.indices.map { i: Int -> arr[i] }.minOrNull()
+    val max = arr.indices.maxOfOrNull { i: Int -> arr[i] }
+    val min = arr.indices.minOfOrNull { i: Int -> arr[i] }
 
     println("Minimum: $min")
     println("Maximum: $max")
 
-    arr.sort();
-
+    arr.sort()
+    println("via sort & first / last ")
     println("Minimum: ${arr.first()}")
     println("Maximum: ${arr.last()}")
+
+    println("Average: ${arr.average()}")
 }
 
 private fun initArray() {

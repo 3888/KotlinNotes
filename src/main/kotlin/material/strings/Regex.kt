@@ -5,6 +5,10 @@ import java.util.regex.Pattern
 import kotlin.text.Regex
 
 /*
+https://docs.python.org/3/library/re.html#re-syntax
+https://habr.com/ru/articles/115825/
+
+
 https://www.youtube.com/watch?v=_pLpx6btq6U
 https://regex101.com/
  */
