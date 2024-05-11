@@ -31,7 +31,7 @@ fun main() {
 
 //    reduce()
 //    reduceRight()
-//    fold(6)
+    fold(6)
     reduceVsFold()
 
 //    mutableListAdd()
