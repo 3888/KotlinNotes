@@ -4,13 +4,28 @@ import kotlin.math.sqrt
 
 
 fun main() {
+    alphabeticalAddition()
 
-    partlistMy(arrayOf("cdIw", "tzIy", "xDu", "rThG"))
-
-
+//    ('f', addLetters(listOf('a', 'b', 'c')))
+//    ('z', addLetters(listOf('z')))
+//    ('c', addLetters(listOf('a', 'b')))
+//    ('c', addLetters(listOf('c')))
+//    ('a', addLetters(listOf('z', 'a')))
+//    ('d', addLetters(listOf('y', 'c', 'b')))
+//    ('z', addLetters(listOf()))
 }
 
-fun partlistMy(arr: Array<String>): Array<Array<String>> {
+private fun alphabeticalAddition() {
+    val alphabet = 'a'..'z'
+
+    println(
+        listOf('a', 'b', 'c').fold(1) { acc, c ->
+            acc + alphabet.indexOf(c)
+        }
+    )
+}
+
+private fun partlistMy(arr: Array<String>): Array<Array<String>> {
     val array: Array<Array<String>> = Array(arr.size - 1) {
         Array(2) { "" }
     }
@@ -29,13 +44,13 @@ fun partlistMy(arr: Array<String>): Array<Array<String>> {
     return array
 }
 
-fun partlist(arr: Array<String>): Array<Array<String>> {
+private fun partlist(arr: Array<String>): Array<Array<String>> {
     return (1 until arr.size).map {
         arrayOf(arr.take(it).joinToString(" "), arr.drop(it).joinToString(" "))
     }.toTypedArray()
 }
 
-fun partlist2(arr: Array<String>): Array<Array<String>> {
+private fun partlist2(arr: Array<String>): Array<Array<String>> {
     val newArr = Array<Array<String>>(arr.size - 1) { Array(2) { "" } }
     for (i in 0 until arr.size - 1) {
         newArr[i] = arrayOf(
@@ -47,7 +62,7 @@ fun partlist2(arr: Array<String>): Array<Array<String>> {
 }
 
 
-fun partlist3(arr: Array<String>): Array<Array<String>> {
+private fun partlist3(arr: Array<String>): Array<Array<String>> {
     val out = ArrayList<Array<String>>();
     for (stop in 1 until arr.size) {
         val pair = arrayOf(
@@ -59,7 +74,7 @@ fun partlist3(arr: Array<String>): Array<Array<String>> {
     return out.toTypedArray()
 }
 
-fun partlist4(arr: Array<String>): Array<Array<String>> {
+private fun partlist4(arr: Array<String>): Array<Array<String>> {
 
     val array: Array<Array<String>> = Array(arr.size - 1) {
         Array(2) { "" }
@@ -79,9 +94,9 @@ fun partlist4(arr: Array<String>): Array<Array<String>> {
     return array
 }
 
-fun twoOldestAgesMy(ages: List<Int>): List<Int> = ages.sorted().drop(ages.size - 2)
-fun twoOldestAges(ages: List<Int>): List<Int> = ages.sorted().takeLast(2)
-fun reverseMy(a: List<String>): List<String> {
+private fun twoOldestAgesMy(ages: List<Int>): List<Int> = ages.sorted().drop(ages.size - 2)
+private fun twoOldestAges(ages: List<Int>): List<Int> = ages.sorted().takeLast(2)
+private fun reverseMy(a: List<String>): List<String> {
     var strReversed = a.fold("") { acc, s ->
         acc + s
     }.reversed()
@@ -95,12 +110,12 @@ fun reverseMy(a: List<String>): List<String> {
     return list
 }
 
-fun reverse(a: List<String>): List<String> {
+private fun reverse(a: List<String>): List<String> {
     val str: CharIterator = a.joinToString("").reversed().iterator()
     return a.map { Array(it.length) { str.nextChar() }.joinToString("") }
 }
 
-fun reverse2(a: List<String>): List<String> {
+private fun reverse2(a: List<String>): List<String> {
     var str = a.joinToString("").reversed()
     return a.map {
         val s = str.take(it.length)
@@ -109,7 +124,7 @@ fun reverse2(a: List<String>): List<String> {
     }
 }
 
-fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
+private fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
     s.split(" ").sumOf { str ->
         str.fold(0) { acc: Int, c: Char ->
             acc + c.code - 96
@@ -117,46 +132,46 @@ fun nameValue(arr: Array<String>): IntArray = arr.mapIndexed { index, s ->
     }.times(index + 1)
 }.toIntArray()
 
-fun hidePasswordFromConnectionMy(urlString: String): String = "${urlString.split("?").first()}?${
+private fun hidePasswordFromConnectionMy(urlString: String): String = "${urlString.split("?").first()}?${
     urlString.split("?").last().split("&").joinToString("&") {
         if (it.contains("password")) "password=${it.split("=").last().map { "*" }.joinToString("")}"
         else it
     }
 }"
 
-fun hidePasswordFromConnectionRegex(url: String): String {
+private fun hidePasswordFromConnectionRegex(url: String): String {
     return Regex("(?<=password=)[^&]*").replace(url) { "*".repeat(it.value.length) }
 }
 
 
-fun alphaSeqMy(str: String): String =
+private fun alphaSeqMy(str: String): String =
     str.map { it.lowercase() }.sorted().joinToString("").fold("") { acc: String, c: Char ->
         "$acc${(c.toString().repeat(c.code - 96)).capitalize()},"
     }.dropLast(1)
 
-fun alphaSeq(str: String) =
+private fun alphaSeq(str: String) =
     str.toLowerCase().toCharArray().sorted().joinToString(",") { it.toString().repeat(it.toInt() - 96).capitalize() }
 
-fun capitalizeMy(text: String): List<String> = listOf(text.foldIndexed("") { index, acc, c ->
+private fun capitalizeMy(text: String): List<String> = listOf(text.foldIndexed("") { index, acc, c ->
     "$acc${if (index % 2 == 0) c.uppercase() else c}"
 }, text.foldIndexed("") { index, acc, c ->
     "$acc${if (index % 2 != 0) c.uppercase() else c}"
 })
 
-fun capitalize(text: String): List<String> =
+private fun capitalize(text: String): List<String> =
     listOf(
         text.mapIndexed { index, c -> if (index % 2 == 0) c.uppercaseChar() else c }.joinToString(""),
         text.mapIndexed { index, c -> if (index % 2 == 1) c.uppercaseChar() else c }.joinToString("")
     )
 
-fun alphaSeq2(str: String): String = str.lowercase().toList().sorted().joinToString(",") {
+private fun alphaSeq2(str: String): String = str.lowercase().toList().sorted().joinToString(",") {
     it.toString().repeat(it.code - 96).replaceFirstChar { char -> char.uppercase() }
 }
 
-fun alphaSeq3(str: String) =
+private fun alphaSeq3(str: String) =
     str.toLowerCase().toList().sorted().joinToString(",") { "$it".repeat(it - '`').capitalize() }
 
-fun leaderBoard(user: String, userScore: Int, yourScore: Int): String {
+private fun leaderBoard(user: String, userScore: Int, yourScore: Int): String {
     val aim = userScore - yourScore
     return when {
         aim < 0 -> "Winning!"
@@ -171,12 +186,12 @@ private fun findScreenHeightMy(width: Int, ratio: String): String = "$width" + "
     ((width.toDouble() / ratio.split(":").first().toInt()) * ratio.last().toString().toInt()).toInt()
 }"
 
-fun findScreenHeight(width: Int, ratio: String): String {
+private fun findScreenHeight(width: Int, ratio: String): String {
     val (w, h) = ratio.split(":").map { it.toInt() }
     return "${width}x${width * h / w}"
 }
 
-fun findScreenHeight2(width: Int, ratio: String) =
+private fun findScreenHeight2(width: Int, ratio: String) =
     "${width}x${ratio.split(":").let { width * it[1].toInt() / it[0].toInt() }}"
 
 private fun smallEnoughMy(a: IntArray, limit: Int): Boolean = a.sorted().last() <= limit
@@ -190,9 +205,9 @@ private fun reverseLetter(str: String): String = str.replace(Regex("[^a-zA-Z]"),
 private fun filterListMy(l: List<Any>): List<Int> =
     l.asSequence().filter { it is Int && it % 2 >= 0 }.mapNotNull { it as? Int }.toList()
 
-fun filterList(l: List<Any>): List<Any> = l.mapNotNull { it as? Int }
+private fun filterList(l: List<Any>): List<Any> = l.mapNotNull { it as? Int }
 
-fun fizzBuzzMy(n: Int): Array<String> = Array(n) {
+private fun fizzBuzzMy(n: Int): Array<String> = Array(n) {
     when {
         (it + 1) % 3 == 0 -> "Fizz"
         (it + 1) % 5 == 0 -> "Buzz"
@@ -201,7 +216,7 @@ fun fizzBuzzMy(n: Int): Array<String> = Array(n) {
     }
 }
 
-fun fizzBuzz(n: Int) = (1..n).map {
+private fun fizzBuzz(n: Int) = (1..n).map {
     when {
         it % 15 == 0 -> "FizzBuzz"
         it % 5 == 0 -> "Buzz"
